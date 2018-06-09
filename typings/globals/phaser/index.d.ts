@@ -388,13 +388,13 @@ declare module PIXI {
         * The CanvasRenderer draws the Stage and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
         * Don't forget to add the CanvasRenderer.view to your DOM or you will not see anything :)
         * 
-        * @param game A reference to the Phaser Game instance
+        * @param game A reference to the Phaser Circle instance
         */
         constructor(game: Phaser.Game);
 
 
         /**
-        * A reference to the Phaser Game instance.
+        * A reference to the Phaser Circle instance.
         */
         game: Phaser.Game;
 
@@ -792,7 +792,7 @@ declare module PIXI {
         * Updates the transform matrix this DisplayObject uses for rendering.
         * 
         * If the object has no parent, and no parent parameter is provided, it will default to
-        * Phaser.Game.World as the parent transform to use. If that is unavailable the transform fails to take place.
+        * Phaser.Circle.World as the parent transform to use. If that is unavailable the transform fails to take place.
         * 
         * The `parent` parameter has priority over the actual parent. Use it as a parent override.
         * Setting it does **not** change the actual parent of this DisplayObject.
@@ -1965,13 +1965,13 @@ declare module PIXI {
         * So no need for Sprite Batches or Sprite Clouds.
         * Don't forget to add the view to your DOM or you will not see anything :)
         * 
-        * @param game A reference to the Phaser Game instance
+        * @param game A reference to the Phaser Circle instance
         */
         constructor(game: Phaser.Game);
 
 
         /**
-        * A reference to the Phaser Game instance.
+        * A reference to the Phaser Circle instance.
         */
         game: Phaser.Game;
         type: number;
@@ -2115,7 +2115,7 @@ declare module PIXI {
         * To change the textures being batched, call this method with a new array of image keys. The old ones
         * will all be purged out and no-longer batched, and the new ones enabled.
         * 
-        * Note: Throws a warning if you haven't enabled Multiple Texture batching support in the Phaser Game config.
+        * Note: Throws a warning if you haven't enabled Multiple Texture batching support in the Phaser Circle config.
         * 
         * @param textureNameCollection An Array of Texture Cache keys to use for multi-texture batching.
         * @return An array containing the texture keys that were enabled for batching.
@@ -3405,7 +3405,7 @@ declare module Phaser {
     /**
     * An Animation instance contains a single animation and the controls to play it.
     * 
-    * It is created by the AnimationManager, consists of Animation.Frame objects and belongs to a single Game Object such as a Sprite.
+    * It is created by the AnimationManager, consists of Animation.Frame objects and belongs to a single Circle Object such as a Sprite.
     */
     class Animation {
 
@@ -3413,7 +3413,7 @@ declare module Phaser {
         /**
         * An Animation instance contains a single animation and the controls to play it.
         * 
-        * It is created by the AnimationManager, consists of Animation.Frame objects and belongs to a single Game Object such as a Sprite.
+        * It is created by the AnimationManager, consists of Animation.Frame objects and belongs to a single Circle Object such as a Sprite.
         * 
         * @param game A reference to the currently running game.
         * @param parent A reference to the owner of this Animation.
@@ -3452,7 +3452,7 @@ declare module Phaser {
         frameTotal: number;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -3564,12 +3564,12 @@ declare module Phaser {
         next(quantity?: number): void;
 
         /**
-        * Called when the Game enters a paused state.
+        * Called when the Circle enters a paused state.
         */
         onPause(): void;
 
         /**
-        * Called when the Game resumes from a paused state.
+        * Called when the Circle resumes from a paused state.
         */
         onResume(): void;
 
@@ -3658,16 +3658,16 @@ declare module Phaser {
 
     /**
     * The Animation Manager is used to add, play and update Phaser Animations.
-    * Any Game Object such as Phaser.Sprite that supports animation contains a single AnimationManager instance.
+    * Any Circle Object such as Phaser.Sprite that supports animation contains a single AnimationManager instance.
     */
     class AnimationManager {
 
 
         /**
         * The Animation Manager is used to add, play and update Phaser Animations.
-        * Any Game Object such as Phaser.Sprite that supports animation contains a single AnimationManager instance.
+        * Any Circle Object such as Phaser.Sprite that supports animation contains a single AnimationManager instance.
         * 
-        * @param sprite A reference to the Game Object that owns this AnimationManager.
+        * @param sprite A reference to the Circle Object that owns this AnimationManager.
         */
         constructor(sprite: Phaser.Sprite);
 
@@ -3704,7 +3704,7 @@ declare module Phaser {
         frameTotal: number;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -3867,7 +3867,7 @@ declare module Phaser {
         * Parse a Sprite Sheet and extract the animation frame data from it.
         * 
         * @param game A reference to the currently running game.
-        * @param key The Game.Cache asset key of the Sprite Sheet image or an actual HTML Image element.
+        * @param key The Circle.Cache asset key of the Sprite Sheet image or an actual HTML Image element.
         * @param frameWidth The fixed width of each frame of the animation.
         * @param frameHeight The fixed height of each frame of the animation.
         * @param frameMax The total number of animation frames to extract from the Sprite Sheet. The default value of -1 means "extract all frames". - Default: -1
@@ -3908,7 +3908,7 @@ declare module Phaser {
 
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -4280,7 +4280,7 @@ declare module Phaser {
     * A single BitmapData can be used as the texture for one or many Images / Sprites.
     * So if you need to dynamically create a Sprite texture then they are a good choice.
     * 
-    * Important note: Every BitmapData creates its own Canvas element. Because BitmapData's are now Game Objects themselves, and don't
+    * Important note: Every BitmapData creates its own Canvas element. Because BitmapData's are now Circle Objects themselves, and don't
     * live on the display list, they are NOT automatically cleared when you change State. Therefore you _must_ call BitmapData.destroy
     * in your State's shutdown method if you wish to free-up the resources the BitmapData used, it will not happen for you.
     */
@@ -4292,7 +4292,7 @@ declare module Phaser {
         * A single BitmapData can be used as the texture for one or many Images / Sprites.
         * So if you need to dynamically create a Sprite texture then they are a good choice.
         * 
-        * Important note: Every BitmapData creates its own Canvas element. Because BitmapData's are now Game Objects themselves, and don't
+        * Important note: Every BitmapData creates its own Canvas element. Because BitmapData's are now Circle Objects themselves, and don't
         * live on the display list, they are NOT automatically cleared when you change State. Therefore you _must_ call BitmapData.destroy
         * in your State's shutdown method if you wish to free-up the resources the BitmapData used, it will not happen for you.
         * 
@@ -4436,8 +4436,8 @@ declare module Phaser {
         /**
         * Draws the image onto this BitmapData using an image as an alpha mask.
         * 
-        * @param source The source to copy from. If you give a string it will try and find the Image in the Game.Cache first. This is quite expensive so try to provide the image itself.
-        * @param mask The object to be used as the mask. If you give a string it will try and find the Image in the Game.Cache first. This is quite expensive so try to provide the image itself. If you don't provide a mask it will use this BitmapData as the mask.
+        * @param source The source to copy from. If you give a string it will try and find the Image in the Circle.Cache first. This is quite expensive so try to provide the image itself.
+        * @param mask The object to be used as the mask. If you give a string it will try and find the Image in the Circle.Cache first. This is quite expensive so try to provide the image itself. If you don't provide a mask it will use this BitmapData as the mask.
         * @param sourceRect A Rectangle where x/y define the coordinates to draw the Source image to and width/height define the size.
         * @param maskRect A Rectangle where x/y define the coordinates to draw the Mask image to and width/height define the size.
         * @return This BitmapData object for method chaining.
@@ -4648,7 +4648,7 @@ declare module Phaser {
         * You may prefer to use `copyTransform` if you're simply trying to draw a Sprite to this BitmapData,
         * and don't wish to translate, scale or rotate it from its original values.
         * 
-        * @param source The source to copy from. If you give a string it will try and find the Image in the Game.Cache first. This is quite expensive so try to provide the image itself.
+        * @param source The source to copy from. If you give a string it will try and find the Image in the Circle.Cache first. This is quite expensive so try to provide the image itself.
         * @param x The x coordinate representing the top-left of the region to copy from the source image.
         * @param y The y coordinate representing the top-left of the region to copy from the source image.
         * @param width The width of the region to copy from the source image. If not specified it will use the full source image width.
@@ -4673,7 +4673,7 @@ declare module Phaser {
         /**
         * Copies the area defined by the Rectangle parameter from the source image to this BitmapData at the given location.
         * 
-        * @param source The Image to copy from. If you give a string it will try and find the Image in the Game.Cache.
+        * @param source The Image to copy from. If you give a string it will try and find the Image in the Circle.Cache.
         * @param area The Rectangle region to copy from the source image.
         * @param x The destination x coordinate to copy the image to.
         * @param y The destination y coordinate to copy the image to.
@@ -4685,13 +4685,13 @@ declare module Phaser {
         copyRect(source: any, area: Phaser.Rectangle, x?: number, y?: number, alpha?: number, blendMode?: string, roundPx?: boolean): Phaser.BitmapData;
 
         /**
-        * Draws the given `source` Game Object to this BitmapData, using its `worldTransform` property to set the
+        * Draws the given `source` Circle Object to this BitmapData, using its `worldTransform` property to set the
         * position, scale and rotation of where it is drawn. This function is used internally by `drawGroup`.
         * It takes the objects tint and scale mode into consideration before drawing.
         * 
         * You can optionally specify Blend Mode and Round Pixels arguments.
         * 
-        * @param source The Game Object to draw.
+        * @param source The Circle Object to draw.
         * @param blendMode The composite blend mode that will be used when drawing. The default is no blend mode at all. This is a Canvas globalCompositeOperation value such as 'lighter' or 'xor'.
         * @param roundPx Should the x and y values be rounded to integers before drawing? This prevents anti-aliasing in some instances.
         * @return This BitmapData object for method chaining.
@@ -4726,13 +4726,13 @@ declare module Phaser {
         draw(source: any, x?: number, y?: number, width?: number, height?: number, blendMode?: string, roundPx?: boolean): Phaser.BitmapData;
 
         /**
-        * Draws the Game Object or Group to this BitmapData and then recursively iterates through all of its children.
+        * Draws the Circle Object or Group to this BitmapData and then recursively iterates through all of its children.
         * 
         * If a child has an `exists` property then it (and its children) will be only be drawn if exists is `true`.
         * 
         * The children will be drawn at their `x` and `y` world space coordinates. If this is outside the bounds of the BitmapData
         * they won't be drawn. Depending on your requirements you may need to resize the BitmapData in advance to match the
-        * bounds of the top-level Game Object.
+        * bounds of the top-level Circle Object.
         * 
         * When drawing it will take into account the child's world rotation, scale and alpha values.
         * 
@@ -4742,7 +4742,7 @@ declare module Phaser {
         * has taken place before doing so, otherwise all of the objects will render with incorrect positions and scales. You can
         * trigger an update yourself by calling `stage.updateTransform()` before calling `drawFull`.
         * 
-        * @param parent The Game Object to draw onto this BitmapData and then recursively draw all of its children.
+        * @param parent The Circle Object to draw onto this BitmapData and then recursively draw all of its children.
         * @param blendMode The composite blend mode that will be used when drawing. The default is no blend mode at all. This is a Canvas globalCompositeOperation value such as 'lighter' or 'xor'.
         * @param roundPx Should the x and y values be rounded to integers before drawing? This prevents anti-aliasing in some instances.
         * @return This BitmapData object for method chaining.
@@ -4947,12 +4947,12 @@ declare module Phaser {
         line(x1: number, y1: number, x2: number, y2: number, color?: string, width?: number): Phaser.BitmapData;
 
         /**
-        * Takes the given Game Object, resizes this BitmapData to match it and then draws it into this BitmapDatas canvas, ready for further processing.
+        * Takes the given Circle Object, resizes this BitmapData to match it and then draws it into this BitmapDatas canvas, ready for further processing.
         * The source game object is not modified by this operation.
         * If the source object uses a texture as part of a Texture Atlas or Sprite Sheet, only the current frame will be used for sizing.
         * If a string is given it will assume it's a cache key and look in Phaser.Cache for an image key matching the string.
         * 
-        * @param source The object that will be used to populate this BitmapData. If you give a string it will try and find the Image in the Game.Cache first.
+        * @param source The object that will be used to populate this BitmapData. If you give a string it will try and find the Image in the Circle.Cache first.
         * @return This BitmapData object for method chaining.
         */
         load(source: any): Phaser.BitmapData;
@@ -5276,7 +5276,7 @@ declare module Phaser {
         align: string;
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -5293,13 +5293,13 @@ declare module Phaser {
         anchor: Phaser.Point;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -5312,28 +5312,28 @@ declare module Phaser {
         angle: number;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
 
         /**
-        * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated
+        * `body` is the Circle Objects physics body. Once a Circle Object is enabled for physics you access all associated
         * properties and methods via it.
         * 
-        * By default Game Objects won't add themselves to any physics system and their `body` property will be `null`.
+        * By default Circle Objects won't add themselves to any physics system and their `body` property will be `null`.
         * 
-        * To enable this Game Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
+        * To enable this Circle Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
         * and `system` is the Physics system you are using. If none is given it defaults to `Phaser.Physics.Arcade`.
         * 
-        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Game Object to a physics enabled Group.
+        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Circle Object to a physics enabled Group.
         * 
-        * Important: Enabling a Game Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
-        * so the physics body is centered on the Game Object.
+        * Important: Enabling a Circle Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
+        * so the physics body is centered on the Circle Object.
         * 
         * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
         */
@@ -5346,45 +5346,45 @@ declare module Phaser {
         bottom: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * If this is set to `true` the Game Object checks if it is within the World bounds each frame.
+        * If this is set to `true` the Circle Object checks if it is within the World bounds each frame.
         * 
         * When it is no longer intersecting the world bounds it dispatches the `onOutOfBounds` event.
         * 
         * If it was *previously* out of bounds but is now intersecting the world bounds again it dispatches the `onEnterBounds` event.
         * 
-        * It also optionally kills the Game Object if `outOfBoundsKill` is `true`.
+        * It also optionally kills the Circle Object if `outOfBoundsKill` is `true`.
         * 
-        * When `checkWorldBounds` is enabled it forces the Game Object to calculate its full bounds every frame.
+        * When `checkWorldBounds` is enabled it forces the Circle Object to calculate its full bounds every frame.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         checkWorldBounds: boolean;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
 
@@ -5394,14 +5394,14 @@ declare module Phaser {
         dirty: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
         /**
-        * Controls if this Game Object is processed by the core game loop.
-        * If this Game Object has a physics body it also controls if its physics body is updated or not.
+        * Controls if this Circle Object is processed by the core game loop.
+        * If this Circle Object has a physics body it also controls if its physics body is updated or not.
         * When `exists` is set to `false` it will remove its physics body from the physics world if it has one.
         * It also toggles the `visible` property to false as well.
         * 
@@ -5411,18 +5411,18 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
@@ -5437,28 +5437,28 @@ declare module Phaser {
         fontSize: number;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -5466,53 +5466,53 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
         inputEnabled: boolean;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
 
         /**
-        * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
+        * Checks if the Circle Objects bounds are within, or intersect at any point with the Circle World bounds.
         */
         inWorld: boolean;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
         /**
-        * The lifespan allows you to give a Game Object a lifespan in milliseconds.
+        * The lifespan allows you to give a Circle Object a lifespan in milliseconds.
         * 
-        * Once the Game Object is 'born' you can set this to a positive value.
+        * Once the Circle Object is 'born' you can set this to a positive value.
         * 
         * It is automatically decremented by the millisecond equivalent of `game.time.physicsElapsed` each frame.
         * When it reaches zero it will call the `kill` method.
@@ -5534,14 +5534,14 @@ declare module Phaser {
         maxWidth: number;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
@@ -5553,7 +5553,7 @@ declare module Phaser {
         outOfBoundsKill: boolean;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -5567,12 +5567,12 @@ declare module Phaser {
         physicsType: number;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
@@ -5591,7 +5591,7 @@ declare module Phaser {
         renderOrderID: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
@@ -5626,7 +5626,7 @@ declare module Phaser {
         tint: number;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -5637,9 +5637,9 @@ declare module Phaser {
         type: number;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
@@ -5656,24 +5656,24 @@ declare module Phaser {
         y: number;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -5682,12 +5682,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -5696,24 +5696,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -5723,12 +5723,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -5737,11 +5737,11 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
@@ -5755,14 +5755,14 @@ declare module Phaser {
         destroy(destroyChildren?: boolean): void;
 
         /**
-        * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
+        * Kills a Circle Object. A killed Circle Object has its `alive`, `exists` and `visible` properties all set to false.
         * 
         * It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
         * 
-        * Note that killing a Game Object is a way for you to quickly recycle it in an object pool,
+        * Note that killing a Circle Object is a way for you to quickly recycle it in an object pool,
         * it doesn't destroy the object or free it up from memory.
         * 
-        * If you don't need this Game Object any more you should call `destroy` instead.
+        * If you don't need this Circle Object any more you should call `destroy` instead.
         * @return This instance.
         */
         kill(): void;
@@ -5792,30 +5792,30 @@ declare module Phaser {
         purgeGlyphs(): number;
 
         /**
-        * Resets the Game Object.
+        * Resets the Circle Object.
         * 
-        * This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`,
+        * This moves the Circle Object to the given x/y world coordinates and sets `fresh`, `exists`,
         * `visible` and `renderable` to true.
         * 
-        * If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
+        * If this Circle Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
         * 
-        * If this Game Object has a Physics Body it will reset the Body.
+        * If this Circle Object has a Physics Body it will reset the Body.
         * 
-        * @param x The x coordinate (in world space) to position the Game Object at.
-        * @param y The y coordinate (in world space) to position the Game Object at.
-        * @param health The health to give the Game Object if it has the Health component. - Default: 1
+        * @param x The x coordinate (in world space) to position the Circle Object at.
+        * @param y The y coordinate (in world space) to position the Circle Object at.
+        * @param health The health to give the Circle Object if it has the Health component. - Default: 1
         * @return This instance.
         */
         reset(x: number, y: number, health?: number): Phaser.BitmapText;
 
         /**
-        * Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+        * Brings a 'dead' Circle Object back to life, optionally resetting its health value in the process.
         * 
-        * A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+        * A resurrected Circle Object has its `alive`, `exists` and `visible` properties all set to true.
         * 
         * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
         * 
-        * @param health The health to give the Game Object. Only set if the GameObject has the Health component. - Default: 100
+        * @param health The health to give the Circle Object. Only set if the GameObject has the Health component. - Default: 100
         * @return This instance.
         */
         revive(health?: number): Phaser.BitmapText;
@@ -5851,7 +5851,7 @@ declare module Phaser {
         /**
         * Override this method in your own custom objects to handle any update requirements.
         * It is called immediately after `preUpdate` and before `postUpdate`.
-        * Remember if this Game Object has any children you should call update on those too.
+        * Remember if this Circle Object has any children you should call update on those too.
         */
         update(): void;
 
@@ -5936,7 +5936,7 @@ declare module Phaser {
         * @param game Current game instance.
         * @param x X position of the Button.
         * @param y Y position of the Button.
-        * @param key The image key (in the Game.Cache) to use as the texture for this Button.
+        * @param key The image key (in the Circle.Cache) to use as the texture for this Button.
         * @param callback The function to call when this Button is pressed, receiving `this` (the Button), `pointer` (the Pointer causing the input), and `isOver` (whether the Pointer is still on the Button). See {@link Phaser.Events#onInputUp}.
         * @param callbackContext The context in which the callback will be called (usually 'this').
         * @param overFrame The frame / frameName when the button is in the Over state.
@@ -6087,7 +6087,7 @@ declare module Phaser {
         * 
         * @param sprite The Button that the event occurred on.
         * @param pointer The Pointer that activated the Button.
-        * @param isOver Is the Pointer still over the Game Object?
+        * @param isOver Is the Pointer still over the Circle Object?
         */
         onInputUpHandler(sprite: Phaser.Button, pointer: Phaser.Pointer, isOver: boolean): void;
         removedFromWorld(): void;
@@ -6174,7 +6174,7 @@ declare module Phaser {
     * because they are unique data types.
     * 
     * The cache is automatically populated by the Phaser.Loader. When you use the loader to pull in external assets
-    * such as images they are automatically placed into their respective cache. Most common Game Objects, such as
+    * such as images they are automatically placed into their respective cache. Most common Circle Objects, such as
     * Sprites and Videos automatically query the cache to extract the assets they need on instantiation.
     * 
     * You can access the cache from within a State via `this.cache`. From here you can call any public method it has,
@@ -6200,7 +6200,7 @@ declare module Phaser {
         * because they are unique data types.
         * 
         * The cache is automatically populated by the Phaser.Loader. When you use the loader to pull in external assets
-        * such as images they are automatically placed into their respective cache. Most common Game Objects, such as
+        * such as images they are automatically placed into their respective cache. Most common Circle Objects, such as
         * Sprites and Videos automatically query the cache to extract the assets they need on instantiation.
         * 
         * You can access the cache from within a State via `this.cache`. From here you can call any public method it has,
@@ -7184,7 +7184,7 @@ declare module Phaser {
         * A Camera is your view into the game world. It has a position and size and renders only those objects within its field of view.
         * The game automatically creates a single Stage sized camera on boot. Move the camera around the world with Phaser.Camera.x/y
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         * @param id Not being used at the moment, will be when Phaser supports multiple camera
         * @param x Position of the camera on the X axis
         * @param y Position of the camera on the Y axis
@@ -7265,12 +7265,12 @@ declare module Phaser {
         fx: Phaser.Graphics;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * The Cameras height. By default this is the same as the Game size and should not be adjusted for now. Gets or sets the cameras height.
+        * The Cameras height. By default this is the same as the Circle size and should not be adjusted for now. Gets or sets the cameras height.
         */
         height: number;
 
@@ -7347,7 +7347,7 @@ declare module Phaser {
         visible: boolean;
 
         /**
-        * The Cameras width. By default this is the same as the Game size and should not be adjusted for now. Gets or sets the cameras width.
+        * The Cameras width. By default this is the same as the Circle size and should not be adjusted for now. Gets or sets the cameras width.
         */
         width: number;
 
@@ -8716,7 +8716,7 @@ declare module Phaser {
     * quickly and easily, without the need for any external files. You can create textures for sprites and in
     * coming releases we'll add dynamic sound effect generation support as well (like sfxr).
     * 
-    * Access this via `Game.create` (`this.game.create` from within a State object).
+    * Access this via `Circle.create` (`this.game.create` from within a State object).
     */
     class Create {
 
@@ -8726,9 +8726,9 @@ declare module Phaser {
         * quickly and easily, without the need for any external files. You can create textures for sprites and in
         * coming releases we'll add dynamic sound effect generation support as well (like sfxr).
         * 
-        * Access this via `Game.create` (`this.game.create` from within a State object).
+        * Access this via `Circle.create` (`this.game.create` from within a State object).
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         */
         constructor(game: Phaser.Game);
 
@@ -8775,7 +8775,7 @@ declare module Phaser {
         ctx: CanvasRenderingContext2D;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -8884,7 +8884,7 @@ declare module Phaser {
     * 
     * });
     * 
-    * var game = new Phaser.Game();
+    * var game = new Phaser.Circle();
     * ```
     * 
     * When checking features using the exposed properties only the *truth-iness* of the value should be relied upon
@@ -8908,7 +8908,7 @@ declare module Phaser {
         * Local "patching" for a particular device can/should be done in this event.
         * 
         * _Note_: This signal is removed after the device has been readied; if a handler has not been
-        * added _before_ `new Phaser.Game(..)` it is probably too late.
+        * added _before_ `new Phaser.Circle(..)` it is probably too late.
         */
         static onInitialized: Phaser.Signal;
 
@@ -9941,7 +9941,7 @@ declare module Phaser {
 
 
     /**
-    * The Events component is a collection of events fired by the parent Game Object.
+    * The Events component is a collection of events fired by the parent Circle Object.
     * 
     * Phaser uses what are known as 'Signals' for all event handling. All of the events in
     * this class are signals you can subscribe to, much in the same way you'd "listen" for
@@ -9963,7 +9963,7 @@ declare module Phaser {
 
 
         /**
-        * The Events component is a collection of events fired by the parent Game Object.
+        * The Events component is a collection of events fired by the parent Circle Object.
         * 
         * Phaser uses what are known as 'Signals' for all event handling. All of the events in
         * this class are signals you can subscribe to, much in the same way you'd "listen" for
@@ -9992,120 +9992,120 @@ declare module Phaser {
         parent: Phaser.Sprite;
 
         /**
-        * This signal is dispatched when this Game Object is added to a new {@link Phaser.Group Group}.
+        * This signal is dispatched when this Circle Object is added to a new {@link Phaser.Group Group}.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that was added to the Group.
+        * - {any} The Circle Object that was added to the Group.
         * - {Phaser.Group} The Group it was added to.
         */
         onAddedToGroup: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object is removed from a {@link Phaser.Group Group}.
+        * This signal is dispatched when the Circle Object is removed from a {@link Phaser.Group Group}.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that was removed from the Group.
+        * - {any} The Circle Object that was removed from the Group.
         * - {Phaser.Group} The Group it was removed from.
         */
         onRemovedFromGroup: Phaser.Signal;
         onRemovedFromWorld: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object is killed.
+        * This signal is dispatched when the Circle Object is killed.
         * This happens when {@link Phaser.Sprite#kill Sprite.kill()} is called.
         * Please understand the difference between {@link Phaser.Sprite#kill kill} and {@link Phaser.Sprite#destroy destroy} by looking at their respective methods.
         * It is sent one argument:
         * 
-        * - {any} The Game Object that was killed.
+        * - {any} The Circle Object that was killed.
         */
         onKilled: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object is revived from a previously killed state.
+        * This signal is dispatched when the Circle Object is revived from a previously killed state.
         * This happens when {@link Phaser.Sprite#revive Sprite.revive()} is called.
         * It is sent one argument:
         * 
-        * - {any} The Game Object that was revived.
+        * - {any} The Circle Object that was revived.
         */
         onRevived: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object leaves the Phaser.World {@link Phaser.World#bounds bounds}.
+        * This signal is dispatched when the Circle Object leaves the Phaser.World {@link Phaser.World#bounds bounds}.
         * This signal is only if {@link Phaser.Sprite#checkWorldBounds Sprite.checkWorldBounds} is set to `true`.
         * It is sent one argument:
         * 
-        * - {any} The Game Object that left the World bounds.
+        * - {any} The Circle Object that left the World bounds.
         */
         onOutOfBounds: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object returns within the Phaser.World {@link Phaser.World#bounds bounds}, having previously been outside of them.
+        * This signal is dispatched when the Circle Object returns within the Phaser.World {@link Phaser.World#bounds bounds}, having previously been outside of them.
         * This signal is only if {@link Phaser.Sprite#checkWorldBounds Sprite.checkWorldBounds} is set to `true`.
         * It is sent one argument:
         * 
-        * - {any} The Game Object that entered the World bounds.
+        * - {any} The Circle Object that entered the World bounds.
         */
         onEnterBounds: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
+        * This signal is dispatched if the Circle Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
         * and receives an over event from a {@link Phaser.Pointer}.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
         */
         onInputOver: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
+        * This signal is dispatched if the Circle Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
         * and receives an out event from a {@link Phaser.Pointer}, which was previously over it.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
         */
         onInputOut: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
+        * This signal is dispatched if the Circle Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
         * and receives a down event from a {@link Phaser.Pointer}. This effectively means the Pointer has been
-        * pressed down (but not yet released) on the Game Object.
+        * pressed down (but not yet released) on the Circle Object.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
         */
         onInputDown: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
+        * This signal is dispatched if the Circle Object has {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} set to `true`,
         * and receives an up event from a {@link Phaser.Pointer}. This effectively means the Pointer had been
-        * pressed down, and was then released on the Game Object.
+        * pressed down, and was then released on the Circle Object.
         * It is sent three arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
-        * - {boolean} isOver - Is the Pointer still over the Game Object?
+        * - {boolean} isOver - Is the Pointer still over the Circle Object?
         */
         onInputUp: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the Game Object is destroyed.
+        * This signal is dispatched when the Circle Object is destroyed.
         * This happens when {@link Phaser.Sprite#destroy Sprite.destroy()} is called, or {@link Phaser.Group#destroy Group.destroy()} with `destroyChildren` set to true.
         * It is sent one argument:
         * 
-        * - {any} The Game Object that was destroyed.
+        * - {any} The Circle Object that was destroyed.
         */
         onDestroy: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
-        * It is sent when a {@link Phaser.Pointer} starts to drag the Game Object, taking into consideration the various
+        * This signal is dispatched if the Circle Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
+        * It is sent when a {@link Phaser.Pointer} starts to drag the Circle Object, taking into consideration the various
         * drag limitations that may be set.
         * It is sent four arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
         * - {number} The x coordinate that the drag started from.
         * - {number} The y coordinate that the drag started from.
@@ -10113,59 +10113,59 @@ declare module Phaser {
         onDragStart: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
-        * It is sent when a {@link Phaser.Pointer} stops dragging the Game Object.
+        * This signal is dispatched if the Circle Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
+        * It is sent when a {@link Phaser.Pointer} stops dragging the Circle Object.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
         */
         onDragStop: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
-        * It is sent when a {@link Phaser.Pointer} is actively dragging the Game Object.
+        * This signal is dispatched if the Circle Object has been {@link Phaser.Component.InputEnabled#inputEnabled inputEnabled} and {@link Phaser.InputHandler#enableDrag enableDrag} has been set.
+        * It is sent when a {@link Phaser.Pointer} is actively dragging the Circle Object.
         * Be warned: This is a high volume Signal. Be careful what you bind to it.
         * It is sent six arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Pointer} The Phaser.Pointer object that caused the event.
-        * - {number} The new x coordinate of the Game Object.
-        * - {number} The new y coordinate of the Game Object.
-        * - {Phaser.Point} A Point object that contains the point the Game Object was snapped to, if `snapOnDrag` has been enabled.
+        * - {number} The new x coordinate of the Circle Object.
+        * - {number} The new y coordinate of the Circle Object.
+        * - {Phaser.Point} A Point object that contains the point the Circle Object was snapped to, if `snapOnDrag` has been enabled.
         * - {boolean} The `fromStart` boolean, indicates if this is the first update immediately after the drag has started.
         */
         onDragUpdate: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has the {@link Phaser.AnimationManager AnimationManager} component,
+        * This signal is dispatched if the Circle Object has the {@link Phaser.AnimationManager AnimationManager} component,
         * and an Animation has been played.
-        * You can also listen to {@link Phaser.Animation#onStart} rather than via the Game Objects events.
+        * You can also listen to {@link Phaser.Animation#onStart} rather than via the Circle Objects events.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Animation} The Phaser.Animation that was started.
         */
         onAnimationStart: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has the {@link Phaser.AnimationManager AnimationManager} component,
+        * This signal is dispatched if the Circle Object has the {@link Phaser.AnimationManager AnimationManager} component,
         * and an Animation has been stopped (via {@link Phaser.AnimationManager#stop animation.stop()} and the `dispatchComplete` argument has been set.
-        * You can also listen to {@link Phaser.Animation#onComplete} rather than via the Game Objects events.
+        * You can also listen to {@link Phaser.Animation#onComplete} rather than via the Circle Objects events.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Animation} The Phaser.Animation that was stopped.
         */
         onAnimationComplete: Phaser.Signal;
 
         /**
-        * This signal is dispatched if the Game Object has the {@link Phaser.AnimationManager AnimationManager} component,
+        * This signal is dispatched if the Circle Object has the {@link Phaser.AnimationManager AnimationManager} component,
         * and an Animation has looped playback.
-        * You can also listen to {@link Phaser.Animation#onLoop} rather than via the Game Objects events.
+        * You can also listen to {@link Phaser.Animation#onLoop} rather than via the Circle Objects events.
         * It is sent two arguments:
         * 
-        * - {any} The Game Object that received the event.
+        * - {any} The Circle Object that received the event.
         * - {Phaser.Animation} The Phaser.Animation that looped.
         */
         onAnimationLoop: Phaser.Signal;
@@ -10516,7 +10516,7 @@ declare module Phaser {
 
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -10973,7 +10973,7 @@ declare module Phaser {
 
 
     /**
-    * The Phaser.Game object is the main controller for the entire Phaser game. It is responsible
+    * The Phaser.Circle object is the main controller for the entire Phaser game. It is responsible
     * for handling the boot process, parsing the configuration values, creating the renderer,
     * and setting-up all of the Phaser systems, such as physics, sound and input.
     * Once that is complete it will start the default State, and then begin the main game loop.
@@ -10989,18 +10989,18 @@ declare module Phaser {
     * to the constructor:
     * 
     * ```javascript
-    * var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+    * var game = new Phaser.Circle(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
     * ```
     * 
     * In the example above it is passing in a State object directly. You can also use the State
     * Manager to do this:
     * 
     * ```javascript
-    * var game = new Phaser.Game(800, 600, Phaser.AUTO);
+    * var game = new Phaser.Circle(800, 600, Phaser.AUTO);
     * game.state.add('Boot', BasicGame.Boot);
     * game.state.add('Preloader', BasicGame.Preloader);
     * game.state.add('MainMenu', BasicGame.MainMenu);
-    * game.state.add('Game', BasicGame.Game);
+    * game.state.add('Circle', BasicGame.Circle);
     * game.state.start('Boot');
     * ```
     * 
@@ -11024,14 +11024,14 @@ declare module Phaser {
     *     }
     * }
     * 
-    * var game = new Phaser.Game(config);
+    * var game = new Phaser.Circle(config);
     * ```
     */
     class Game {
 
 
         /**
-        * The Phaser.Game object is the main controller for the entire Phaser game. It is responsible
+        * The Phaser.Circle object is the main controller for the entire Phaser game. It is responsible
         * for handling the boot process, parsing the configuration values, creating the renderer,
         * and setting-up all of the Phaser systems, such as physics, sound and input.
         * Once that is complete it will start the default State, and then begin the main game loop.
@@ -11047,18 +11047,18 @@ declare module Phaser {
         * to the constructor:
         * 
         * ```javascript
-        * var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+        * var game = new Phaser.Circle(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
         * ```
         * 
         * In the example above it is passing in a State object directly. You can also use the State
         * Manager to do this:
         * 
         * ```javascript
-        * var game = new Phaser.Game(800, 600, Phaser.AUTO);
+        * var game = new Phaser.Circle(800, 600, Phaser.AUTO);
         * game.state.add('Boot', BasicGame.Boot);
         * game.state.add('Preloader', BasicGame.Preloader);
         * game.state.add('MainMenu', BasicGame.MainMenu);
-        * game.state.add('Game', BasicGame.Game);
+        * game.state.add('Circle', BasicGame.Circle);
         * game.state.start('Boot');
         * ```
         * 
@@ -11082,7 +11082,7 @@ declare module Phaser {
         *     }
         * }
         * 
-        * var game = new Phaser.Game(config);
+        * var game = new Phaser.Circle(config);
         * ```
         * 
         * @param width The width of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage width of the parent container, or the browser window if no parent is given. - Default: 800
@@ -11097,7 +11097,7 @@ declare module Phaser {
         constructor(width?: number | string, height?: number | string, renderer?: number, parent?: any, state?: any, transparent?: boolean, antialias?: boolean, physicsConfig?: any);
 
         /**
-        * The Phaser.Game object is the main controller for the entire Phaser game. It is responsible
+        * The Phaser.Circle object is the main controller for the entire Phaser game. It is responsible
         * for handling the boot process, parsing the configuration values, creating the renderer,
         * and setting-up all of the Phaser systems, such as physics, sound and input.
         * Once that is complete it will start the default State, and then begin the main game loop.
@@ -11113,18 +11113,18 @@ declare module Phaser {
         * to the constructor:
         * 
         * ```javascript
-        * var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+        * var game = new Phaser.Circle(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
         * ```
         * 
         * In the example above it is passing in a State object directly. You can also use the State
         * Manager to do this:
         * 
         * ```javascript
-        * var game = new Phaser.Game(800, 600, Phaser.AUTO);
+        * var game = new Phaser.Circle(800, 600, Phaser.AUTO);
         * game.state.add('Boot', BasicGame.Boot);
         * game.state.add('Preloader', BasicGame.Preloader);
         * game.state.add('MainMenu', BasicGame.MainMenu);
-        * game.state.add('Game', BasicGame.Game);
+        * game.state.add('Circle', BasicGame.Circle);
         * game.state.start('Boot');
         * ```
         * 
@@ -11148,7 +11148,7 @@ declare module Phaser {
         *     }
         * }
         * 
-        * var game = new Phaser.Game(config);
+        * var game = new Phaser.Circle(config);
         * ```
         * 
         * @param width The width of your game in game pixels. If given as a string the value must be between 0 and 100 and will be used as the percentage width of the parent container, or the browser window if no parent is given. - Default: 800
@@ -11169,7 +11169,7 @@ declare module Phaser {
         add: Phaser.GameObjectFactory;
 
         /**
-        * Anti-alias graphics (as set when the Game is created). By default scaled and rotated images are smoothed in Canvas and WebGL; set `antialias` to false to disable this globally. After the game boots, use `game.stage.smoothed` instead.
+        * Anti-alias graphics (as set when the Circle is created). By default scaled and rotated images are smoothed in Canvas and WebGL; set `antialias` to false to disable this globally. After the game boots, use `game.stage.smoothed` instead.
         * Default: true
         */
         antialias: boolean;
@@ -11200,7 +11200,7 @@ declare module Phaser {
         clearBeforeRender: boolean;
 
         /**
-        * The Phaser.Game configuration object.
+        * The Phaser.Circle configuration object.
         */
         config: IGameConfig;
 
@@ -11242,7 +11242,7 @@ declare module Phaser {
         fpsProblemNotifier: Phaser.Signal;
 
         /**
-        * The current Game Height in pixels.
+        * The current Circle Height in pixels.
         * 
         * _Do not modify this property directly:_ use {@link Phaser.ScaleManager#setGameSize} - e.g. `game.scale.setGameSize(width, height)` - instead.
         * Default: 600
@@ -11250,7 +11250,7 @@ declare module Phaser {
         height: number;
 
         /**
-        * Phaser Game ID
+        * Phaser Circle ID
         */
         id: number;
 
@@ -11317,7 +11317,7 @@ declare module Phaser {
         onResume: Phaser.Signal;
 
         /**
-        * The Game's DOM parent (or name thereof), if any, as set when the game was created. The actual parent can be found in `game.canvas.parentNode`. Setting this has no effect after {@link Phaser.ScaleManager} is booted.
+        * The Circle's DOM parent (or name thereof), if any, as set when the game was created. The actual parent can be found in `game.canvas.parentNode`. Setting this has no effect after {@link Phaser.ScaleManager} is booted.
         */
         parent: HTMLElement;
 
@@ -11327,8 +11327,8 @@ declare module Phaser {
         particles: Phaser.Particles;
 
         /**
-        * The paused state of the Game. A paused game doesn't update any of its subsystems.
-        * When a game is paused the onPause event is dispatched. When it is resumed the onResume event is dispatched. Gets and sets the paused state of the Game.
+        * The paused state of the Circle. A paused game doesn't update any of its subsystems.
+        * When a game is paused the onPause event is dispatched. When it is resumed the onResume event is dispatched. Gets and sets the paused state of the Circle.
         */
         paused: boolean;
 
@@ -11415,7 +11415,7 @@ declare module Phaser {
         stepCount: number;
 
         /**
-        * Enable core loop stepping with Game.enableStep().
+        * Enable core loop stepping with Circle.enableStep().
         */
         stepping: boolean;
 
@@ -11446,7 +11446,7 @@ declare module Phaser {
         updatesThisFrame: number;
 
         /**
-        * The current Game Width in pixels.
+        * The current Circle Width in pixels.
         * 
         * _Do not modify this property directly:_ use {@link Phaser.ScaleManager#setGameSize} - e.g. `game.scale.setGameSize(width, height)` - instead.
         * Default: 800
@@ -11467,7 +11467,7 @@ declare module Phaser {
         /**
         * Nukes the entire game from orbit.
         * 
-        * Calls destroy on Game.state, Game.sound, Game.scale, Game.stage, Game.input, Game.physics and Game.plugins.
+        * Calls destroy on Circle.state, Circle.sound, Circle.scale, Circle.stage, Circle.input, Circle.physics and Circle.plugins.
         * 
         * Then sets all of those local handlers to null, destroys the renderer, removes the canvas from the DOM
         * and resets the PIXI default renderer.
@@ -11516,7 +11516,7 @@ declare module Phaser {
         gameResumed(event: any): void;
 
         /**
-        * Parses a Game configuration object.
+        * Parses a Circle configuration object.
         */
         parseConfig(config: any): void;
         removeFromDOM(canvas: HTMLCanvasElement): void;
@@ -11545,9 +11545,9 @@ declare module Phaser {
         update(time: number): void;
 
         /**
-        * Updates all logic subsystems in Phaser. Called automatically by Game.update.
+        * Updates all logic subsystems in Phaser. Called automatically by Circle.update.
         * 
-        * @param timeStep The current timeStep value as determined by Game.update.
+        * @param timeStep The current timeStep value as determined by Circle.update.
         */
         updateLogic(timeStep: number): void;
 
@@ -11558,8 +11558,8 @@ declare module Phaser {
         * It then calls plugin.render on any loaded plugins, in the order in which they were enabled.
         * After this State.render is called. Any rendering that happens here will take place on-top of the display list.
         * Finally plugin.postRender is called on any loaded plugins, in the order in which they were enabled.
-        * This method is called automatically by Game.update, you don't need to call it directly.
-        * Should you wish to have fine-grained control over when Phaser renders then use the `Game.lockRender` boolean.
+        * This method is called automatically by Circle.update, you don't need to call it directly.
+        * Should you wish to have fine-grained control over when Phaser renders then use the `Circle.lockRender` boolean.
         * Phaser will only render when this boolean is `false`.
         * 
         * @param elapsedTime The time elapsed since the last update.
@@ -11571,14 +11571,14 @@ declare module Phaser {
 
     /**
     * The GameObjectCreator is a quick way to create common game objects _without_ adding them to the game world.
-    * The object creator can be accessed with {@linkcode Phaser.Game#make `game.make`}.
+    * The object creator can be accessed with {@linkcode Phaser.Circle#make `game.make`}.
     */
     class GameObjectCreator {
 
 
         /**
         * The GameObjectCreator is a quick way to create common game objects _without_ adding them to the game world.
-        * The object creator can be accessed with {@linkcode Phaser.Game#make `game.make`}.
+        * The object creator can be accessed with {@linkcode Phaser.Circle#make `game.make`}.
         * 
         * @param game A reference to the currently running game.
         */
@@ -11586,7 +11586,7 @@ declare module Phaser {
 
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -11599,7 +11599,7 @@ declare module Phaser {
         /**
         * Creates a new Sound object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @param volume The volume at which the sound will be played. - Default: 1
         * @param loop Whether or not the sound will loop.
         * @param connect Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio. - Default: true
@@ -11610,7 +11610,7 @@ declare module Phaser {
         /**
         * Creates a new AudioSprite object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @return The newly created AudioSprite object.
         */
         audioSprite(key: string): Phaser.AudioSprite;
@@ -11623,7 +11623,7 @@ declare module Phaser {
         * @param width The width of the BitmapData in pixels. - Default: 256
         * @param height The height of the BitmapData in pixels. - Default: 256
         * @param key Asset key for the BitmapData when stored in the Cache (see addToCache parameter). - Default: ''
-        * @param addToCache Should this BitmapData be added to the Game.Cache? If so you can retrieve it with Cache.getBitmapData(key)
+        * @param addToCache Should this BitmapData be added to the Circle.Cache? If so you can retrieve it with Cache.getBitmapData(key)
         * @return The newly created BitmapData object.
         */
         bitmapData(width?: number, height?: number, key?: string, addToCache?: boolean): Phaser.BitmapData;
@@ -11662,7 +11662,7 @@ declare module Phaser {
         * 
         * @param x X position of the new button object.
         * @param y Y position of the new button object.
-        * @param key The image key as defined in the Game.Cache to use as the texture for this button.
+        * @param key The image key as defined in the Circle.Cache to use as the texture for this button.
         * @param callback The function to call when this button is pressed
         * @param callbackContext The context in which the callback will be called (usually 'this')
         * @param overFrame This is the frame or frameName that will be set when this button is in an over state. Give either a number to use a frame ID or a string for a frame name.
@@ -11710,7 +11710,7 @@ declare module Phaser {
         * 
         * @param parent The parent Group or DisplayObjectContainer that will hold this group, if any.
         * @param name A name for this Group. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If set to true this Group will be added directly to the Circle.Stage instead of Circle.World.
         * @param enableBody If true all Sprites created with `Group.create` or `Group.createMulitple` will have a physics body created on them. Change the body type with physicsBodyType.
         * @param physicsBodyType If enableBody is true this is the type of physics body that is created on new Sprites. Phaser.Physics.ARCADE, Phaser.Physics.P2, Phaser.Physics.NINJA, etc.
         * @return The newly created Group.
@@ -11737,7 +11737,7 @@ declare module Phaser {
         * @param width the width of the RenderTexture. - Default: 100
         * @param height the height of the RenderTexture. - Default: 100
         * @param key Asset key for the RenderTexture when stored in the Cache (see addToCache parameter). - Default: ''
-        * @param addToCache Should this RenderTexture be added to the Game.Cache? If so you can retrieve it with Cache.getTexture(key)
+        * @param addToCache Should this RenderTexture be added to the Circle.Cache? If so you can retrieve it with Cache.getTexture(key)
         * @return The newly created RenderTexture object.
         */
         renderTexture(width?: number, height?: number, key?: any, addToCache?: boolean): Phaser.RenderTexture;
@@ -11752,7 +11752,7 @@ declare module Phaser {
         * The texture can be asssigned or one or multiple images/sprites, but note that the text the RetroFont uses will be shared across them all,
         * i.e. if you need each Image to have different text in it, then you need to create multiple RetroFont objects.
         * 
-        * @param font The key of the image in the Game.Cache that the RetroFont will use.
+        * @param font The key of the image in the Circle.Cache that the RetroFont will use.
         * @param characterWidth The width of each character in the font set.
         * @param characterHeight The height of each character in the font set.
         * @param chars The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
@@ -11781,7 +11781,7 @@ declare module Phaser {
         /**
         * Creates a new Sound object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @param volume The volume at which the sound will be played. - Default: 1
         * @param loop Whether or not the sound will loop.
         * @param connect Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio. - Default: true
@@ -11805,7 +11805,7 @@ declare module Phaser {
         * 
         * @param parent The parent Group or DisplayObjectContainer that will hold this group, if any.
         * @param name A name for this Group. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If set to true this Group will be added directly to the Circle.Stage instead of Circle.World.
         * @return The newly created group.
         */
         spriteBatch(parent: any, name?: String, addToStage?: boolean): Phaser.SpriteBatch;
@@ -11866,7 +11866,7 @@ declare module Phaser {
 
     /**
     * The GameObjectFactory is a quick way to create many common game objects
-    * using {@linkcode Phaser.Game#add `game.add`}.
+    * using {@linkcode Phaser.Circle#add `game.add`}.
     * 
     * Created objects are _automatically added_ to the appropriate Manager, World, or manually specified parent Group.
     */
@@ -11875,7 +11875,7 @@ declare module Phaser {
 
         /**
         * The GameObjectFactory is a quick way to create many common game objects
-        * using {@linkcode Phaser.Game#add `game.add`}.
+        * using {@linkcode Phaser.Circle#add `game.add`}.
         * 
         * Created objects are _automatically added_ to the appropriate Manager, World, or manually specified parent Group.
         * 
@@ -11885,7 +11885,7 @@ declare module Phaser {
 
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -11898,7 +11898,7 @@ declare module Phaser {
         /**
         * Creates a new Sound object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @param volume The volume at which the sound will be played. - Default: 1
         * @param loop Whether or not the sound will loop.
         * @param connect Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio. - Default: true
@@ -11909,7 +11909,7 @@ declare module Phaser {
         /**
         * Creates a new AudioSprite object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @return The newly created AudioSprite object.
         */
         audioSprite(key: string): Phaser.AudioSprite;
@@ -11922,7 +11922,7 @@ declare module Phaser {
         * @param width The width of the BitmapData in pixels. - Default: 256
         * @param height The height of the BitmapData in pixels. - Default: 256
         * @param key Asset key for the BitmapData when stored in the Cache (see addToCache parameter). - Default: ''
-        * @param addToCache Should this BitmapData be added to the Game.Cache? If so you can retrieve it with Cache.getBitmapData(key)
+        * @param addToCache Should this BitmapData be added to the Circle.Cache? If so you can retrieve it with Cache.getBitmapData(key)
         * @return The newly created BitmapData object.
         */
         bitmapData(width?: number, height?: number, key?: string, addToCache?: boolean): Phaser.BitmapData;
@@ -11961,7 +11961,7 @@ declare module Phaser {
         * 
         * @param x The x coordinate of the Button. The coordinate is relative to any parent container this button may be in.
         * @param y The y coordinate of the Button. The coordinate is relative to any parent container this button may be in.
-        * @param key The image key as defined in the Game.Cache to use as the texture for this button.
+        * @param key The image key as defined in the Circle.Cache to use as the texture for this button.
         * @param callback The function to call when this button is pressed
         * @param callbackContext The context in which the callback will be called (usually 'this')
         * @param overFrame This is the frame or frameName that will be set when this button is in an over state. Give either a number to use a frame ID or a string for a frame name.
@@ -12019,7 +12019,7 @@ declare module Phaser {
         * 
         * @param parent The parent Group or DisplayObjectContainer that will hold this group, if any. If set to null the Group won't be added to the display list. If undefined it will be added to World by default.
         * @param name A name for this Group. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If set to true this Group will be added directly to the Circle.Stage instead of Circle.World.
         * @param enableBody If true all Sprites created with `Group.create` or `Group.createMulitple` will have a physics body created on them. Change the body type with physicsBodyType.
         * @param physicsBodyType If enableBody is true this is the type of physics body that is created on new Sprites. Phaser.Physics.ARCADE, Phaser.Physics.P2, Phaser.Physics.NINJA, etc.
         * @return The newly created Group.
@@ -12052,7 +12052,7 @@ declare module Phaser {
         * @param physicsBodyType If enableBody is true this is the type of physics body that is created on new Sprites. Phaser.Physics.ARCADE, Phaser.Physics.P2JS, Phaser.Physics.NINJA, etc. - Default: Phaser.Physics.ARCADE
         * @param parent The parent Group or DisplayObjectContainer that will hold this group, if any. If set to null the Group won't be added to the display list. If undefined it will be added to World by default.
         * @param name A name for this Group. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If set to true this Group will be added directly to the Circle.Stage instead of Circle.World.
         * @return The newly created Group.
         */
         physicsGroup(physicsBodyType?: number, parent?: any, name?: string, addToStage?: boolean): Phaser.Group;
@@ -12074,7 +12074,7 @@ declare module Phaser {
         * @param width the width of the RenderTexture. - Default: 100
         * @param height the height of the RenderTexture. - Default: 100
         * @param key Asset key for the RenderTexture when stored in the Cache (see addToCache parameter). - Default: ''
-        * @param addToCache Should this RenderTexture be added to the Game.Cache? If so you can retrieve it with Cache.getTexture(key)
+        * @param addToCache Should this RenderTexture be added to the Circle.Cache? If so you can retrieve it with Cache.getTexture(key)
         * @return The newly created RenderTexture object.
         */
         renderTexture(width?: number, height?: number, key?: string, addToCache?: boolean): Phaser.RenderTexture;
@@ -12089,7 +12089,7 @@ declare module Phaser {
         * The texture can be asssigned or one or multiple images/sprites, but note that the text the RetroFont uses will be shared across them all,
         * i.e. if you need each Image to have different text in it, then you need to create multiple RetroFont objects.
         * 
-        * @param font The key of the image in the Game.Cache that the RetroFont will use.
+        * @param font The key of the image in the Circle.Cache that the RetroFont will use.
         * @param characterWidth The width of each character in the font set.
         * @param characterHeight The height of each character in the font set.
         * @param chars The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
@@ -12120,7 +12120,7 @@ declare module Phaser {
         /**
         * Creates a new Sound object.
         * 
-        * @param key The Game.cache key of the sound that this object will use.
+        * @param key The Circle.cache key of the sound that this object will use.
         * @param volume The volume at which the sound will be played. - Default: 1
         * @param loop Whether or not the sound will loop.
         * @param connect Controls if the created Sound object will connect to the master gainNode of the SoundManager when running under WebAudio. - Default: true
@@ -12151,7 +12151,7 @@ declare module Phaser {
         * 
         * @param parent The parent Group that will hold this Sprite Batch. Set to `undefined` or `null` to add directly to game.world.
         * @param name A name for this Sprite Batch. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If set to true this Sprite Batch will be added directly to the Game.Stage instead of the parent.
+        * @param addToStage If set to true this Sprite Batch will be added directly to the Circle.Stage instead of the parent.
         * @return The newly created Sprite Batch.
         */
         spriteBatch(parent: any, name?: string, addToStage?: boolean): Phaser.SpriteBatch;
@@ -12551,7 +12551,7 @@ declare module Phaser {
 
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -12563,7 +12563,7 @@ declare module Phaser {
         alive: boolean;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -12576,17 +12576,17 @@ declare module Phaser {
         angle: number;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
@@ -12598,18 +12598,18 @@ declare module Phaser {
         blendMode: Phaser.blendModes;
 
         /**
-        * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated
+        * `body` is the Circle Objects physics body. Once a Circle Object is enabled for physics you access all associated
         * properties and methods via it.
         * 
-        * By default Game Objects won't add themselves to any physics system and their `body` property will be `null`.
+        * By default Circle Objects won't add themselves to any physics system and their `body` property will be `null`.
         * 
-        * To enable this Game Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
+        * To enable this Circle Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
         * and `system` is the Physics system you are using. If none is given it defaults to `Phaser.Physics.Arcade`.
         * 
-        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Game Object to a physics enabled Group.
+        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Circle Object to a physics enabled Group.
         * 
-        * Important: Enabling a Game Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
-        * so the physics body is centered on the Game Object.
+        * Important: Enabling a Circle Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
+        * so the physics body is centered on the Circle Object.
         * 
         * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
         */
@@ -12627,74 +12627,74 @@ declare module Phaser {
         boundsPadding: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * The local center x coordinate of the Game Object.
+        * The local center x coordinate of the Circle Object.
         * This is the same as `(x - offsetX) + (width / 2)`.
         */
         centerX: number;
 
         /**
-        * The local center y coordinate of the Game Object.
+        * The local center y coordinate of the Circle Object.
         * This is the same as `(y - offsetY) + (height / 2)`.
         */
         centerY: number;
 
         /**
-        * If this is set to `true` the Game Object checks if it is within the World bounds each frame.
+        * If this is set to `true` the Circle Object checks if it is within the World bounds each frame.
         * 
         * When it is no longer intersecting the world bounds it dispatches the `onOutOfBounds` event.
         * 
         * If it was *previously* out of bounds but is now intersecting the world bounds again it dispatches the `onEnterBounds` event.
         * 
-        * It also optionally kills the Game Object if `outOfBoundsKill` is `true`.
+        * It also optionally kills the Circle Object if `outOfBoundsKill` is `true`.
         * 
-        * When `checkWorldBounds` is enabled it forces the Game Object to calculate its full bounds every frame.
+        * When `checkWorldBounds` is enabled it forces the Circle Object to calculate its full bounds every frame.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         checkWorldBounds: boolean;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
         /**
-        * Controls if this Game Object is processed by the core game loop.
-        * If this Game Object has a physics body it also controls if its physics body is updated or not.
+        * Controls if this Circle Object is processed by the core game loop.
+        * If this Circle Object has a physics body it also controls if its physics body is updated or not.
         * When `exists` is set to `false` it will remove its physics body from the physics world if it has one.
         * It also toggles the `visible` property to false as well.
         * 
@@ -12709,29 +12709,29 @@ declare module Phaser {
         fillAlpha: number;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -12741,28 +12741,28 @@ declare module Phaser {
         height: number;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
 
         /**
-        * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
+        * Checks if the Circle Objects bounds are within, or intersect at any point with the Circle World bounds.
         */
         inWorld: boolean;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -12770,7 +12770,7 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
@@ -12782,24 +12782,24 @@ declare module Phaser {
         isMask: boolean;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * The lifespan allows you to give a Game Object a lifespan in milliseconds.
+        * The lifespan allows you to give a Circle Object a lifespan in milliseconds.
         * 
-        * Once the Game Object is 'born' you can set this to a positive value.
+        * Once the Circle Object is 'born' you can set this to a positive value.
         * 
         * It is automatically decremented by the millisecond equivalent of `game.time.physicsElapsed` each frame.
         * When it reaches zero it will call the `kill` method.
@@ -12820,20 +12820,20 @@ declare module Phaser {
         lineWidth: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
@@ -12845,7 +12845,7 @@ declare module Phaser {
         outOfBoundsKill: boolean;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -12867,12 +12867,12 @@ declare module Phaser {
         position: Phaser.Point;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
@@ -12883,7 +12883,7 @@ declare module Phaser {
         renderOrderID: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
@@ -12895,7 +12895,7 @@ declare module Phaser {
         tint: number;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -12911,9 +12911,9 @@ declare module Phaser {
         width: number;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
@@ -12931,24 +12931,24 @@ declare module Phaser {
         worldAlpha: number;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -12957,12 +12957,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -12971,24 +12971,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -12998,12 +12998,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -13012,11 +13012,11 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
@@ -13199,14 +13199,14 @@ declare module Phaser {
         generateTexture(resolution?: number, scaleMode?: Phaser.scaleModes, padding?: number): Phaser.RenderTexture;
 
         /**
-        * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
+        * Kills a Circle Object. A killed Circle Object has its `alive`, `exists` and `visible` properties all set to false.
         * 
         * It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
         * 
-        * Note that killing a Game Object is a way for you to quickly recycle it in an object pool,
+        * Note that killing a Circle Object is a way for you to quickly recycle it in an object pool,
         * it doesn't destroy the object or free it up from memory.
         * 
-        * If you don't need this Game Object any more you should call `destroy` instead.
+        * If you don't need this Circle Object any more you should call `destroy` instead.
         * @return This instance.
         */
         kill(): Phaser.Graphics;
@@ -13259,30 +13259,30 @@ declare module Phaser {
         quadraticCurveTo(cpX: number, cpY: number, toX: number, toY: number): Phaser.Graphics;
 
         /**
-        * Resets the Game Object.
+        * Resets the Circle Object.
         * 
-        * This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`,
+        * This moves the Circle Object to the given x/y world coordinates and sets `fresh`, `exists`,
         * `visible` and `renderable` to true.
         * 
-        * If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
+        * If this Circle Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
         * 
-        * If this Game Object has a Physics Body it will reset the Body.
+        * If this Circle Object has a Physics Body it will reset the Body.
         * 
-        * @param x The x coordinate (in world space) to position the Game Object at.
-        * @param y The y coordinate (in world space) to position the Game Object at.
-        * @param health The health to give the Game Object if it has the Health component. - Default: 1
+        * @param x The x coordinate (in world space) to position the Circle Object at.
+        * @param y The y coordinate (in world space) to position the Circle Object at.
+        * @param health The health to give the Circle Object if it has the Health component. - Default: 1
         * @return This instance.
         */
         reset(x: number, y: number, health?: number): Phaser.Graphics;
 
         /**
-        * Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+        * Brings a 'dead' Circle Object back to life, optionally resetting its health value in the process.
         * 
-        * A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+        * A resurrected Circle Object has its `alive`, `exists` and `visible` properties all set to true.
         * 
         * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
         * 
-        * @param health The health to give the Game Object. Only set if the GameObject has the Health component. - Default: 100
+        * @param health The health to give the Circle Object. Only set if the GameObject has the Health component. - Default: 100
         * @return This instance.
         */
         revive(health?: number): Phaser.Graphics;
@@ -13290,7 +13290,7 @@ declare module Phaser {
         /**
         * Override this method in your own custom objects to handle any update requirements.
         * It is called immediately after `preUpdate` and before `postUpdate`.
-        * Remember if this Game Object has any children you should call update on those too.
+        * Remember if this Circle Object has any children you should call update on those too.
         */
         update(): void;
 
@@ -13337,9 +13337,9 @@ declare module Phaser {
         * 
         * @param game A reference to the currently running game.
         * @param parent The parent Group (or other {@link DisplayObject}) that this group will be added to.
-        *               If undefined/unspecified the Group will be added to the {@link Phaser.Game#world Game World}; if null the Group will not be added to any parent. - Default: (game world)
+        *               If undefined/unspecified the Group will be added to the {@link Phaser.Game#world Circle World}; if null the Group will not be added to any parent. - Default: (game world)
         * @param name A name for this group. Not used internally but useful for debugging. - Default: 'group'
-        * @param addToStage If true this group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If true this group will be added directly to the Circle.Stage instead of Circle.World.
         * @param enableBody If true all Sprites created with {@link #create} or {@link #createMulitple} will have a physics body created on them. Change the body type with {@link #physicsBodyType}.
         * @param physicsBodyType The physics body type to use when physics bodies are automatically added. See {@link #physicsBodyType} for values.
         */
@@ -13475,7 +13475,7 @@ declare module Phaser {
         fixedToCamera: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -13742,7 +13742,7 @@ declare module Phaser {
         /**
         * This method iterates through all children in the Group (regardless if they are visible or exist)
         * and then changes their position so they are arranged in a Grid formation. Children must have
-        * the `alignTo` method in order to be positioned by this call. All default Phaser Game Objects have
+        * the `alignTo` method in order to be positioned by this call. All default Phaser Circle Objects have
         * this.
         * 
         * The grid dimensions are determined by the first four arguments. The `width` and `height` arguments
@@ -14147,7 +14147,7 @@ declare module Phaser {
         * 
         * This is handy for choosing a squad leader, etc.
         * 
-        * You can use the optional argument `createIfNull` to create a new Game Object if no alive ones were found in this Group.
+        * You can use the optional argument `createIfNull` to create a new Circle Object if no alive ones were found in this Group.
         * 
         * It works by calling `Group.create` passing it the parameters given to this method, and returning the new child.
         * 
@@ -14168,7 +14168,7 @@ declare module Phaser {
         * 
         * This is handy for checking if everything has been wiped out and adding to the pool as needed.
         * 
-        * You can use the optional argument `createIfNull` to create a new Game Object if no dead ones were found in this Group.
+        * You can use the optional argument `createIfNull` to create a new Circle Object if no dead ones were found in this Group.
         * 
         * It works by calling `Group.create` passing it the parameters given to this method, and returning the new child.
         * 
@@ -14187,7 +14187,7 @@ declare module Phaser {
         /**
         * Get the first display object that exists, or doesn't exist.
         * 
-        * You can use the optional argument `createIfNull` to create a new Game Object if none matching your exists argument were found in this Group.
+        * You can use the optional argument `createIfNull` to create a new Circle Object if none matching your exists argument were found in this Group.
         * 
         * It works by calling `Group.create` passing it the parameters given to this method, and returning the new child.
         * 
@@ -14381,11 +14381,11 @@ declare module Phaser {
         * The children can be optionally destroyed as they are removed.
         * 
         * You can also optionally also destroy the BaseTexture the Child is using. Be careful if you've
-        * more than one Game Object sharing the same BaseTexture.
+        * more than one Circle Object sharing the same BaseTexture.
         * 
         * @param destroy If true `destroy` will be invoked on each removed child.
         * @param silent If true the children will not dispatch their `onRemovedFromGroup` events.
-        * @param destroyTexture If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Game Object is sharing the same BaseTexture it will invalidate it.
+        * @param destroyTexture If true, and if the `destroy` argument is also true, the BaseTexture belonging to the Child is also destroyed. Note that if another Circle Object is sharing the same BaseTexture it will invalidate it.
         */
         removeAll(destroy?: boolean, silent?: boolean, destroyTexture?: boolean): void;
 
@@ -14653,7 +14653,7 @@ declare module Phaser {
 
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -14665,7 +14665,7 @@ declare module Phaser {
         alive: boolean;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -14688,17 +14688,17 @@ declare module Phaser {
         anchor: Phaser.Point;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
@@ -14710,31 +14710,31 @@ declare module Phaser {
         bottom: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * The local center x coordinate of the Game Object.
+        * The local center x coordinate of the Circle Object.
         * This is the same as `(x - offsetX) + (width / 2)`.
         */
         centerX: number;
 
         /**
-        * The local center y coordinate of the Game Object.
+        * The local center y coordinate of the Circle Object.
         * This is the same as `(y - offsetY) + (height / 2)`.
         */
         centerY: number;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
         /**
-        * The Rectangle used to crop the texture this Game Object uses.
+        * The Rectangle used to crop the texture this Circle Object uses.
         * Set this property via `crop`.
         * If you modify this property directly you must call `updateCrop` in order to have the change take effect.
         */
@@ -14746,16 +14746,16 @@ declare module Phaser {
         customRender: boolean;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
         deltaX: number;
@@ -14763,14 +14763,14 @@ declare module Phaser {
         deltaZ: number;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
@@ -14781,25 +14781,25 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * Gets or sets the current frame index of the texture being used to render this Game Object.
+        * Gets or sets the current frame index of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Game Object to use,
+        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Circle Object to use,
         * for example: `player.frame = 4`.
         * 
         * If the frame index given doesn't exist it will revert to the first frame found in the texture.
@@ -14811,9 +14811,9 @@ declare module Phaser {
         frame: string | number;
 
         /**
-        * Gets or sets the current frame name of the texture being used to render this Game Object.
+        * Gets or sets the current frame name of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Game Object to use,
+        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Circle Object to use,
         * for example: `player.frameName = "idle"`.
         * 
         * If the frame name given doesn't exist it will revert to the first frame found in the texture and throw a console warning.
@@ -14825,34 +14825,34 @@ declare module Phaser {
         frameName: string;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -14860,7 +14860,7 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
@@ -14868,18 +14868,18 @@ declare module Phaser {
         inWorld: boolean;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture;
 
         /**
-        * The lifespan allows you to give a Game Object a lifespan in milliseconds.
+        * The lifespan allows you to give a Circle Object a lifespan in milliseconds.
         * 
-        * Once the Game Object is 'born' you can set this to a positive value.
+        * Once the Circle Object is 'born' you can set this to a positive value.
         * 
         * It is automatically decremented by the millisecond equivalent of `game.time.physicsElapsed` each frame.
         * When it reaches zero it will call the `kill` method.
@@ -14889,33 +14889,33 @@ declare module Phaser {
         lifespan: number;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
         offsetY: number;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -14932,12 +14932,12 @@ declare module Phaser {
         position: Phaser.Point;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
@@ -14948,7 +14948,7 @@ declare module Phaser {
         renderOrderID: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
@@ -14963,34 +14963,34 @@ declare module Phaser {
         scale: Phaser.Point;
 
         /**
-        * The maximum scale this Game Object will scale up to.
+        * The maximum scale this Circle Object will scale up to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object higher than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object higher than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
         scaleMax: Phaser.Point;
 
         /**
-        * The minimum scale this Game Object will scale down to.
+        * The minimum scale this Circle Object will scale down to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object lower than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object lower than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
         scaleMin: Phaser.Point;
 
         /**
-        * Enable or disable texture smoothing for this Game Object.
+        * Enable or disable texture smoothing for this Circle Object.
         * 
-        * It only takes effect if the Game Object is using an image based texture.
+        * It only takes effect if the Circle Object is using an image based texture.
         * 
         * Smoothing is enabled by default.
         */
         smoothed: boolean;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -15001,31 +15001,31 @@ declare module Phaser {
         type: number;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -15034,12 +15034,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -15048,24 +15048,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -15075,12 +15075,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -15089,27 +15089,27 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Brings this Game Object to the top of its parents display list.
+        * Brings this Circle Object to the top of its parents display list.
         * Visually this means it will render over the top of any old child in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will bring it to the top of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         bringToTop(): Phaser.Image;
 
         /**
-        * Crop allows you to crop the texture being used to display this Game Object.
-        * Setting a crop rectangle modifies the core texture frame. The Game Object width and height properties will be adjusted accordingly.
+        * Crop allows you to crop the texture being used to display this Circle Object.
+        * Setting a crop rectangle modifies the core texture frame. The Circle Object width and height properties will be adjusted accordingly.
         * 
         * Cropping takes place from the top-left and can be modified in real-time either by providing an updated rectangle object to this method,
         * or by modifying `cropRect` property directly and then calling `updateCrop`.
@@ -15135,22 +15135,22 @@ declare module Phaser {
         destroy(destroyChildren?: boolean): void;
 
         /**
-        * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
+        * Kills a Circle Object. A killed Circle Object has its `alive`, `exists` and `visible` properties all set to false.
         * 
         * It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
         * 
-        * Note that killing a Game Object is a way for you to quickly recycle it in an object pool,
+        * Note that killing a Circle Object is a way for you to quickly recycle it in an object pool,
         * it doesn't destroy the object or free it up from memory.
         * 
-        * If you don't need this Game Object any more you should call `destroy` instead.
+        * If you don't need this Circle Object any more you should call `destroy` instead.
         * @return This instance.
         */
         kill(): Phaser.Image;
 
         /**
-        * Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
+        * Changes the base texture the Circle Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
         * 
-        * If your Game Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
+        * If your Circle Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
         * 
         * You should only use `loadTexture` if you want to replace the base texture entirely.
         * 
@@ -15172,7 +15172,7 @@ declare module Phaser {
         loadTexture(key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture, frame?: string | number, stopAnimation?: boolean): void;
 
         /**
-        * Resizes the Frame dimensions that the Game Object uses for rendering.
+        * Resizes the Frame dimensions that the Circle Object uses for rendering.
         * 
         * You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
         * it can be useful to adjust the dimensions directly in this way.
@@ -15184,27 +15184,27 @@ declare module Phaser {
         resizeFrame(parent: any, width: number, height: number): void;
 
         /**
-        * Moves this Game Object down one place in its parents display list.
-        * This call has no effect if the Game Object is already at the bottom of the display list.
+        * Moves this Circle Object down one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the bottom of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object down within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveDown(): Phaser.Image;
 
         /**
-        * Moves this Game Object up one place in its parents display list.
-        * This call has no effect if the Game Object is already at the top of the display list.
+        * Moves this Circle Object up one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the top of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object up within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveUp(): Phaser.Image;
 
         /**
-        * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
+        * Checks to see if the bounds of this Circle Object overlaps with the bounds of the given Display Object,
         * which can be a Sprite, Image, TileSprite or anything that extends those such as Button or provides a `getBounds` method and result.
         * 
         * This check ignores the `hitArea` property if set and runs a `getBounds` comparison on both objects to determine the result.
@@ -15213,7 +15213,7 @@ declare module Phaser {
         * It should be fine for low-volume testing where physics isn't required.
         * 
         * @param displayObject The display object to check against.
-        * @return True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+        * @return True if the bounds of this Circle Object intersects at any point with the bounds of the given display object.
         */
         overlap(displayObject: Phaser.Sprite | Phaser.Image | Phaser.TileSprite | Phaser.Button | PIXI.DisplayObject): boolean;
 
@@ -15244,51 +15244,51 @@ declare module Phaser {
         preUpdate(): void;
 
         /**
-        * Resets the Game Object.
+        * Resets the Circle Object.
         * 
-        * This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`,
+        * This moves the Circle Object to the given x/y world coordinates and sets `fresh`, `exists`,
         * `visible` and `renderable` to true.
         * 
-        * If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
+        * If this Circle Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
         * 
-        * If this Game Object has a Physics Body it will reset the Body.
+        * If this Circle Object has a Physics Body it will reset the Body.
         * 
-        * @param x The x coordinate (in world space) to position the Game Object at.
-        * @param y The y coordinate (in world space) to position the Game Object at.
-        * @param health The health to give the Game Object if it has the Health component. - Default: 1
+        * @param x The x coordinate (in world space) to position the Circle Object at.
+        * @param y The y coordinate (in world space) to position the Circle Object at.
+        * @param health The health to give the Circle Object if it has the Health component. - Default: 1
         * @return This instance.
         */
         reset(x: number, y: number, health?: number): Phaser.Image;
 
         /**
-        * Resets the texture frame dimensions that the Game Object uses for rendering.
+        * Resets the texture frame dimensions that the Circle Object uses for rendering.
         */
         resetFrame(): void;
 
         /**
-        * Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+        * Brings a 'dead' Circle Object back to life, optionally resetting its health value in the process.
         * 
-        * A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+        * A resurrected Circle Object has its `alive`, `exists` and `visible` properties all set to true.
         * 
         * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
         * 
-        * @param health The health to give the Game Object. Only set if the GameObject has the Health component. - Default: 100
+        * @param health The health to give the Circle Object. Only set if the GameObject has the Health component. - Default: 100
         * @return This instance.
         */
         revive(health?: number): Phaser.Image;
 
         /**
-        * Sends this Game Object to the bottom of its parents display list.
+        * Sends this Circle Object to the bottom of its parents display list.
         * Visually this means it will render below all other children in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will send it to the bottom of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         sendToBack(): Phaser.Image;
 
         /**
-        * Sets the texture frame the Game Object uses for rendering.
+        * Sets the texture frame the Circle Object uses for rendering.
         * 
         * This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
         * 
@@ -15297,12 +15297,12 @@ declare module Phaser {
         setFrame(frame: Phaser.Frame): void;
 
         /**
-        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
+        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Circle Object will scale based on its parent.
         * 
-        * For example if this Game Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
-        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Game Object should adhere to.
+        * For example if this Circle Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
+        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Circle Object should adhere to.
         * 
-        * By setting these values you can carefully control how Game Objects deal with responsive scaling.
+        * By setting these values you can carefully control how Circle Objects deal with responsive scaling.
         * 
         * If only one parameter is given then that value will be used for both scaleMin and scaleMax:
         * `setScaleMinMax(1)` = scaleMin.x, scaleMin.y, scaleMax.x and scaleMax.y all = 1
@@ -15310,27 +15310,27 @@ declare module Phaser {
         * If only two parameters are given the first is set as scaleMin.x and y and the second as scaleMax.x and y:
         * `setScaleMinMax(0.5, 2)` = scaleMin.x and y = 0.5 and scaleMax.x and y = 2
         * 
-        * If you wish to set `scaleMin` with different values for x and y then either modify Game Object.scaleMin directly,
+        * If you wish to set `scaleMin` with different values for x and y then either modify Circle Object.scaleMin directly,
         * or pass `null` for the `maxX` and `maxY` parameters.
         * 
         * Call `setScaleMinMax(null)` to clear all previously set values.
         * 
-        * @param minX The minimum horizontal scale value this Game Object can scale down to.
-        * @param minY The minimum vertical scale value this Game Object can scale down to.
-        * @param maxX The maximum horizontal scale value this Game Object can scale up to.
-        * @param maxY The maximum vertical scale value this Game Object can scale up to.
+        * @param minX The minimum horizontal scale value this Circle Object can scale down to.
+        * @param minY The minimum vertical scale value this Circle Object can scale down to.
+        * @param maxX The maximum horizontal scale value this Circle Object can scale up to.
+        * @param maxY The maximum vertical scale value this Circle Object can scale up to.
         */
         setScaleMinMax(minX?: number, minY?: number, maxX?: number, maxY?: number): void; // minX: null | number
 
         /**
         * Override this method in your own custom objects to handle any update requirements.
         * It is called immediately after `preUpdate` and before `postUpdate`.
-        * Remember if this Game Object has any children you should call update on those too.
+        * Remember if this Circle Object has any children you should call update on those too.
         */
         update(): void;
 
         /**
-        * If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
+        * If you have set a crop rectangle on this Circle Object via `crop` and since modified the `cropRect` property,
         * or the rectangle it references, then you need to update the crop frame by calling this method.
         */
         updateCrop(): void;
@@ -15537,7 +15537,7 @@ declare module Phaser {
         maxPointers: number;
 
         /**
-        * You can tell all Pointers to ignore any Game Object with a `priorityID` lower than this value.
+        * You can tell all Pointers to ignore any Circle Object with a `priorityID` lower than this value.
         * This is useful when stacking UI layers. Set to zero to disable.
         */
         minPriorityID: number;
@@ -15881,11 +15881,11 @@ declare module Phaser {
 
         /**
         * Adds a callback that is fired every time `Pointer.processInteractiveObjects` is called.
-        * The purpose of `processInteractiveObjects` is to work out which Game Object the Pointer is going to
+        * The purpose of `processInteractiveObjects` is to work out which Circle Object the Pointer is going to
         * interact with. It works by polling all of the valid game objects, and then slowly discounting those
         * that don't meet the criteria (i.e. they aren't under the Pointer, are disabled, invisible, etc).
         * 
-        * Eventually a short-list of 'candidates' is created. These are all of the Game Objects which are valid
+        * Eventually a short-list of 'candidates' is created. These are all of the Circle Objects which are valid
         * for input and overlap with the Pointer. If you need fine-grained control over which of the items is
         * selected then you can use this callback to do so.
         * 
@@ -15920,7 +15920,7 @@ declare module Phaser {
         stopPointer(event: any): Phaser.Pointer;
 
         /**
-        * Updates the Input Manager. Called by the core Game loop.
+        * Updates the Input Manager. Called by the core Circle loop.
         */
         update(): void;
 
@@ -16422,7 +16422,7 @@ declare module Phaser {
         update(pointer: Phaser.Pointer): void;
 
         /**
-        * Called as a Pointer actively drags this Game Object.
+        * Called as a Pointer actively drags this Circle Object.
         * 
         * @param pointer The Pointer causing the drag update.
         * @param fromStart True if this is the first update, immediately after the drag has started.
@@ -16566,12 +16566,12 @@ declare module Phaser {
         shiftKey: boolean;
 
         /**
-        * The timestamp when the key was last pressed down. This is based on Game.time.now.
+        * The timestamp when the key was last pressed down. This is based on Circle.time.now.
         */
         timeDown: number;
 
         /**
-        * The timestamp when the key was last released. This is based on Game.time.now.
+        * The timestamp when the key was last released. This is based on Circle.time.now.
         */
         timeUp: number;
 
@@ -19857,7 +19857,7 @@ declare module Phaser {
     * You can disable Phaser's use of Pointer Events by either of two ways:
     * 
     * ```javascript
-    * // **Before** `new Phaser.Game(…)`:
+    * // **Before** `new Phaser.Circle(…)`:
     * Phaser.Device.onInitialized.add(function () {
     *     this.mspointer = false;
     * });
@@ -19885,7 +19885,7 @@ declare module Phaser {
         * You can disable Phaser's use of Pointer Events by either of two ways:
         * 
         * ```javascript
-        * // **Before** `new Phaser.Game(…)`:
+        * // **Before** `new Phaser.Circle(…)`:
         * Phaser.Device.onInitialized.add(function () {
         *     this.mspointer = false;
         * });
@@ -20056,7 +20056,7 @@ declare module Phaser {
 
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
@@ -20117,7 +20117,7 @@ declare module Phaser {
         emitters: any;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -20641,7 +20641,7 @@ declare module Phaser {
     * The Physics Manager is responsible for looking after all of the running physics systems.
     * Phaser supports 4 physics systems: Arcade Physics, P2, Ninja Physics and Box2D via a commercial plugin.
     * 
-    * Game Objects (such as Sprites) can only belong to 1 physics system, but you can have multiple systems active in a single game.
+    * Circle Objects (such as Sprites) can only belong to 1 physics system, but you can have multiple systems active in a single game.
     * 
     * For example you could have P2 managing a polygon-built terrain landscape that an vehicle drives over, while it could be firing bullets that use the
     * faster (due to being much simpler) Arcade Physics system.
@@ -20653,7 +20653,7 @@ declare module Phaser {
         * The Physics Manager is responsible for looking after all of the running physics systems.
         * Phaser supports 4 physics systems: Arcade Physics, P2, Ninja Physics and Box2D via a commercial plugin.
         * 
-        * Game Objects (such as Sprites) can only belong to 1 physics system, but you can have multiple systems active in a single game.
+        * Circle Objects (such as Sprites) can only belong to 1 physics system, but you can have multiple systems active in a single game.
         * 
         * For example you could have P2 managing a polygon-built terrain landscape that an vehicle drives over, while it could be firing bullets that use the
         * faster (due to being much simpler) Arcade Physics system.
@@ -20708,7 +20708,7 @@ declare module Phaser {
         clear(): void;
 
         /**
-        * Destroys all active physics systems. Usually only called on a Game Shutdown, not on a State swap.
+        * Destroys all active physics systems. Usually only called on a Circle Shutdown, not on a State swap.
         */
         destroy(): void;
 
@@ -20734,7 +20734,7 @@ declare module Phaser {
         enable(object: any, system?: number, debug?: boolean): void;
 
         /**
-        * Parses the Physics Configuration object passed to the Game constructor and starts any physics systems specified within.
+        * Parses the Physics Configuration object passed to the Circle constructor and starts any physics systems specified within.
         */
         parseConfig(): void;
 
@@ -21090,7 +21090,7 @@ declare module Phaser {
 
         /**
         * On some mobile browsers you cannot play a video until the user has explicitly touched the video to allow it.
-        * Phaser handles this via the `setTouchLock` method. However if you have 3 different videos, maybe an "Intro", "Start" and "Game Over"
+        * Phaser handles this via the `setTouchLock` method. However if you have 3 different videos, maybe an "Intro", "Start" and "Circle Over"
         * split into three different Video objects, then you will need the user to touch-unlock every single one of them.
         * 
         * You can avoid this by using just one Video object and simply changing the video source. Once a Video element is unlocked it remains
@@ -21372,9 +21372,9 @@ declare module Phaser {
             /**
             * Find the angle in radians between two display objects (like Sprites).
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * @param source The Display Object to test from.
             * @param target The Display Object to test to.
@@ -21386,9 +21386,9 @@ declare module Phaser {
             /**
             * Find the angle in radians between a display object (like a Sprite) and a Pointer, taking their x/y and center into account.
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * @param displayObject The Display Object to test from.
             * @param pointer The Phaser.Pointer to test to. If none is given then Input.activePointer is used.
@@ -21400,9 +21400,9 @@ declare module Phaser {
             /**
             * Find the angle in radians between a display object (like a Sprite) and the given x/y coordinate.
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * @param displayObject The Display Object to test from.
             * @param x The x coordinate to get the angle to.
@@ -21490,9 +21490,9 @@ declare module Phaser {
             /**
             * Find the distance between two display objects (like Sprites).
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * If you have nested objects and need to calculate the distance between their centers in World coordinates,
             * set their anchors to (0.5, 0.5) and use the `world` argument.
@@ -21513,9 +21513,9 @@ declare module Phaser {
             * The calculation is made from the display objects x/y coordinate. This may be the top-left if its anchor hasn't been changed.
             * If you need to calculate from the center of a display object instead use {@link Phaser.Physics.Arcade#distanceBetween distanceBetween} with the `useCenter` argument.
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * @param displayObject The Display Object to test from.
             * @param pointer The Phaser.Pointer to test to. If none is given then Input.activePointer is used.
@@ -21529,9 +21529,9 @@ declare module Phaser {
             * The calculation is made from the display objects x/y coordinate. This may be the top-left if its anchor hasn't been changed.
             * If you need to calculate from the center of a display object instead use {@link Phaser.Physics.Arcade#distanceBetween distanceBetween} with the `useCenter` argument.
             * 
-            * The optional `world` argument allows you to return the result based on the Game Objects `world` property,
+            * The optional `world` argument allows you to return the result based on the Circle Objects `world` property,
             * instead of its `x` and `y` values. This is useful of the object has been nested inside an offset Group,
-            * or parent Game Object.
+            * or parent Circle Object.
             * 
             * @param displayObject The Display Object to test from.
             * @param x The x coordinate to move towards.
@@ -21701,8 +21701,8 @@ declare module Phaser {
             * 
             * @param x Top left most corner of the world.
             * @param y Top left most corner of the world.
-            * @param width New width of the world. Can never be smaller than the Game.width.
-            * @param height New height of the world. Can never be smaller than the Game.height.
+            * @param width New width of the world. Can never be smaller than the Circle.width.
+            * @param height New height of the world. Can never be smaller than the Circle.height.
             */
             setBounds(x: number, y: number, width: number, height: number): void;
 
@@ -22251,8 +22251,8 @@ declare module Phaser {
                 /**
                 * Destroys this Body.
                 * 
-                * First it calls Group.removeFromHash if the Game Object this Body belongs to is part of a Group.
-                * Then it nulls the Game Objects body reference, and nulls this Body.sprite reference.
+                * First it calls Group.removeFromHash if the Circle Object this Body belongs to is part of a Group.
+                * Then it nulls the Circle Objects body reference, and nulls this Body.sprite reference.
                 */
                 destroy(): void;
 
@@ -22670,8 +22670,8 @@ declare module Phaser {
             * 
             * @param x Top left most corner of the world.
             * @param y Top left most corner of the world.
-            * @param width New width of the world. Can never be smaller than the Game.width.
-            * @param height New height of the world. Can never be smaller than the Game.height.
+            * @param width New width of the world. Can never be smaller than the Circle.width.
+            * @param height New height of the world. Can never be smaller than the Circle.height.
             */
             setBounds(x: number, y: number, width: number, height: number): void;
 
@@ -23584,7 +23584,7 @@ declare module Phaser {
             total: number;
 
             /**
-            * If true the frameRate value will be ignored and instead p2 will step with the value of Game.Time.physicsElapsed, which is a delta time value.
+            * If true the frameRate value will be ignored and instead p2 will step with the value of Circle.Time.physicsElapsed, which is a delta time value.
             */
             useElapsedTime: boolean;
 
@@ -23892,7 +23892,7 @@ declare module Phaser {
             createSpring(bodyA: any, bodyB: any, restLength?: number, stiffness?: number, damping?: number, worldA?: number[], worldB?: number[], localA?: number[], localB?: number[]): Phaser.Physics.P2.Spring;
 
             /**
-            * Clears all bodies from the simulation and unlinks World from Game. Should only be called on game shutdown. Call `clear` on a State change.
+            * Clears all bodies from the simulation and unlinks World from Circle. Should only be called on game shutdown. Call `clear` on a State change.
             */
             destroy(): void;
 
@@ -24182,7 +24182,7 @@ declare module Phaser {
                 * Note: When bound to a Sprite to avoid single-pixel jitters on mobile devices we strongly recommend using Sprite sizes that are even on both axis, i.e. 128x128 not 127x127.
                 * Note: When a game object is given a P2 body it has its anchor x/y set to 0.5, so it becomes centered.
                 * 
-                * @param game Game reference to the currently running game.
+                * @param game Circle reference to the currently running game.
                 * @param sprite The Sprite object this physics body belongs to.
                 * @param x The x coordinate of this Body.
                 * @param y The y coordinate of this Body.
@@ -24462,12 +24462,12 @@ declare module Phaser {
                 addPolygon(options: { optimalDecomp?: boolean; skipSimpleCheck?: boolean; removeCollinearPoints?: boolean; }, points: number[][]): boolean;
 
                 /**
-                * Reads the shape data from a physics data file stored in the Game.Cache and adds it as a polygon to this Body.
+                * Reads the shape data from a physics data file stored in the Circle.Cache and adds it as a polygon to this Body.
                 * The shape data format is based on the output of the
                 * {@link https://github.com/photonstorm/phaser/tree/master/resources/PhysicsEditor%20Exporter|custom phaser exporter} for
                 * {@link https://www.codeandweb.com/physicseditor|PhysicsEditor}
                 * 
-                * @param key The key of the Physics Data file as stored in Game.Cache.
+                * @param key The key of the Physics Data file as stored in Circle.Cache.
                 * @param object The key of the object within the Physics data file that you wish to load the shape data from.
                 * @return A list of created fixtures to be used with Phaser.Physics.P2.FixtureList
                 */
@@ -24625,14 +24625,14 @@ declare module Phaser {
                 getVelocityAtPoint(result: number[], relativePoint: number[]): number[];
 
                 /**
-                * Reads the shape data from a physics data file stored in the Game.Cache and adds it as a polygon to this Body.
+                * Reads the shape data from a physics data file stored in the Circle.Cache and adds it as a polygon to this Body.
                 * 
                 * As well as reading the data from the Cache you can also pass `null` as the first argument and a
                 * physics data object as the second. When doing this you must ensure the structure of the object is correct in advance.
                 * 
                 * For more details see the format of the Lime / Corona Physics Editor export.
                 * 
-                * @param key The key of the Physics Data file as stored in Game.Cache. Alternatively set to `null` and pass the
+                * @param key The key of the Physics Data file as stored in Circle.Cache. Alternatively set to `null` and pass the
                 *            data as the 2nd argument.
                 * @param object The key of the object within the Physics data file that you wish to load the shape data from,
                 *               or if key is null pass the actual physics data object itself as this parameter.
@@ -24903,7 +24903,7 @@ declare module Phaser {
                 * manipulate the sprite in any other way (such as moving it to another Group or bringToTop, etc) then you will
                 * need to manually adjust its BodyDebug as well.
                 * 
-                * @param game Game reference to the currently running game.
+                * @param game Circle reference to the currently running game.
                 * @param body The P2 Body to display debug data for.
                 * @param settings Settings object.
                 */
@@ -25466,7 +25466,7 @@ declare module Phaser {
         destroy(): void;
 
         /**
-        * Post-render is called after the Game Renderer and State.render have run.
+        * Post-render is called after the Circle Renderer and State.render have run.
         * It is only called if visible is set to true.
         */
         postRender(): void;
@@ -25478,7 +25478,7 @@ declare module Phaser {
         preUpdate(): void;
 
         /**
-        * Render is called right after the Game Renderer completes, but before the State.render.
+        * Render is called right after the Circle Renderer completes, but before the State.render.
         * It is only called if visible is set to true.
         */
         render(): void;
@@ -25761,7 +25761,7 @@ declare module Phaser {
         destroy(): void;
 
         /**
-        * Post-render is called after the Game Renderer and State.render have run.
+        * Post-render is called after the Circle Renderer and State.render have run.
         * It only calls plugins who have visible=true.
         */
         postRender(): void;
@@ -25793,7 +25793,7 @@ declare module Phaser {
         removeAll(): void;
 
         /**
-        * Render is called right after the Game Renderer completes, but before the State.render.
+        * Render is called right after the Circle Renderer completes, but before the State.render.
         * It only calls plugins who have visible=true.
         */
         render(): void;
@@ -26522,7 +26522,7 @@ declare module Phaser {
 
         /**
         * This array is erased and re-populated every time this Pointer is updated. It contains references to all
-        * of the Game Objects that were considered as being valid for processing by this Pointer, this frame. To be
+        * of the Circle Objects that were considered as being valid for processing by this Pointer, this frame. To be
         * valid they must have suitable a `priorityID`, be Input enabled, visible and actually have the Pointer over
         * them. You can check the contents of this array in events such as `onInputDown`, but beware it is reset
         * every frame.
@@ -26657,7 +26657,7 @@ declare module Phaser {
         target: any;
 
         /**
-        * The Game Object this Pointer is currently over / touching / dragging.
+        * The Circle Object this Pointer is currently over / touching / dragging.
         */
         targetObject: any;
 
@@ -27956,7 +27956,7 @@ declare module Phaser {
         * is the same size. This makes it similar to a sprite sheet. You typically find font sheets like this from old 8/16-bit games and demos.
         * 
         * @param game Current game instance.
-        * @param key The font set graphic set as stored in the Game.Cache.
+        * @param key The font set graphic set as stored in the Circle.Cache.
         * @param characterWidth The width of each character in the font set.
         * @param characterHeight The height of each character in the font set.
         * @param chars The characters used in the font set, in display order. You can use the TEXT_SET consts for common font set arrangements.
@@ -28093,7 +28093,7 @@ declare module Phaser {
         fixedWidth: number;
 
         /**
-        * A reference to the image stored in the Game.Cache that contains the font.
+        * A reference to the image stored in the Circle.Cache that contains the font.
         */
         fontSet: Image;
 
@@ -28225,7 +28225,7 @@ declare module Phaser {
 
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -28238,13 +28238,13 @@ declare module Phaser {
         angle: number;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -28256,28 +28256,28 @@ declare module Phaser {
         alive: boolean;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
 
         /**
-        * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated
+        * `body` is the Circle Objects physics body. Once a Circle Object is enabled for physics you access all associated
         * properties and methods via it.
         * 
-        * By default Game Objects won't add themselves to any physics system and their `body` property will be `null`.
+        * By default Circle Objects won't add themselves to any physics system and their `body` property will be `null`.
         * 
-        * To enable this Game Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
+        * To enable this Circle Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
         * and `system` is the Physics system you are using. If none is given it defaults to `Phaser.Physics.Arcade`.
         * 
-        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Game Object to a physics enabled Group.
+        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Circle Object to a physics enabled Group.
         * 
-        * Important: Enabling a Game Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
-        * so the physics body is centered on the Game Object.
+        * Important: Enabling a Circle Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
+        * so the physics body is centered on the Circle Object.
         * 
         * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
         */
@@ -28290,37 +28290,37 @@ declare module Phaser {
         bottom: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * If this is set to `true` the Game Object checks if it is within the World bounds each frame.
+        * If this is set to `true` the Circle Object checks if it is within the World bounds each frame.
         * 
         * When it is no longer intersecting the world bounds it dispatches the `onOutOfBounds` event.
         * 
         * If it was *previously* out of bounds but is now intersecting the world bounds again it dispatches the `onEnterBounds` event.
         * 
-        * It also optionally kills the Game Object if `outOfBoundsKill` is `true`.
+        * It also optionally kills the Circle Object if `outOfBoundsKill` is `true`.
         * 
-        * When `checkWorldBounds` is enabled it forces the Game Object to calculate its full bounds every frame.
+        * When `checkWorldBounds` is enabled it forces the Circle Object to calculate its full bounds every frame.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         checkWorldBounds: boolean;
 
         /**
-        * The Rectangle used to crop the texture this Game Object uses.
+        * The Rectangle used to crop the texture this Circle Object uses.
         * Set this property via `crop`.
         * If you modify this property directly you must call `updateCrop` in order to have the change take effect.
         */
         cropRect: Phaser.Rectangle;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
@@ -28330,21 +28330,21 @@ declare module Phaser {
         customRender: boolean;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
 
         /**
         * Returns the delta x value. The difference between world.x now and in the previous frame.
         * 
-        * The value will be positive if the Game Object has moved to the right or negative if to the left.
+        * The value will be positive if the Circle Object has moved to the right or negative if to the left.
         */
         deltaX: number;
 
         /**
         * Returns the delta y value. The difference between world.y now and in the previous frame.
         * 
-        * The value will be positive if the Game Object has moved down or negative if up.
+        * The value will be positive if the Circle Object has moved down or negative if up.
         */
         deltaY: number;
 
@@ -28354,14 +28354,14 @@ declare module Phaser {
         deltaZ: number;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * Controls if this Game Object is processed by the core game loop.
-        * If this Game Object has a physics body it also controls if its physics body is updated or not.
+        * Controls if this Circle Object is processed by the core game loop.
+        * If this Circle Object has a physics body it also controls if its physics body is updated or not.
         * When `exists` is set to `false` it will remove its physics body from the physics world if it has one.
         * It also toggles the `visible` property to false as well.
         * 
@@ -28371,31 +28371,31 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * Gets or sets the current frame index of the texture being used to render this Game Object.
+        * Gets or sets the current frame index of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Game Object to use,
+        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Circle Object to use,
         * for example: `player.frame = 4`.
         * 
         * If the frame index given doesn't exist it will revert to the first frame found in the texture.
@@ -28407,9 +28407,9 @@ declare module Phaser {
         frame: string | number;
 
         /**
-        * Gets or sets the current frame name of the texture being used to render this Game Object.
+        * Gets or sets the current frame name of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Game Object to use,
+        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Circle Object to use,
         * for example: `player.frameName = "idle"`.
         * 
         * If the frame name given doesn't exist it will revert to the first frame found in the texture and throw a console warning.
@@ -28421,18 +28421,18 @@ declare module Phaser {
         frameName: string;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
@@ -28440,20 +28440,20 @@ declare module Phaser {
         inputEnabled: boolean;
 
         /**
-        * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
+        * Checks if the Circle Objects bounds are within, or intersect at any point with the Circle World bounds.
         */
         inWorld: boolean;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * The lifespan allows you to give a Game Object a lifespan in milliseconds.
+        * The lifespan allows you to give a Circle Object a lifespan in milliseconds.
         * 
-        * Once the Game Object is 'born' you can set this to a positive value.
+        * Once the Circle Object is 'born' you can set this to a positive value.
         * 
         * It is automatically decremented by the millisecond equivalent of `game.time.physicsElapsed` each frame.
         * When it reaches zero it will call the `kill` method.
@@ -28463,29 +28463,29 @@ declare module Phaser {
         lifespan: number;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | PIXI.Texture | Phaser.Video;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
@@ -28497,7 +28497,7 @@ declare module Phaser {
         outOfBoundsKill: boolean;
 
         /**
-        * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
+        * Checks to see if the bounds of this Circle Object overlaps with the bounds of the given Display Object,
         * which can be a Sprite, Image, TileSprite or anything that extends those such as Button or provides a `getBounds` method and result.
         * 
         * This check ignores the `hitArea` property if set and runs a `getBounds` comparison on both objects to determine the result.
@@ -28506,12 +28506,12 @@ declare module Phaser {
         * It should be fine for low-volume testing where physics isn't required.
         * 
         * @param displayObject The display object to check against.
-        * @return True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+        * @return True if the bounds of this Circle Object intersects at any point with the bounds of the given display object.
         */
         overlap(displayObject: Phaser.Sprite | Phaser.Image | Phaser.TileSprite | Phaser.Button | PIXI.DisplayObject): boolean;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -28529,17 +28529,17 @@ declare module Phaser {
         position: Phaser.Point;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
@@ -28556,16 +28556,16 @@ declare module Phaser {
         segments: Phaser.Rectangle[];
 
         /**
-        * Enable or disable texture smoothing for this Game Object.
+        * Enable or disable texture smoothing for this Circle Object.
         * 
-        * It only takes effect if the Game Object is using an image based texture.
+        * It only takes effect if the Circle Object is using an image based texture.
         * 
         * Smoothing is enabled by default.
         */
         smoothed: boolean;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -28586,18 +28586,18 @@ declare module Phaser {
         transformCallbackContext: any;
 
         /**
-        * The minimum scale this Game Object will scale down to.
+        * The minimum scale this Circle Object will scale down to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object lower than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object lower than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
         scaleMin: Phaser.Point;
 
         /**
-        * The maximum scale this Game Object will scale up to.
+        * The maximum scale this Circle Object will scale up to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object higher than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object higher than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
@@ -28609,9 +28609,9 @@ declare module Phaser {
         updateAnimation: Function;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
@@ -28628,34 +28628,34 @@ declare module Phaser {
         y: number;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Brings this Game Object to the top of its parents display list.
+        * Brings this Circle Object to the top of its parents display list.
         * Visually this means it will render over the top of any old child in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will bring it to the top of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         bringToTop(): Phaser.Rope;
 
         /**
-        * Adjust scaling limits, if set, to this Game Object.
+        * Adjust scaling limits, if set, to this Circle Object.
         * 
         * @param wt The updated worldTransform matrix.
         */
         checkTransform(wt: Phaser.Matrix): void;
 
         /**
-        * Crop allows you to crop the texture being used to display this Game Object.
-        * Setting a crop rectangle modifies the core texture frame. The Game Object width and height properties will be adjusted accordingly.
+        * Crop allows you to crop the texture being used to display this Circle Object.
+        * Setting a crop rectangle modifies the core texture frame. The Circle Object width and height properties will be adjusted accordingly.
         * 
         * Cropping takes place from the top-left and can be modified in real-time either by providing an updated rectangle object to this method,
         * or by modifying `cropRect` property directly and then calling `updateCrop`.
@@ -28681,22 +28681,22 @@ declare module Phaser {
         destroy(destroyChildren?: boolean): void;
 
         /**
-        * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
+        * Kills a Circle Object. A killed Circle Object has its `alive`, `exists` and `visible` properties all set to false.
         * 
         * It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
         * 
-        * Note that killing a Game Object is a way for you to quickly recycle it in an object pool,
+        * Note that killing a Circle Object is a way for you to quickly recycle it in an object pool,
         * it doesn't destroy the object or free it up from memory.
         * 
-        * If you don't need this Game Object any more you should call `destroy` instead.
+        * If you don't need this Circle Object any more you should call `destroy` instead.
         * @return This instance.
         */
         kill(): Phaser.Rope;
 
         /**
-        * Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
+        * Changes the base texture the Circle Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
         * 
-        * If your Game Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
+        * If your Circle Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
         * 
         * You should only use `loadTexture` if you want to replace the base texture entirely.
         * 
@@ -28718,21 +28718,21 @@ declare module Phaser {
         loadTexture(key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture, frame?: string | number, stopAnimation?: boolean): void;
 
         /**
-        * Moves this Game Object up one place in its parents display list.
-        * This call has no effect if the Game Object is already at the top of the display list.
+        * Moves this Circle Object up one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the top of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object up within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveUp(): Phaser.Rope;
 
         /**
-        * Moves this Game Object down one place in its parents display list.
-        * This call has no effect if the Game Object is already at the bottom of the display list.
+        * Moves this Circle Object down one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the bottom of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object down within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveDown(): Phaser.Rope;
@@ -28775,7 +28775,7 @@ declare module Phaser {
         reset(x: number, y: number, health?: number): Phaser.Rope;
 
         /**
-        * Resizes the Frame dimensions that the Game Object uses for rendering.
+        * Resizes the Frame dimensions that the Circle Object uses for rendering.
         * 
         * You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
         * it can be useful to adjust the dimensions directly in this way.
@@ -28787,34 +28787,34 @@ declare module Phaser {
         resizeFrame(parent: any, width: number, height: number): void;
 
         /**
-        * Resets the texture frame dimensions that the Game Object uses for rendering.
+        * Resets the texture frame dimensions that the Circle Object uses for rendering.
         */
         resetFrame(): void;
 
         /**
-        * Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+        * Brings a 'dead' Circle Object back to life, optionally resetting its health value in the process.
         * 
-        * A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+        * A resurrected Circle Object has its `alive`, `exists` and `visible` properties all set to true.
         * 
         * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
         * 
-        * @param health The health to give the Game Object. Only set if the GameObject has the Health component. - Default: 100
+        * @param health The health to give the Circle Object. Only set if the GameObject has the Health component. - Default: 100
         * @return This instance.
         */
         revive(health?: number): Phaser.Rope;
 
         /**
-        * Sends this Game Object to the bottom of its parents display list.
+        * Sends this Circle Object to the bottom of its parents display list.
         * Visually this means it will render below all other children in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will send it to the bottom of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         sendToBack(): Phaser.Rope;
 
         /**
-        * Sets the texture frame the Game Object uses for rendering.
+        * Sets the texture frame the Circle Object uses for rendering.
         * 
         * This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
         * 
@@ -28823,12 +28823,12 @@ declare module Phaser {
         setFrame(frame: Phaser.Frame): void;
 
         /**
-        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
+        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Circle Object will scale based on its parent.
         * 
-        * For example if this Game Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
-        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Game Object should adhere to.
+        * For example if this Circle Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
+        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Circle Object should adhere to.
         * 
-        * By setting these values you can carefully control how Game Objects deal with responsive scaling.
+        * By setting these values you can carefully control how Circle Objects deal with responsive scaling.
         * 
         * If only one parameter is given then that value will be used for both scaleMin and scaleMax:
         * `setScaleMinMax(1)` = scaleMin.x, scaleMin.y, scaleMax.x and scaleMax.y all = 1
@@ -28836,20 +28836,20 @@ declare module Phaser {
         * If only two parameters are given the first is set as scaleMin.x and y and the second as scaleMax.x and y:
         * `setScaleMinMax(0.5, 2)` = scaleMin.x and y = 0.5 and scaleMax.x and y = 2
         * 
-        * If you wish to set `scaleMin` with different values for x and y then either modify Game Object.scaleMin directly,
+        * If you wish to set `scaleMin` with different values for x and y then either modify Circle Object.scaleMin directly,
         * or pass `null` for the `maxX` and `maxY` parameters.
         * 
         * Call `setScaleMinMax(null)` to clear all previously set values.
         * 
-        * @param minX The minimum horizontal scale value this Game Object can scale down to.
-        * @param minY The minimum vertical scale value this Game Object can scale down to.
-        * @param maxX The maximum horizontal scale value this Game Object can scale up to.
-        * @param maxY The maximum vertical scale value this Game Object can scale up to.
+        * @param minX The minimum horizontal scale value this Circle Object can scale down to.
+        * @param minY The minimum vertical scale value this Circle Object can scale down to.
+        * @param maxX The maximum horizontal scale value this Circle Object can scale up to.
+        * @param maxY The maximum vertical scale value this Circle Object can scale up to.
         */
         setScaleMinMax(minX?: number, minY?: number, maxX?: number, maxY?: number): void; // minX: null | number
 
         /**
-        * If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
+        * If you have set a crop rectangle on this Circle Object via `crop` and since modified the `cropRect` property,
         * or the rectangle it references, then you need to update the crop frame by calling this method.
         */
         updateCrop(): void;
@@ -29476,7 +29476,7 @@ declare module Phaser {
         fadeTween: Phaser.Tween;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -29766,7 +29766,7 @@ declare module Phaser {
     * The audio file type and the encoding of those files are extremely important. Not all browsers can play all audio formats.
     * There is a good guide to what's supported here: http://hpr.dogphilosophy.net/test/
     * 
-    * If you are reloading a Phaser Game on a page that never properly refreshes (such as in an AngularJS project) then you will quickly run out
+    * If you are reloading a Phaser Circle on a page that never properly refreshes (such as in an AngularJS project) then you will quickly run out
     * of AudioContext nodes. If this is the case create a global var called {@link PhaserGlobal} on the window object before creating the game. The active
     * AudioContext will then be saved to `window.PhaserGlobal.audioContext` when the Phaser game is destroyed, and re-used when it starts again.
     * 
@@ -29784,7 +29784,7 @@ declare module Phaser {
         * The audio file type and the encoding of those files are extremely important. Not all browsers can play all audio formats.
         * There is a good guide to what's supported here: http://hpr.dogphilosophy.net/test/
         * 
-        * If you are reloading a Phaser Game on a page that never properly refreshes (such as in an AngularJS project) then you will quickly run out
+        * If you are reloading a Phaser Circle on a page that never properly refreshes (such as in an AngularJS project) then you will quickly run out
         * of AudioContext nodes. If this is the case create a global var called {@link PhaserGlobal} on the window object before creating the game. The active
         * AudioContext will then be saved to `window.PhaserGlobal.audioContext` when the Phaser game is destroyed, and re-used when it starts again.
         * 
@@ -30023,7 +30023,7 @@ declare module Phaser {
 
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -30045,7 +30045,7 @@ declare module Phaser {
         anchor: Phaser.Point;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -30058,34 +30058,34 @@ declare module Phaser {
         angle: number;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
 
         /**
-        * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated
+        * `body` is the Circle Objects physics body. Once a Circle Object is enabled for physics you access all associated
         * properties and methods via it.
         * 
-        * By default Game Objects won't add themselves to any physics system and their `body` property will be `null`.
+        * By default Circle Objects won't add themselves to any physics system and their `body` property will be `null`.
         * 
-        * To enable this Game Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
+        * To enable this Circle Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
         * and `system` is the Physics system you are using. If none is given it defaults to `Phaser.Physics.Arcade`.
         * 
-        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Game Object to a physics enabled Group.
+        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Circle Object to a physics enabled Group.
         * 
-        * Important: Enabling a Game Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
-        * so the physics body is centered on the Game Object.
+        * Important: Enabling a Circle Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
+        * so the physics body is centered on the Circle Object.
         * 
         * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
         */
@@ -30098,47 +30098,47 @@ declare module Phaser {
         bottom: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * The local center x coordinate of the Game Object.
+        * The local center x coordinate of the Circle Object.
         * This is the same as `(x - offsetX) + (width / 2)`.
         */
         centerX: number;
 
         /**
-        * The local center y coordinate of the Game Object.
+        * The local center y coordinate of the Circle Object.
         * This is the same as `(y - offsetY) + (height / 2)`.
         */
         centerY: number;
 
         /**
-        * If this is set to `true` the Game Object checks if it is within the World bounds each frame.
+        * If this is set to `true` the Circle Object checks if it is within the World bounds each frame.
         * 
         * When it is no longer intersecting the world bounds it dispatches the `onOutOfBounds` event.
         * 
         * If it was *previously* out of bounds but is now intersecting the world bounds again it dispatches the `onEnterBounds` event.
         * 
-        * It also optionally kills the Game Object if `outOfBoundsKill` is `true`.
+        * It also optionally kills the Circle Object if `outOfBoundsKill` is `true`.
         * 
-        * When `checkWorldBounds` is enabled it forces the Game Object to calculate its full bounds every frame.
+        * When `checkWorldBounds` is enabled it forces the Circle Object to calculate its full bounds every frame.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         checkWorldBounds: boolean;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
         /**
-        * The Rectangle used to crop the texture this Game Object uses.
+        * The Rectangle used to crop the texture this Circle Object uses.
         * Set this property via `crop`.
         * If you modify this property directly you must call `updateCrop` in order to have the change take effect.
         */
@@ -30150,30 +30150,30 @@ declare module Phaser {
         customRender: boolean;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
 
         /**
         * Returns the delta x value. The difference between world.x now and in the previous frame.
         * 
-        * The value will be positive if the Game Object has moved to the right or negative if to the left.
+        * The value will be positive if the Circle Object has moved to the right or negative if to the left.
         */
         deltaX: number;
 
         /**
         * Returns the delta y value. The difference between world.y now and in the previous frame.
         * 
-        * The value will be positive if the Game Object has moved down or negative if up.
+        * The value will be positive if the Circle Object has moved down or negative if up.
         */
         deltaY: number;
 
@@ -30183,14 +30183,14 @@ declare module Phaser {
         deltaZ: number;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
@@ -30201,25 +30201,25 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * Gets or sets the current frame index of the texture being used to render this Game Object.
+        * Gets or sets the current frame index of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Game Object to use,
+        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Circle Object to use,
         * for example: `player.frame = 4`.
         * 
         * If the frame index given doesn't exist it will revert to the first frame found in the texture.
@@ -30231,9 +30231,9 @@ declare module Phaser {
         frame: string | number;
 
         /**
-        * Gets or sets the current frame name of the texture being used to render this Game Object.
+        * Gets or sets the current frame name of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Game Object to use,
+        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Circle Object to use,
         * for example: `player.frameName = "idle"`.
         * 
         * If the frame name given doesn't exist it will revert to the first frame found in the texture and throw a console warning.
@@ -30245,18 +30245,18 @@ declare module Phaser {
         frameName: string;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * The Game Objects health value. This is a handy property for setting and manipulating health on a Game Object.
+        * The Circle Objects health value. This is a handy property for setting and manipulating health on a Circle Object.
         * 
         * It can be used in combination with the `damage` method or modified directly.
         * Default: 1
@@ -30264,23 +30264,23 @@ declare module Phaser {
         health: number;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -30288,36 +30288,36 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
         inputEnabled: boolean;
 
         /**
-        * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
+        * Checks if the Circle Objects bounds are within, or intersect at any point with the Circle World bounds.
         */
         inWorld: boolean;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * The lifespan allows you to give a Game Object a lifespan in milliseconds.
+        * The lifespan allows you to give a Circle Object a lifespan in milliseconds.
         * 
-        * Once the Game Object is 'born' you can set this to a positive value.
+        * Once the Circle Object is 'born' you can set this to a positive value.
         * 
         * It is automatically decremented by the millisecond equivalent of `game.time.physicsElapsed` each frame.
         * When it reaches zero it will call the `kill` method.
@@ -30327,27 +30327,27 @@ declare module Phaser {
         lifespan: number;
 
         /**
-        * The Game Objects maximum health value. This works in combination with the `heal` method to ensure
+        * The Circle Objects maximum health value. This works in combination with the `heal` method to ensure
         * the health value never exceeds the maximum.
         * Default: 100
         */
         maxHealth: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
@@ -30360,12 +30360,12 @@ declare module Phaser {
 
         /**
         * If this and the `autoCull` property are both set to `true`, then the `kill` method
-        * is called as soon as the Game Object leaves the camera bounds.
+        * is called as soon as the Circle Object leaves the camera bounds.
         */
         outOfCameraBoundsKill: boolean;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -30374,12 +30374,12 @@ declare module Phaser {
         pendingDestroy: boolean;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
@@ -30404,7 +30404,7 @@ declare module Phaser {
         renderOrderID: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
@@ -30419,34 +30419,34 @@ declare module Phaser {
         scale: Phaser.Point;
 
         /**
-        * The minimum scale this Game Object will scale down to.
+        * The minimum scale this Circle Object will scale down to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object lower than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object lower than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
         scaleMin: Phaser.Point;
 
         /**
-        * The maximum scale this Game Object will scale up to.
+        * The maximum scale this Circle Object will scale up to.
         * 
-        * It allows you to prevent a parent from scaling this Game Object higher than the given value.
+        * It allows you to prevent a parent from scaling this Circle Object higher than the given value.
         * 
         * Set it to `null` to remove the limit.
         */
         scaleMax: Phaser.Point;
 
         /**
-        * Enable or disable texture smoothing for this Game Object.
+        * Enable or disable texture smoothing for this Circle Object.
         * 
-        * It only takes effect if the Game Object is using an image based texture.
+        * It only takes effect if the Circle Object is using an image based texture.
         * 
         * Smoothing is enabled by default.
         */
         smoothed: boolean;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -30473,9 +30473,9 @@ declare module Phaser {
         transformCallbackContext: any;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
@@ -30492,24 +30492,24 @@ declare module Phaser {
         y: number;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -30518,12 +30518,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -30532,24 +30532,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -30559,12 +30559,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -30573,27 +30573,27 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Brings this Game Object to the top of its parents display list.
+        * Brings this Circle Object to the top of its parents display list.
         * Visually this means it will render over the top of any old child in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will bring it to the top of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will bring it to the top of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         bringToTop(): Phaser.Sprite;
 
         /**
-        * Crop allows you to crop the texture being used to display this Game Object.
-        * Setting a crop rectangle modifies the core texture frame. The Game Object width and height properties will be adjusted accordingly.
+        * Crop allows you to crop the texture being used to display this Circle Object.
+        * Setting a crop rectangle modifies the core texture frame. The Circle Object width and height properties will be adjusted accordingly.
         * 
         * Cropping takes place from the top-left and can be modified in real-time either by providing an updated rectangle object to this method,
         * or by modifying `cropRect` property directly and then calling `updateCrop`.
@@ -30610,14 +30610,14 @@ declare module Phaser {
         crop(rect: Phaser.Rectangle, copy: boolean): void;
 
         /**
-        * Adjust scaling limits, if set, to this Game Object.
+        * Adjust scaling limits, if set, to this Circle Object.
         * 
         * @param wt The updated worldTransform matrix.
         */
         checkTransform(wt: Phaser.Matrix): void;
 
         /**
-        * Damages the Game Object. This removes the given amount of health from the `health` property.
+        * Damages the Circle Object. This removes the given amount of health from the `health` property.
         * 
         * If health is taken below or is equal to zero then the `kill` method is called.
         * 
@@ -30637,7 +30637,7 @@ declare module Phaser {
         drawPolygon(): void;
 
         /**
-        * Heal the Game Object. This adds the given amount of health to the `health` property.
+        * Heal the Circle Object. This adds the given amount of health to the `health` property.
         * 
         * @param amount The amount to add to the current `health` value. The total will never exceed `maxHealth`.
         * @return This instance.
@@ -30645,22 +30645,22 @@ declare module Phaser {
         heal(amount: number): Phaser.Sprite;
 
         /**
-        * Kills a Game Object. A killed Game Object has its `alive`, `exists` and `visible` properties all set to false.
+        * Kills a Circle Object. A killed Circle Object has its `alive`, `exists` and `visible` properties all set to false.
         * 
         * It will dispatch the `onKilled` event. You can listen to `events.onKilled` for the signal.
         * 
-        * Note that killing a Game Object is a way for you to quickly recycle it in an object pool,
+        * Note that killing a Circle Object is a way for you to quickly recycle it in an object pool,
         * it doesn't destroy the object or free it up from memory.
         * 
-        * If you don't need this Game Object any more you should call `destroy` instead.
+        * If you don't need this Circle Object any more you should call `destroy` instead.
         * @return This instance.
         */
         kill(): Phaser.Sprite;
 
         /**
-        * Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
+        * Changes the base texture the Circle Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
         * 
-        * If your Game Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
+        * If your Circle Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
         * 
         * You should only use `loadTexture` if you want to replace the base texture entirely.
         * 
@@ -30682,27 +30682,27 @@ declare module Phaser {
         loadTexture(key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture, frame?: string | number, stopAnimation?: boolean): void;
 
         /**
-        * Moves this Game Object up one place in its parents display list.
-        * This call has no effect if the Game Object is already at the top of the display list.
+        * Moves this Circle Object up one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the top of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object up within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object up within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveUp(): Phaser.Sprite;
 
         /**
-        * Moves this Game Object down one place in its parents display list.
-        * This call has no effect if the Game Object is already at the bottom of the display list.
+        * Moves this Circle Object down one place in its parents display list.
+        * This call has no effect if the Circle Object is already at the bottom of the display list.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will move it one object down within the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will move it one object down within the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         moveDown(): Phaser.Sprite;
 
         /**
-        * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
+        * Checks to see if the bounds of this Circle Object overlaps with the bounds of the given Display Object,
         * which can be a Sprite, Image, TileSprite or anything that extends those such as Button or provides a `getBounds` method and result.
         * 
         * This check ignores the `hitArea` property if set and runs a `getBounds` comparison on both objects to determine the result.
@@ -30711,7 +30711,7 @@ declare module Phaser {
         * It should be fine for low-volume testing where physics isn't required.
         * 
         * @param displayObject The display object to check against.
-        * @return True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+        * @return True if the bounds of this Circle Object intersects at any point with the bounds of the given display object.
         */
         overlap(displayObject: Phaser.Sprite | Phaser.Image | Phaser.TileSprite | Phaser.Button | PIXI.DisplayObject): boolean;
 
@@ -30743,29 +30743,29 @@ declare module Phaser {
         preUpdate(): void;
 
         /**
-        * Resets the Game Object.
+        * Resets the Circle Object.
         * 
-        * This moves the Game Object to the given x/y world coordinates and sets `fresh`, `exists`,
+        * This moves the Circle Object to the given x/y world coordinates and sets `fresh`, `exists`,
         * `visible` and `renderable` to true.
         * 
-        * If this Game Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
+        * If this Circle Object has the LifeSpan component it will also set `alive` to true and `health` to the given value.
         * 
-        * If this Game Object has a Physics Body it will reset the Body.
+        * If this Circle Object has a Physics Body it will reset the Body.
         * 
-        * @param x The x coordinate (in world space) to position the Game Object at.
-        * @param y The y coordinate (in world space) to position the Game Object at.
-        * @param health The health to give the Game Object if it has the Health component. - Default: 1
+        * @param x The x coordinate (in world space) to position the Circle Object at.
+        * @param y The y coordinate (in world space) to position the Circle Object at.
+        * @param health The health to give the Circle Object if it has the Health component. - Default: 1
         * @return This instance.
         */
         reset(x: number, y: number, health?: number): Phaser.Sprite;
 
         /**
-        * Resets the texture frame dimensions that the Game Object uses for rendering.
+        * Resets the texture frame dimensions that the Circle Object uses for rendering.
         */
         resetFrame(): void;
 
         /**
-        * Resizes the Frame dimensions that the Game Object uses for rendering.
+        * Resizes the Frame dimensions that the Circle Object uses for rendering.
         * 
         * You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
         * it can be useful to adjust the dimensions directly in this way.
@@ -30777,29 +30777,29 @@ declare module Phaser {
         resizeFrame(parent: any, width: number, height: number): void;
 
         /**
-        * Brings a 'dead' Game Object back to life, optionally resetting its health value in the process.
+        * Brings a 'dead' Circle Object back to life, optionally resetting its health value in the process.
         * 
-        * A resurrected Game Object has its `alive`, `exists` and `visible` properties all set to true.
+        * A resurrected Circle Object has its `alive`, `exists` and `visible` properties all set to true.
         * 
         * It will dispatch the `onRevived` event. Listen to `events.onRevived` for the signal.
         * 
-        * @param health The health to give the Game Object. Only set if the GameObject has the Health component. - Default: 100
+        * @param health The health to give the Circle Object. Only set if the GameObject has the Health component. - Default: 100
         * @return This instance.
         */
         revive(health?: number): Phaser.Sprite;
 
         /**
-        * Sends this Game Object to the bottom of its parents display list.
+        * Sends this Circle Object to the bottom of its parents display list.
         * Visually this means it will render below all other children in the same Group.
         * 
-        * If this Game Object hasn't been added to a custom Group then this method will send it to the bottom of the Game World,
-        * because the World is the root Group from which all Game Objects descend.
+        * If this Circle Object hasn't been added to a custom Group then this method will send it to the bottom of the Circle World,
+        * because the World is the root Group from which all Circle Objects descend.
         * @return This instance.
         */
         sendToBack(): Phaser.Sprite;
 
         /**
-        * Sets the texture frame the Game Object uses for rendering.
+        * Sets the texture frame the Circle Object uses for rendering.
         * 
         * This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
         * 
@@ -30808,12 +30808,12 @@ declare module Phaser {
         setFrame(frame: Phaser.Frame): void;
 
         /**
-        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Game Object will scale based on its parent.
+        * Sets the scaleMin and scaleMax values. These values are used to limit how far this Circle Object will scale based on its parent.
         * 
-        * For example if this Game Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
-        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Game Object should adhere to.
+        * For example if this Circle Object has a `minScale` value of 1 and its parent has a `scale` value of 0.5, the 0.5 will be ignored
+        * and the scale value of 1 will be used, as the parents scale is lower than the minimum scale this Circle Object should adhere to.
         * 
-        * By setting these values you can carefully control how Game Objects deal with responsive scaling.
+        * By setting these values you can carefully control how Circle Objects deal with responsive scaling.
         * 
         * If only one parameter is given then that value will be used for both scaleMin and scaleMax:
         * `setScaleMinMax(1)` = scaleMin.x, scaleMin.y, scaleMax.x and scaleMax.y all = 1
@@ -30821,27 +30821,27 @@ declare module Phaser {
         * If only two parameters are given the first is set as scaleMin.x and y and the second as scaleMax.x and y:
         * `setScaleMinMax(0.5, 2)` = scaleMin.x and y = 0.5 and scaleMax.x and y = 2
         * 
-        * If you wish to set `scaleMin` with different values for x and y then either modify Game Object.scaleMin directly,
+        * If you wish to set `scaleMin` with different values for x and y then either modify Circle Object.scaleMin directly,
         * or pass `null` for the `maxX` and `maxY` parameters.
         * 
         * Call `setScaleMinMax(null)` to clear all previously set values.
         * 
-        * @param minX The minimum horizontal scale value this Game Object can scale down to.
-        * @param minY The minimum vertical scale value this Game Object can scale down to.
-        * @param maxX The maximum horizontal scale value this Game Object can scale up to.
-        * @param maxY The maximum vertical scale value this Game Object can scale up to.
+        * @param minX The minimum horizontal scale value this Circle Object can scale down to.
+        * @param minY The minimum vertical scale value this Circle Object can scale down to.
+        * @param maxX The maximum horizontal scale value this Circle Object can scale up to.
+        * @param maxY The maximum vertical scale value this Circle Object can scale up to.
         */
         setScaleMinMax(minX?: number, minY?: number, maxX?: number, maxY?: number): void; // minX: null | number
 
         /**
         * Override this method in your own custom objects to handle any update requirements.
         * It is called immediately after `preUpdate` and before `postUpdate`.
-        * Remember if this Game Object has any children you should call update on those too.
+        * Remember if this Circle Object has any children you should call update on those too.
         */
         update(): void;
 
         /**
-        * If you have set a crop rectangle on this Game Object via `crop` and since modified the `cropRect` property,
+        * If you have set a crop rectangle on this Circle Object via `crop` and since modified the `cropRect` property,
         * or the rectangle it references, then you need to update the crop frame by calling this method.
         */
         updateCrop(): void;
@@ -30871,7 +30871,7 @@ declare module Phaser {
         * @param game A reference to the currently running game.
         * @param parent The parent Group, DisplayObject or DisplayObjectContainer that this Group will be added to. If `undefined` or `null` it will use game.world.
         * @param name A name for this Group. Not used internally but useful for debugging. - Default: group
-        * @param addToStage If set to true this Group will be added directly to the Game.Stage instead of Game.World.
+        * @param addToStage If set to true this Group will be added directly to the Circle.Stage instead of Circle.World.
         */
         constructor(game: Phaser.Game, parent: PIXI.DisplayObjectContainer, name?: string, addedToStage?: boolean);
 
@@ -30895,13 +30895,13 @@ declare module Phaser {
         * The Stage controls root level display objects upon which everything is displayed.
         * It also handles browser visibility handling and the pausing due to loss of focus.
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         */
         constructor(game: Phaser.Game);
 
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -30959,7 +30959,7 @@ declare module Phaser {
         add(child: any, silent?: boolean, index?: number): any;
 
         /**
-        * Parses a Game configuration object.
+        * Parses a Circle configuration object.
         * 
         * @param config The configuration object to parse.
         */
@@ -31036,15 +31036,15 @@ declare module Phaser {
 
     /**
     * The ScaleManager object handles the the scaling, resizing, and alignment of the
-    * Game size and the game Display canvas.
+    * Circle size and the game Display canvas.
     * 
-    * The Game size is the logical size of the game; the Display canvas has size as an HTML element.
+    * The Circle size is the logical size of the game; the Display canvas has size as an HTML element.
     * 
     * The calculations of these are heavily influenced by the bounding Parent size which is the computed
     * dimensions of the Display canvas's Parent container/element - the _effective CSS rules of the
     * canvas's Parent element play an important role_ in the operation of the ScaleManager.
     * 
-    * The Display canvas - or Game size, depending {@link Phaser.ScaleManager#scaleMode scaleMode} - is updated to best utilize the Parent size.
+    * The Display canvas - or Circle size, depending {@link Phaser.ScaleManager#scaleMode scaleMode} - is updated to best utilize the Parent size.
     * When in Fullscreen mode or with {@link Phaser.ScaleManager#parentIsWindow parentIsWindow} the Parent size is that of the visual viewport (see {@link Phaser.ScaleManager#getParentBounds getParentBounds}).
     * 
     * #### Parent and Display canvas containment guidelines:
@@ -31115,7 +31115,7 @@ declare module Phaser {
         static SHOW_ALL: number;
 
         /**
-        * A scale mode that causes the Game size to change - see {@link Phaser.ScaleManager#scaleMode scaleMode}.
+        * A scale mode that causes the Circle size to change - see {@link Phaser.ScaleManager#scaleMode scaleMode}.
         */
         static RESIZE: number;
 
@@ -31385,10 +31385,10 @@ declare module Phaser {
         onOrientationChange: Phaser.Signal;
 
         /**
-        * This signal is dispatched when the size of the Display canvas changes _or_ the size of the Game changes.
+        * This signal is dispatched when the size of the Display canvas changes _or_ the size of the Circle changes.
         * When invoked this is done _after_ the Canvas size/position have been updated.
         * 
-        * The callback is supplied with three arguments: the Scale Manager, canvas {@link Phaser.ScaleManager#width width}, and canvas {@link Phaser.ScaleManager#height height}. (Game dimensions can be found in `scale.game.width` and `scale.game.height`.)
+        * The callback is supplied with three arguments: the Scale Manager, canvas {@link Phaser.ScaleManager#width width}, and canvas {@link Phaser.ScaleManager#height height}. (Circle dimensions can be found in `scale.game.width` and `scale.game.height`.)
         * 
         * This signal is _only_ called when a change occurs and a reflow may be required.
         * For example, if the canvas does not change sizes because of CSS settings (such as min-width)
@@ -31415,7 +31415,7 @@ declare module Phaser {
         * When enabled the Display canvas will be vertically-aligned _in the Parent container_ (or {@link Phaser.ScaleManager#parentIsWindow window}).
         * 
         * To align vertically the Parent element should have a _non-collapsible_ height, such that it will maintain
-        * a height _larger_ than the height of the contained Game canvas - the game canvas will then be scaled vertically
+        * a height _larger_ than the height of the contained Circle canvas - the game canvas will then be scaled vertically
         * _within_ the remaining available height dictated by the Parent element.
         * 
         * One way to prevent the parent from collapsing is to add an absolute "min-height" CSS property to the parent element.
@@ -31435,7 +31435,7 @@ declare module Phaser {
         * 
         * This is set automatically based on the `parent` argument passed to {@link Phaser.Game}.
         * 
-        * This should only be changed after moving the Game canvas to a different DOM parent.
+        * This should only be changed after moving the Circle canvas to a different DOM parent.
         */
         parentNode: HTMLElement;
 
@@ -31469,12 +31469,12 @@ declare module Phaser {
         * <dl>
         *   <dt>{@link Phaser.ScaleManager.NO_SCALE}</dt>
         *   <dd>
-        *       The Game display area will not be scaled - even if it is too large for the canvas/screen.
-        *       This mode _ignores_ any applied scaling factor and displays the canvas at the Game size.
+        *       The Circle display area will not be scaled - even if it is too large for the canvas/screen.
+        *       This mode _ignores_ any applied scaling factor and displays the canvas at the Circle size.
         *   </dd>
         *   <dt>{@link Phaser.ScaleManager.EXACT_FIT}</dt>
         *   <dd>
-        *       The Game display area will be _stretched_ to fill the entire size of the canvas's parent element and/or screen.
+        *       The Circle display area will be _stretched_ to fill the entire size of the canvas's parent element and/or screen.
         *       Proportions are not maintained.
         *   </dd>
         *   <dt>{@link Phaser.ScaleManager.SHOW_ALL}</dt>
@@ -31484,9 +31484,9 @@ declare module Phaser {
         *   <dt>{@link Phaser.ScaleManager.RESIZE}</dt>
         *   <dd>
         *       The dimensions of the game display area are changed to match the size of the parent container.
-        *       That is, this mode _changes the Game size_ to match the display size.
+        *       That is, this mode _changes the Circle size_ to match the display size.
         *       <p>
-        *       Any manually set Game size (see {@link Phaser.ScaleManager#setGameSize setGameSize}) is ignored while in effect.
+        *       Any manually set Circle size (see {@link Phaser.ScaleManager#setGameSize setGameSize}) is ignored while in effect.
         *   </dd>
         *   <dt>{@link Phaser.ScaleManager.USER_SCALE}</dt>
         *   <dd>
@@ -31603,7 +31603,7 @@ declare module Phaser {
         parseConfig(config: any): void;
 
         /**
-        * The ScaleManager.preUpdate is called automatically by the core Game loop.
+        * The ScaleManager.preUpdate is called automatically by the core Circle loop.
         */
         preUpdate(): void;
 
@@ -31615,7 +31615,7 @@ declare module Phaser {
         /**
         * The "refresh" methods informs the ScaleManager that a layout refresh is required.
         * 
-        * The ScaleManager automatically queues a layout refresh (eg. updates the Game size or Display canvas layout)
+        * The ScaleManager automatically queues a layout refresh (eg. updates the Circle size or Display canvas layout)
         * when the browser is resized, the orientation changes, or when there is a detected change
         * of the Parent size. Refreshing is also done automatically when public properties,
         * such as {@link Phaser.ScaleManager#scaleMode scaleMode}, are updated or state-changing methods are invoked.
@@ -31632,7 +31632,7 @@ declare module Phaser {
         refresh(): void;
 
         /**
-        * Set the actual Game size.
+        * Set the actual Circle size.
         * Use this instead of directly changing `game.width` or `game.height`.
         * 
         * The actual physical display (Canvas element size) depends on various settings including
@@ -31960,7 +31960,7 @@ declare module Phaser {
         camera: Phaser.Camera;
 
         /**
-        * This is a reference to the currently running Game.
+        * This is a reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -32030,7 +32030,7 @@ declare module Phaser {
         tweens: Phaser.TweenManager;
 
         /**
-        * A reference to the game world. All objects live in the Game World and its size is not bound by the display resolution.
+        * A reference to the game world. All objects live in the Circle World and its size is not bound by the display resolution.
         */
         world: Phaser.World;
 
@@ -32091,7 +32091,7 @@ declare module Phaser {
         preload(game: Phaser.Game): void;
 
         /**
-        * The preRender method is called after all Game Objects have been updated, but before any rendering takes place.
+        * The preRender method is called after all Circle Objects have been updated, but before any rendering takes place.
         * 
         * @param game
         * @param elapsedTime
@@ -32339,7 +32339,7 @@ declare module Phaser {
         * Restarts the current State. State.shutDown will be called (if it exists) before the State is restarted.
         * 
         * @param clearWorld Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly) - Default: true
-        * @param clearCache Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
+        * @param clearCache Clear the Circle.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
         * @param args Additional parameters that will be passed to the State.init function if it has one.
         */
         restart(clearWorld?: boolean, clearCache?: boolean, ...args: any[]): void;
@@ -32350,14 +32350,14 @@ declare module Phaser {
         * 
         * @param key The key of the state you want to start.
         * @param clearWorld Clear everything in the world? This clears the World display list fully (but not the Stage, so if you've added your own objects to the Stage they will need managing directly) - Default: true
-        * @param clearCache Clear the Game.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
+        * @param clearCache Clear the Circle.Cache? This purges out all loaded assets. The default is false and you must have clearWorld=true if you want to clearCache as well.
         * @param args Additional parameters that will be passed to the State.init function (if it has one).
         */
         start(key: string, clearWorld?: boolean, clearCache?: boolean, ...args: any[]): void;
         update(): void;
 
         /**
-        * Nulls all State level Phaser properties, including a reference to Game.
+        * Nulls all State level Phaser properties, including a reference to Circle.
         * 
         * @param key State key.
         */
@@ -32450,7 +32450,7 @@ declare module Phaser {
         align: string;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -32479,9 +32479,9 @@ declare module Phaser {
         boundsAlignV: string;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
@@ -32511,14 +32511,14 @@ declare module Phaser {
         cssFont: string;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
@@ -32534,18 +32534,18 @@ declare module Phaser {
         fill: any;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
@@ -32593,22 +32593,22 @@ declare module Phaser {
         fontWeights: (string | number)[];
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -32616,7 +32616,7 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
@@ -32628,7 +32628,7 @@ declare module Phaser {
         lineSpacing: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
@@ -32640,7 +32640,7 @@ declare module Phaser {
         padding: Phaser.Point;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -32662,12 +32662,12 @@ declare module Phaser {
         position: Phaser.Point;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
 
         /**
-        * The rotation the Game Object was in set to in the previous frame. Value is in radians.
+        * The rotation the Circle Object was in set to in the previous frame. Value is in radians.
         */
         previousRotation: number;
 
@@ -32789,9 +32789,9 @@ declare module Phaser {
         useAdvancedWrap: boolean;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
@@ -32806,10 +32806,10 @@ declare module Phaser {
         wordWrapWidth: number;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
@@ -32881,15 +32881,15 @@ declare module Phaser {
         addStrokeColor(color: string, position: number): Phaser.Text;
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -32898,12 +32898,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -32912,24 +32912,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -32939,12 +32939,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -32953,11 +32953,11 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
@@ -33427,7 +33427,7 @@ declare module Phaser {
         * A Tile map is rendered to the display using a TilemapLayer. It is not added to the display list directly itself.
         * A map may have multiple layers. You can perform operations on the map data such as copying, pasting, filling and shuffling the tiles around.
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         * @param key The key of the tilemap data as stored in the Cache. If you're creating a blank map either leave this parameter out or pass `null`.
         * @param tileWidth The pixel width of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data. - Default: 32
         * @param tileHeight The pixel height of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data. - Default: 32
@@ -33475,7 +33475,7 @@ declare module Phaser {
         format: number;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -33642,7 +33642,7 @@ declare module Phaser {
         * 
         * @param name The name of the Object Group to create Sprites from.
         * @param gid The object's tile reference (gid), unique ID (id) or name.
-        * @param key The Game.cache key of the image that this Sprite will use.
+        * @param key The Circle.cache key of the image that this Sprite will use.
         * @param frame If the Sprite image contains multiple frames you can specify which one to use here.
         * @param exists The default exists state of the Sprite. - Default: true
         * @param autoCull The default autoCull state of the Sprite. Sprites that are autoCulled are culled from the camera if out of its range.
@@ -33661,7 +33661,7 @@ declare module Phaser {
         * 
         * @param tiles The tile index, or array of indexes, to create Sprites from.
         * @param replacements The tile index, or array of indexes, to change a converted tile to. Set to `null` to not change.
-        * @param key The Game.cache key of the image that this Sprite will use.
+        * @param key The Circle.cache key of the image that this Sprite will use.
         * @param layer The layer to operate on.
         * @param group Group to add the Sprite to. If not specified it will be added to the World group. - Default: Phaser.World
         * @param properties An object that contains the default properties for your newly created Sprite. This object will be iterated and any matching Sprite property will be set.
@@ -33676,8 +33676,8 @@ declare module Phaser {
         * If you wish to create a blank layer to put your own tiles on then see Tilemap.createBlankLayer.
         * 
         * @param layer The layer array index value, or if a string is given the layer name, within the map data that this TilemapLayer represents.
-        * @param width The rendered width of the layer, should never be wider than Game.width. If not given it will be set to Game.width.
-        * @param height The rendered height of the layer, should never be wider than Game.height. If not given it will be set to Game.height.
+        * @param width The rendered width of the layer, should never be wider than Circle.width. If not given it will be set to Circle.width.
+        * @param height The rendered height of the layer, should never be wider than Circle.height. If not given it will be set to Circle.height.
         * @param group Optional Group to add the object to. If not specified it will be added to the World group.
         * @return The TilemapLayer object. This is an extension of Phaser.Sprite and can be moved around the display list accordingly.
         */
@@ -34087,7 +34087,7 @@ declare module Phaser {
         * 
         * By default TilemapLayers have fixedToCamera set to `true`. Changing this will break Camera follow and scrolling behavior.
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         * @param tilemap The tilemap to which this layer belongs.
         * @param index The index of the TileLayer to render within the Tilemap.
         * @param width Width of the renderable area of the layer (in pixels).
@@ -34097,9 +34097,9 @@ declare module Phaser {
 
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
@@ -34116,10 +34116,10 @@ declare module Phaser {
         context: CanvasRenderingContext2D;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
@@ -34148,23 +34148,23 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -34184,7 +34184,7 @@ declare module Phaser {
         map: Phaser.Tilemap;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
@@ -34395,7 +34395,7 @@ declare module Phaser {
         /**
         * Parse tilemap data from the cache and creates data for a Tilemap object.
         * 
-        * @param game Game reference to the currently running game.
+        * @param game Circle reference to the currently running game.
         * @param key The key of the tilemap in the Cache.
         * @param tileWidth The pixel width of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data. - Default: 32
         * @param tileHeight The pixel height of a single map tile. If using CSV data you must specify this. Not required if using Tiled map data. - Default: 32
@@ -34602,7 +34602,7 @@ declare module Phaser {
 
 
         /**
-        * A useful flag to control if the Game Object is alive or dead.
+        * A useful flag to control if the Circle Object is alive or dead.
         * 
         * This is set automatically by the Health components `damage` method should the object run out of health.
         * Or you can toggle it via your game code.
@@ -34614,7 +34614,7 @@ declare module Phaser {
         alive: boolean;
 
         /**
-        * The angle property is the rotation of the Game Object in *degrees* from its original orientation.
+        * The angle property is the rotation of the Circle Object in *degrees* from its original orientation.
         * 
         * Values from 0 to 180 represent clockwise rotation; values from 0 to -180 represent counterclockwise rotation.
         * 
@@ -34627,34 +34627,34 @@ declare module Phaser {
         angle: number;
 
         /**
-        * If the Game Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
+        * If the Circle Object is enabled for animation (such as a Phaser.Sprite) this is a reference to its AnimationManager instance.
         * Through it you can create, play, pause and stop animations.
         */
         animations: Phaser.AnimationManager;
 
         /**
-        * A Game Object with `autoCull` set to true will check its bounds against the World Camera every frame.
+        * A Circle Object with `autoCull` set to true will check its bounds against the World Camera every frame.
         * If it is not intersecting the Camera bounds at any point then it has its `renderable` property set to `false`.
-        * This keeps the Game Object alive and still processing updates, but forces it to skip the render step entirely.
+        * This keeps the Circle Object alive and still processing updates, but forces it to skip the render step entirely.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         autoCull: boolean;
 
         /**
-        * `body` is the Game Objects physics body. Once a Game Object is enabled for physics you access all associated
+        * `body` is the Circle Objects physics body. Once a Circle Object is enabled for physics you access all associated
         * properties and methods via it.
         * 
-        * By default Game Objects won't add themselves to any physics system and their `body` property will be `null`.
+        * By default Circle Objects won't add themselves to any physics system and their `body` property will be `null`.
         * 
-        * To enable this Game Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
+        * To enable this Circle Object for physics you need to call `game.physics.enable(object, system)` where `object` is this object
         * and `system` is the Physics system you are using. If none is given it defaults to `Phaser.Physics.Arcade`.
         * 
-        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Game Object to a physics enabled Group.
+        * You can alternatively call `game.physics.arcade.enable(object)`, or add this Circle Object to a physics enabled Group.
         * 
-        * Important: Enabling a Game Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
-        * so the physics body is centered on the Game Object.
+        * Important: Enabling a Circle Object for P2 or Ninja physics will automatically set its `anchor` property to 0.5,
+        * so the physics body is centered on the Circle Object.
         * 
         * If you need a different result then adjust or re-create the Body shape offsets manually or reset the anchor after enabling physics.
         */
@@ -34667,30 +34667,30 @@ declare module Phaser {
         bottom: number;
 
         /**
-        * The x/y coordinate offset applied to the top-left of the camera that this Game Object will be drawn at if `fixedToCamera` is true.
+        * The x/y coordinate offset applied to the top-left of the camera that this Circle Object will be drawn at if `fixedToCamera` is true.
         * 
-        * The values are relative to the top-left of the camera view and in addition to any parent of the Game Object on the display list.
+        * The values are relative to the top-left of the camera view and in addition to any parent of the Circle Object on the display list.
         */
         cameraOffset: Phaser.Point;
 
         /**
-        * If this is set to `true` the Game Object checks if it is within the World bounds each frame.
+        * If this is set to `true` the Circle Object checks if it is within the World bounds each frame.
         * 
         * When it is no longer intersecting the world bounds it dispatches the `onOutOfBounds` event.
         * 
         * If it was *previously* out of bounds but is now intersecting the world bounds again it dispatches the `onEnterBounds` event.
         * 
-        * It also optionally kills the Game Object if `outOfBoundsKill` is `true`.
+        * It also optionally kills the Circle Object if `outOfBoundsKill` is `true`.
         * 
-        * When `checkWorldBounds` is enabled it forces the Game Object to calculate its full bounds every frame.
+        * When `checkWorldBounds` is enabled it forces the Circle Object to calculate its full bounds every frame.
         * 
-        * This is a relatively expensive operation, especially if enabled on hundreds of Game Objects. So enable it only if you know it's required,
+        * This is a relatively expensive operation, especially if enabled on hundreds of Circle Objects. So enable it only if you know it's required,
         * or you have tested performance and find it acceptable.
         */
         checkWorldBounds: boolean;
 
         /**
-        * The components this Game Object has installed.
+        * The components this Circle Object has installed.
         */
         components: any;
 
@@ -34700,28 +34700,28 @@ declare module Phaser {
         customRender: boolean;
 
         /**
-        * An empty Object that belongs to this Game Object.
+        * An empty Object that belongs to this Circle Object.
         * This value isn't ever used internally by Phaser, but may be used by your own code, or
-        * by Phaser Plugins, to store data that needs to be associated with the Game Object,
-        * without polluting the Game Object directly.
+        * by Phaser Plugins, to store data that needs to be associated with the Circle Object,
+        * without polluting the Circle Object directly.
         * Default: {}
         */
         data: any;
 
         /**
-        * A debug flag designed for use with `Game.enableStep`.
+        * A debug flag designed for use with `Circle.enableStep`.
         */
         debug: boolean;
 
         /**
-        * As a Game Object runs through its destroy method this flag is set to true,
+        * As a Circle Object runs through its destroy method this flag is set to true,
         * and can be checked in any sub-systems or plugins it is being destroyed from.
         */
         destroyPhase: boolean;
 
         /**
-        * All Phaser Game Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
-        * Game Object, or any of its components.
+        * All Phaser Circle Objects have an Events class which contains all of the events that are dispatched when certain things happen to this
+        * Circle Object, or any of its components.
         */
         events: Phaser.Events;
 
@@ -34732,25 +34732,25 @@ declare module Phaser {
         exists: boolean;
 
         /**
-        * A Game Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
+        * A Circle Object that is "fixed" to the camera is rendered at a given x/y offsets from the top left of the camera. The offsets
         * are stored in the `cameraOffset` property, which is initialized with the current object coordinates.
         * 
-        * The values are adjusted at the rendering stage, overriding the Game Objects actual world position.
+        * The values are adjusted at the rendering stage, overriding the Circle Objects actual world position.
         * 
-        * The end result is that the Game Object will appear to be 'fixed' to the camera, regardless of where in the game world
-        * the camera is viewing. This is useful if for example this Game Object is a UI item that you wish to be visible at all times
+        * The end result is that the Circle Object will appear to be 'fixed' to the camera, regardless of where in the game world
+        * the camera is viewing. This is useful if for example this Circle Object is a UI item that you wish to be visible at all times
         * regardless where in the world the camera is.
         * 
-        * Note that the `cameraOffset` values are in addition to any parent of this Game Object on the display list.
+        * Note that the `cameraOffset` values are in addition to any parent of this Circle Object on the display list.
         * 
-        * Be careful not to set `fixedToCamera` on Game Objects which are in Groups that already have `fixedToCamera` enabled on them.
+        * Be careful not to set `fixedToCamera` on Circle Objects which are in Groups that already have `fixedToCamera` enabled on them.
         */
         fixedToCamera: boolean;
 
         /**
-        * Gets or sets the current frame index of the texture being used to render this Game Object.
+        * Gets or sets the current frame index of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Game Object to use,
+        * To change the frame set `frame` to the index of the new frame in the sprite sheet you wish this Circle Object to use,
         * for example: `player.frame = 4`.
         * 
         * If the frame index given doesn't exist it will revert to the first frame found in the texture.
@@ -34762,9 +34762,9 @@ declare module Phaser {
         frame: string | number;
 
         /**
-        * Gets or sets the current frame name of the texture being used to render this Game Object.
+        * Gets or sets the current frame name of the texture being used to render this Circle Object.
         * 
-        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Game Object to use,
+        * To change the frame set `frameName` to the name of the new frame in the texture atlas you wish this Circle Object to use,
         * for example: `player.frameName = "idle"`.
         * 
         * If the frame name given doesn't exist it will revert to the first frame found in the texture and throw a console warning.
@@ -34776,34 +34776,34 @@ declare module Phaser {
         frameName: string;
 
         /**
-        * A Game Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
+        * A Circle Object is considered `fresh` if it has just been created or reset and is yet to receive a renderer transform update.
         * This property is mostly used internally by the physics systems, but is exposed for the use of plugins.
         */
         fresh: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
         /**
-        * Checks if the Game Objects bounds intersect with the Game Camera bounds.
+        * Checks if the Circle Objects bounds intersect with the Circle Camera bounds.
         * Returns `true` if they do, otherwise `false` if fully outside of the Cameras bounds.
         */
         inCamera: boolean;
 
         /**
-        * The Input Handler for this Game Object.
+        * The Input Handler for this Circle Object.
         * 
-        * By default it is disabled. If you wish this Game Object to process input events you should enable it with: `inputEnabled = true`.
+        * By default it is disabled. If you wish this Circle Object to process input events you should enable it with: `inputEnabled = true`.
         * 
         * After you have done this, this property will be a reference to the Phaser InputHandler.
         */
         input: Phaser.InputHandler;
 
         /**
-        * By default a Game Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
-        * for this Game Object and it will then start to process click / touch events and more.
+        * By default a Circle Object won't process any input events. By setting `inputEnabled` to true a Phaser.InputHandler is created
+        * for this Circle Object and it will then start to process click / touch events and more.
         * 
         * You can then access the Input Handler via `this.input`.
         * 
@@ -34811,47 +34811,47 @@ declare module Phaser {
         * 
         * If you set this property to false it will stop the Input Handler from processing any more input events.
         * 
-        * If you want to _temporarily_ disable input for a Game Object, then it's better to set
+        * If you want to _temporarily_ disable input for a Circle Object, then it's better to set
         * `input.enabled = false`, as it won't reset any of the Input Handlers internal properties.
         * You can then toggle this back on as needed.
         */
         inputEnabled: boolean;
 
         /**
-        * Checks if the Game Objects bounds are within, or intersect at any point with the Game World bounds.
+        * Checks if the Circle Objects bounds are within, or intersect at any point with the Circle World bounds.
         */
         inWorld: boolean;
 
         /**
-        * The key of the image or texture used by this Game Object during rendering.
+        * The key of the image or texture used by this Circle Object during rendering.
         * If it is a string it's the string used to retrieve the texture from the Phaser Image Cache.
         * It can also be an instance of a RenderTexture, BitmapData, Video or PIXI.Texture.
-        * If a Game Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
-        * If a Game Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
+        * If a Circle Object is created without a key it is automatically assigned the key `__default` which is a 32x32 transparent PNG stored within the Cache.
+        * If a Circle Object is given a key which doesn't exist in the Image Cache it is re-assigned the key `__missing` which is a 32x32 PNG of a green box with a line through it.
         */
         key: string | Phaser.RenderTexture | Phaser.BitmapData | Phaser.Video | PIXI.Texture;
 
         /**
-        * The left coordinate of the Game Object.
+        * The left coordinate of the Circle Object.
         * This is the same as `x - offsetX`.
         */
         left: number;
 
         /**
-        * A user defined name given to this Game Object.
+        * A user defined name given to this Circle Object.
         * This value isn't ever used internally by Phaser, it is meant as a game level property.
         */
         name: string;
 
         /**
-        * The amount the Game Object is visually offset from its x coordinate.
+        * The amount the Circle Object is visually offset from its x coordinate.
         * This is the same as `width * anchor.x`.
         * It will only be > 0 if anchor.x is not equal to zero.
         */
         offsetX: number;
 
         /**
-        * The amount the Game Object is visually offset from its y coordinate.
+        * The amount the Circle Object is visually offset from its y coordinate.
         * This is the same as `height * anchor.y`.
         * It will only be > 0 if anchor.y is not equal to zero.
         */
@@ -34863,7 +34863,7 @@ declare module Phaser {
         outOfBoundsKill: boolean;
 
         /**
-        * A Game Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
+        * A Circle Object is that is pendingDestroy is flagged to have its destroy method called on the next logic update.
         * You can set it directly to allow you to flag an object to be destroyed on its next update.
         * 
         * This is extremely useful if you wish to destroy an object from within one of its own callbacks
@@ -34885,28 +34885,28 @@ declare module Phaser {
         position: Phaser.Point;
 
         /**
-        * Enable or disable texture smoothing for this Game Object.
+        * Enable or disable texture smoothing for this Circle Object.
         * 
-        * It only takes effect if the Game Object is using an image based texture.
+        * It only takes effect if the Circle Object is using an image based texture.
         * 
         * Smoothing is enabled by default.
         */
         smoothed: boolean;
 
         /**
-        * The position the Game Object was located in the previous frame.
+        * The position the Circle Object was located in the previous frame.
         */
         previousPosition: Phaser.Point;
         previousRoation: number;
 
         /**
-        * The right coordinate of the Game Object.
+        * The right coordinate of the Circle Object.
         * This is the same as `x + width - offsetX`.
         */
         right: number;
 
         /**
-        * The y coordinate of the Game Object.
+        * The y coordinate of the Circle Object.
         * This is the same as `y - offsetY`.
         */
         top: number;
@@ -34923,31 +34923,31 @@ declare module Phaser {
         type: number;
 
         /**
-        * The world coordinates of this Game Object in pixels.
-        * Depending on where in the display list this Game Object is placed this value can differ from `position`,
-        * which contains the x/y coordinates relative to the Game Objects parent.
+        * The world coordinates of this Circle Object in pixels.
+        * Depending on where in the display list this Circle Object is placed this value can differ from `position`,
+        * which contains the x/y coordinates relative to the Circle Objects parent.
         */
         world: Phaser.Point;
 
         /**
-        * The z depth of this Game Object within its parent Group.
+        * The z depth of this Circle Object within its parent Group.
         * No two objects in a Group can have the same z value.
         * This value is adjusted automatically whenever the Group hierarchy changes.
-        * If you wish to re-order the layering of a Game Object then see methods like Group.moveUp or Group.bringToTop.
+        * If you wish to re-order the layering of a Circle Object then see methods like Group.moveUp or Group.bringToTop.
         */
         z: number;
 
 
         /**
-        * Aligns this Game Object within another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object within another Circle Object, or Rectangle, known as the
         * 'container', to one of 9 possible positions.
         * 
-        * The container must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The container must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the container. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -34956,12 +34956,12 @@ declare module Phaser {
         * `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`,
         * `Phaser.BOTTOM_CENTER` and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * container, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignIn(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -34970,24 +34970,24 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the container bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param container The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param container The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT` (default), `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_CENTER`, `Phaser.CENTER`, `Phaser.RIGHT_CENTER`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignIn(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
         /**
-        * Aligns this Game Object to the side of another Game Object, or Rectangle, known as the
+        * Aligns this Circle Object to the side of another Circle Object, or Rectangle, known as the
         * 'parent', in one of 11 possible positions.
         * 
-        * The parent must be a Game Object, or Phaser.Rectangle object. This can include properties
-        * such as `World.bounds` or `Camera.view`, for aligning Game Objects within the world
+        * The parent must be a Circle Object, or Phaser.Rectangle object. This can include properties
+        * such as `World.bounds` or `Camera.view`, for aligning Circle Objects within the world
         * and camera bounds. Or it can include other Sprites, Images, Text objects, BitmapText,
         * TileSprites or Buttons.
         * 
-        * Please note that aligning a Sprite to another Game Object does **not** make it a child of
+        * Please note that aligning a Sprite to another Circle Object does **not** make it a child of
         * the parent. It simply modifies its position coordinates so it aligns with it.
         * 
         * The position constants you can use are:
@@ -34997,12 +34997,12 @@ declare module Phaser {
         * `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER`
         * and `Phaser.BOTTOM_RIGHT`.
         * 
-        * The Game Objects are placed in such a way that their _bounds_ align with the
+        * The Circle Objects are placed in such a way that their _bounds_ align with the
         * parent, taking into consideration rotation, scale and the anchor property.
-        * This allows you to neatly align Game Objects, irrespective of their position value.
+        * This allows you to neatly align Circle Objects, irrespective of their position value.
         * 
         * The optional `offsetX` and `offsetY` arguments allow you to apply extra spacing to the final
-        * aligned position of the Game Object. For example:
+        * aligned position of the Circle Object. For example:
         * 
         * `sprite.alignTo(background, Phaser.BOTTOM_RIGHT, -20, -20)`
         * 
@@ -35011,11 +35011,11 @@ declare module Phaser {
         * So providing a negative offset will 'shrink' the parent bounds by that amount, and providing a positive
         * one expands it.
         * 
-        * @param parent The Game Object or Rectangle with which to align this Game Object to. Can also include properties such as `World.bounds` or `Camera.view`.
+        * @param parent The Circle Object or Rectangle with which to align this Circle Object to. Can also include properties such as `World.bounds` or `Camera.view`.
         * @param position The position constant. One of `Phaser.TOP_LEFT`, `Phaser.TOP_CENTER`, `Phaser.TOP_RIGHT`, `Phaser.LEFT_TOP`, `Phaser.LEFT_CENTER`, `Phaser.LEFT_BOTTOM`, `Phaser.RIGHT_TOP`, `Phaser.RIGHT_CENTER`, `Phaser.RIGHT_BOTTOM`, `Phaser.BOTTOM_LEFT`, `Phaser.BOTTOM_CENTER` or `Phaser.BOTTOM_RIGHT`.
-        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Game Object. Use a negative value to shrink the bounds, positive to increase it.
-        * @return This Game Object.
+        * @param offsetX A horizontal adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @param offsetY A vertical adjustment of the Containers bounds, applied to the aligned position of the Circle Object. Use a negative value to shrink the bounds, positive to increase it.
+        * @return This Circle Object.
         */
         alignTo(container: Phaser.Rectangle | Phaser.Sprite | Phaser.Image | Phaser.Text | Phaser.BitmapText | Phaser.Button | Phaser.Graphics | Phaser.TileSprite, position?: number, offsetX?: number, offsetY?: number): any;
 
@@ -35040,9 +35040,9 @@ declare module Phaser {
         destroy(destroyChildren?: boolean): void;
 
         /**
-        * Changes the base texture the Game Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
+        * Changes the base texture the Circle Object is using. The old texture is removed and the new one is referenced or fetched from the Cache.
         * 
-        * If your Game Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
+        * If your Circle Object is using a frame from a texture atlas and you just wish to change to another frame, then see the `frame` or `frameName` properties instead.
         * 
         * You should only use `loadTexture` if you want to replace the base texture entirely.
         * 
@@ -35090,7 +35090,7 @@ declare module Phaser {
         preUpdate(): void;
 
         /**
-        * Checks to see if the bounds of this Game Object overlaps with the bounds of the given Display Object,
+        * Checks to see if the bounds of this Circle Object overlaps with the bounds of the given Display Object,
         * which can be a Sprite, Image, TileSprite or anything that extends those such as Button or provides a `getBounds` method and result.
         * 
         * This check ignores the `hitArea` property if set and runs a `getBounds` comparison on both objects to determine the result.
@@ -35099,7 +35099,7 @@ declare module Phaser {
         * It should be fine for low-volume testing where physics isn't required.
         * 
         * @param displayObject The display object to check against.
-        * @return True if the bounds of this Game Object intersects at any point with the bounds of the given display object.
+        * @return True if the bounds of this Circle Object intersects at any point with the bounds of the given display object.
         */
         overlap(displayObject: Phaser.Sprite | Phaser.Image | Phaser.TileSprite | Phaser.Button | PIXI.DisplayObject): boolean;
 
@@ -35115,7 +35115,7 @@ declare module Phaser {
         reset(x: number, y: number, health?: number): Phaser.TileSprite;
 
         /**
-        * Resizes the Frame dimensions that the Game Object uses for rendering.
+        * Resizes the Frame dimensions that the Circle Object uses for rendering.
         * 
         * You shouldn't normally need to ever call this, but in the case of special texture types such as Video or BitmapData
         * it can be useful to adjust the dimensions directly in this way.
@@ -35127,12 +35127,12 @@ declare module Phaser {
         resizeFrame(parent: any, width: number, height: number): void;
 
         /**
-        * Resets the texture frame dimensions that the Game Object uses for rendering.
+        * Resets the texture frame dimensions that the Circle Object uses for rendering.
         */
         resetFrame(): void;
 
         /**
-        * Sets the texture frame the Game Object uses for rendering.
+        * Sets the texture frame the Circle Object uses for rendering.
         * 
         * This is primarily an internal method used by `loadTexture`, but is exposed for the use of plugins and custom classes.
         * 
@@ -35149,7 +35149,7 @@ declare module Phaser {
         /**
         * Override this method in your own custom objects to handle any update requirements.
         * It is called immediately after `preUpdate` and before `postUpdate`.
-        * Remember if this Game Object has any children you should call update on those too.
+        * Remember if this Circle Object has any children you should call update on those too.
         */
         update(): void;
 
@@ -35166,11 +35166,11 @@ declare module Phaser {
     * 
     * There are different *types* of time in Phaser:
     * 
-    * - ***Game time*** always runs at the speed of time in real life.
+    * - ***Circle time*** always runs at the speed of time in real life.
     * 
     *   Unlike wall-clock time, *game time stops when Phaser is paused*.
     * 
-    *   Game time is used for {@link Phaser.Timer timer events}.
+    *   Circle time is used for {@link Phaser.Timer timer events}.
     * 
     * - ***Physics time*** represents the amount of time given to physics calculations.
     * 
@@ -35196,11 +35196,11 @@ declare module Phaser {
         * 
         * There are different *types* of time in Phaser:
         * 
-        * - ***Game time*** always runs at the speed of time in real life.
+        * - ***Circle time*** always runs at the speed of time in real life.
         * 
         *   Unlike wall-clock time, *game time stops when Phaser is paused*.
         * 
-        *   Game time is used for {@link Phaser.Timer timer events}.
+        *   Circle time is used for {@link Phaser.Timer timer events}.
         * 
         * - ***Physics time*** represents the amount of time given to physics calculations.
         * 
@@ -35234,7 +35234,7 @@ declare module Phaser {
         desiredFps: number;
 
         /**
-        * The desiredFps multiplier as used by Game.update.
+        * The desiredFps multiplier as used by Circle.update.
         */
         desiredFpsMult: number;
 
@@ -35340,7 +35340,7 @@ declare module Phaser {
         * The physics update delta, in fractional seconds.
         * 
         * This should be used as an applicable multiplier by all logic update steps (eg. `preUpdate/postUpdate/update`)
-        * to ensure consistent game timing. Game/logic timing can drift from real-world time if the system
+        * to ensure consistent game timing. Circle/logic timing can drift from real-world time if the system
         * is unable to consistently maintain the desired FPS.
         * 
         * With fixed-step updates this is normally equivalent to `1.0 / desiredFps`.
@@ -35431,7 +35431,7 @@ declare module Phaser {
         add(timer: Phaser.Timer): Phaser.Timer;
 
         /**
-        * Called automatically by Phaser.Game after boot. Should not be called directly.
+        * Called automatically by Phaser.Circle after boot. Should not be called directly.
         */
         boot(): void;
 
@@ -35476,7 +35476,7 @@ declare module Phaser {
         totalElapsedSeconds(): number;
 
         /**
-        * Updates the game clock and if enabled the advanced timing data. This is called automatically by Phaser.Game.
+        * Updates the game clock and if enabled the advanced timing data. This is called automatically by Phaser.Circle.
         * 
         * @param time The current relative timestamp; see {@link Phaser.Time#now now}.
         */
@@ -36018,7 +36018,7 @@ declare module Phaser {
         frameBased: boolean;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -36454,7 +36454,7 @@ declare module Phaser {
         easingFunction: Function;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 
@@ -36589,7 +36589,7 @@ declare module Phaser {
 
 
     /**
-    * Phaser.Game has a single instance of the TweenManager through which all Tween objects are created and updated.
+    * Phaser.Circle has a single instance of the TweenManager through which all Tween objects are created and updated.
     * Tweens are hooked into the game clock and pause system, adjusting based on the game state.
     * 
     * TweenManager is based heavily on tween.js by http://soledadpenades.com.
@@ -36601,7 +36601,7 @@ declare module Phaser {
 
 
         /**
-        * Phaser.Game has a single instance of the TweenManager through which all Tween objects are created and updated.
+        * Phaser.Circle has a single instance of the TweenManager through which all Tween objects are created and updated.
         * Tweens are hooked into the game clock and pause system, adjusting based on the game state.
         * 
         * TweenManager is based heavily on tween.js by http://soledadpenades.com.
@@ -36944,7 +36944,7 @@ declare module Phaser {
             font: string;
 
             /**
-            * A reference to the currently running Game.
+            * A reference to the currently running Circle.
             */
             game: Phaser.Game;
 
@@ -37352,7 +37352,7 @@ declare module Phaser {
         * weapon.createBullets(10, 'bullet');
         * ```
         * 
-        * @param game A reference to the current Phaser.Game instance.
+        * @param game A reference to the current Phaser.Circle instance.
         * @param parent The Phaser Plugin Manager which looks after this plugin.
         */
         constructor(game: Phaser.Game, parent: Phaser.PluginManager);
@@ -37726,7 +37726,7 @@ declare module Phaser {
         * single Weapon instance must share the same texture key however.
         * 
         * @param quantity The quantity of bullets to seed the Weapon with. If -1 it will set the pool to automatically expand. - Default: 1
-        * @param key The Game.cache key of the image that this Sprite will use.
+        * @param key The Circle.cache key of the image that this Sprite will use.
         * @param frame If the Sprite image contains multiple frames you can specify which one to use here.
         * @param group Optional Group to add the object to. If not specified it will be added to the World group.
         * @return This Weapon instance.
@@ -37734,7 +37734,7 @@ declare module Phaser {
         createBullets(quantity?: number, key?: any, frame?: any, group?: Phaser.Group): Phaser.Weapon;
 
         /**
-        * Uses `Game.Debug` to draw some useful information about this Weapon, including the number of bullets
+        * Uses `Circle.Debug` to draw some useful information about this Weapon, including the number of bullets
         * both in-flight, and available. And optionally the physics debug bodies of the bullets.
         * 
         * @param x The coordinate, in screen space, at which to draw the Weapon debug data. - Default: 16
@@ -37939,7 +37939,7 @@ declare module Phaser {
         /**
         * Sets this Weapon to track the given Pointer.
         * When a Weapon tracks a Pointer it will automatically update its {@link Phaser.Weapon#fireFrom fireFrom} value to match the Pointer's
-        * position within the Game World, adjusting the coordinates based on the offset arguments.
+        * position within the Circle World, adjusting the coordinates based on the offset arguments.
         * 
         * This allows you to lock a Weapon to a Pointer, so that bullets are always launched from its location.
         * 
@@ -37956,7 +37956,7 @@ declare module Phaser {
         /**
         * Sets this Weapon to track the given Sprite, or any Object with a public {@link Phaser.Component.Core#world world} Point object.
         * When a Weapon tracks a Sprite it will automatically update its {@link Phaser.Weapon#fireFrom fireFrom} value to match the Sprite's
-        * position within the Game World, adjusting the coordinates based on the offset arguments.
+        * position within the Circle World, adjusting the coordinates based on the offset arguments.
         * 
         * This allows you to lock a Weapon to a Sprite, so that bullets are always launched from its location.
         * 
@@ -37998,7 +37998,7 @@ declare module Phaser {
 
         /**
         * The World has no fixed size, but it does have a bounds outside of which objects are no longer considered as being "in world" and you should use this to clean-up the display list and purge dead objects.
-        * By default we set the Bounds to be from 0,0 to Game.width,Game.height. I.e. it will match the size given to the game constructor with 0,0 representing the top-left of the display.
+        * By default we set the Bounds to be from 0,0 to Circle.width,Circle.height. I.e. it will match the size given to the game constructor with 0,0 representing the top-left of the display.
         * However 0,0 is actually the center of the world, and if you rotate or scale the world all of that will happen from 0,0.
         * So if you want to make a game in which the world itself will rotate you should adjust the bounds so that 0,0 is the center point, i.e. set them to -1000,-1000,2000,2000 for a 2000x2000 sized world centered around 0,0. Bound of this world that objects can not escape from.
         */
@@ -38020,7 +38020,7 @@ declare module Phaser {
         centerY: number;
 
         /**
-        * A reference to the currently running Game.
+        * A reference to the currently running Circle.
         */
         game: Phaser.Game;
 

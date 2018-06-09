@@ -3,7 +3,7 @@ class Connect4 extends Phaser.Game {
         super(500, 710, Phaser.AUTO, divID, null, false);
         this.state.add("MenuState", new MenuState());
         this.state.start("MenuState", true, false);
-        console.log("New Game object created.");
+        console.log("New Circle object created.");
     }
 }
 window.onload = () => {
