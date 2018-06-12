@@ -5918,7 +5918,7 @@ module.exports={
             "name": "curve",
             "chainable": 1,
             "example": [
-                "\n<div>\n<code>\nnoFill();\nstroke(255, 102, 0);\ncurve(5, 26, 5, 26, 73, 24, 73, 61);\nstroke(0);\ncurve(5, 26, 73, 24, 73, 61, 15, 65);\nstroke(255, 102, 0);\ncurve(73, 24, 73, 61, 15, 65, 15, 65);\n</code>\n</div>\n<div>\n<code>\n// Define the curve points as JavaScript objects\nvar p1 = { x: 5, y: 26 },\n p2 = { x: 73, y: 24 };\nvar p3 = { x: 73, y: 61 },\n p4 = { x: 15, y: 65 };\nnoFill();\nstroke(255, 102, 0);\ncurve(p1.x, p1.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);\nstroke(0);\ncurve(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);\nstroke(255, 102, 0);\ncurve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);\n</code>\n</div>\n<div>\n<code>\nnoFill();\nstroke(255, 102, 0);\ncurve(5, 26, 0, 5, 26, 0, 73, 24, 0, 73, 61, 0);\nstroke(0);\ncurve(5, 26, 0, 73, 24, 0, 73, 61, 0, 15, 65, 0);\nstroke(255, 102, 0);\ncurve(73, 24, 0, 73, 61, 0, 15, 65, 0, 15, 65, 0);\n</code>\n</div>"
+                "\n<div>\n<code>\nnoFill();\nstroke(255, 102, 0);\ncurve(5, 26, 5, 26, 73, 24, 73, 61);\nstroke(0);\ncurve(5, 26, 73, 24, 73, 61, 15, 65);\nstroke(255, 102, 0);\ncurve(73, 24, 73, 61, 15, 65, 15, 65);\n</code>\n</div>\n<div>\n<code>\n// Define the curve points as JavaScript objects\nvar Red = { x: 5, y: 26 },\n p2 = { x: 73, y: 24 };\nvar p3 = { x: 73, y: 61 },\n p4 = { x: 15, y: 65 };\nnoFill();\nstroke(255, 102, 0);\ncurve(Red.x, Red.y, Red.x, Red.y, p2.x, p2.y, p3.x, p3.y);\nstroke(0);\ncurve(Red.x, Red.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);\nstroke(255, 102, 0);\ncurve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);\n</code>\n</div>\n<div>\n<code>\nnoFill();\nstroke(255, 102, 0);\ncurve(5, 26, 0, 5, 26, 0, 73, 24, 0, 73, 61, 0);\nstroke(0);\ncurve(5, 26, 0, 73, 24, 0, 73, 61, 0, 15, 65, 0);\nstroke(255, 102, 0);\ncurve(73, 24, 0, 73, 61, 0, 15, 65, 0, 15, 65, 0);\n</code>\n</div>"
             ],
             "alt": "horseshoe shape with orange ends facing left and black curved center.\nhorseshoe shape with orange ends facing left and black curved center.\ncurving black and orange lines.",
             "class": "p5",
@@ -47224,15 +47224,15 @@ p5.prototype.bezierTangent = function(a, b, c, d, t) {
  * <div>
  * <code>
  * // Define the curve points as JavaScript objects
- * var p1 = { x: 5, y: 26 },
+ * var Red = { x: 5, y: 26 },
   p2 = { x: 73, y: 24 };
  * var p3 = { x: 73, y: 61 },
   p4 = { x: 15, y: 65 };
  * noFill();
  * stroke(255, 102, 0);
- * curve(p1.x, p1.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+ * curve(Red.x, Red.y, Red.x, Red.y, p2.x, p2.y, p3.x, p3.y);
  * stroke(0);
- * curve(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
+ * curve(Red.x, Red.y, p2.x, p2.y, p3.x, p3.y, p4.x, p4.y);
  * stroke(255, 102, 0);
  * curve(p2.x, p2.y, p3.x, p3.y, p4.x, p4.y, p4.x, p4.y);
  * </code>
