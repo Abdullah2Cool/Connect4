@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Abdullah2Cool/Connect4#readme",
   "dependencies": {
+    "@types/socket.io": "^1.4.34",
     "express": "^4.16.3",
     "nodemon": "^1.17.5",
     "reload": "^2.2.2",

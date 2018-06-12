@@ -1,3 +1,5 @@
+import {Player} from "./Player";
+
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
@@ -15,3 +17,26 @@ app.get('/*', function (req, res) {
 
 server.listen(process.env.PORT || 3000);
 console.log("Server started on localhost:3000");
+
+const io = require('socket.io')(server, {});
+
+const All_SOCKETS = {};
+const ALL_PLAYERS = {};
+
+io.on("connect", function (socket) {
+    console.log(`Socket Connected: ${socket.id}`);
+    All_SOCKETS[socket.id] = socket;
+    let currentPlayer = new Player(socket.id);
+    ALL_PLAYERS[socket.id] = currentPlayer;
+
+    socket.emit("serverState", {
+        id: socket.id
+    });
+
+    socket.on("disconnect", function () {
+        delete ALL_PLAYERS[socket.id];
+        delete All_SOCKETS[socket.id];
+
+        console.log(`Socket disconnected: ${socket.id}`)
+    })
+});
