@@ -2,66 +2,114 @@ import {Player} from "./Player";
 import {TileState} from "./Util";
 
 export class Game {
-    Red: Player;
-    Blue: Player;
-    grid: Grid = new Grid(7, 6);
-    turn: TileState = TileState.Red;
-    redWins: number = 0;
-    blueWins: number = 0;
-    nRedTiles: number = 0;
-    nBlueTiles: number = 0;
+    board: TileState[][];
+    turn: TileState;
+    nWidth: number = 7;
+    nHeight: number = 6;
+    redTiles: number = 0;
+    blueTiles: number = 0;
+    win: boolean = false;
+    players = {};
+
 
     constructor(p1: Player, p2: Player) {
-        this.Red = p1;
-        this.Blue = p2;
+        this.turn = TileState.Red;
 
-        this.Red.color = TileState.Red;
-        this.Blue.color = TileState.Blue;
+        p1.color = TileState.Red;
+        p2.color = TileState.Blue;
+
+        this.players[p1.color] = p1;
+        this.players[p2.color] = p2;
+
+        this.board = [];
+        for (let i = 0; i < this.nHeight; i++) {
+            this.board[i] = [];
+            for (let j = 0; j < this.nWidth; j++) {
+                this.board[i][j] = TileState.Empty;
+            }
+        }
+
+        p1.socket.emit("setColor", {
+            color: 0
+        });
+
+        p2.socket.emit("setColor", {
+            color: 1
+        });
+
+        this.players[this.turn].socket.emit("changeTurn", {
+            turn: true
+        });
+
         console.log(`${p1.id} is matched with ${p2.id}`);
     }
 
-    update(tileColumn: number, playerColor: TileState) {
-        if (this.turn != playerColor) return;
+    update(tileColumn: number, player: Player) {
 
-        for (let i = this.grid.board.length - 1; i >= 0; i--) {
-            if (this.grid[i][tileColumn] == TileState.Empty) {
-                this.grid[i][tileColumn] = this.turn;
-                if (this.turn == TileState.Red) this.nRedTiles++;
-                else this.nBlueTiles++;
-                this.redTurn = !this.redTurn;
+        if (this.turn != player.color) return;
+
+        console.log(`Turn: ${this.turn} , Player: ${player.color}`);
+
+        for (let i = this.board.length - 1; i >= 0; i--) {
+            if (this.board[i][tileColumn] == TileState.Empty) {
+                this.board[i][tileColumn] = this.turn;
+                if (this.turn == TileState.Red) this.redTiles++;
+                else this.blueTiles++;
                 break;
             }
         }
 
+        if (this.checkWin()) {
+            let winner: Player = this.players[this.turn];
+            let loser: Player = this.players[(this.turn == TileState.Blue) ? TileState.Red : TileState.Blue];
+            winner.socket.emit("WIN");
+            loser.socket.emit("LOSE");
+
+            winner.wins++;
+            console.log("Somebody Won")
+        }
+
+        this.players[this.turn].socket.emit("changeTurn", {
+            turn: false
+        });
+        this.players[(this.turn == TileState.Blue) ? TileState.Red : TileState.Blue].socket.emit("changeTurn", {
+            turn: true,
+            move: tileColumn
+        });
+
         this.turn = (this.turn == TileState.Blue) ? TileState.Red : TileState.Blue;
+
+
+        for (let y = 0; y < this.nHeight; y++) {
+            for (let x = 0; x < this.nWidth; x++) {
+                switch (this.board[y][x]) {
+                    case TileState.Blue:
+                        process.stdout.write("B ");
+                        break;
+                    case TileState.Red:
+                        process.stdout.write("R ");
+                        break;
+                    default:
+                        process.stdout.write("- ");
+                        break
+                }
+            }
+            console.log();
+        }
     }
 
-
-}
-
-
-class Grid {
-    nWidth: number;
-    nHeight: number;
-    board: TileState[][];
-    isPressed: boolean;
-    win: boolean;
-    sWinner: String;
-
-
-    constructor(nWidth, nHeight) {
-        this.nWidth = nWidth;
-        this.nHeight = nHeight;
-        this.init();
-    }
-
-    init() {
-        // console.log("INIT");
+    reset() {
+        for (let i in this.players) {
+            this.players[i].socket.emit("reset");
+        }
         this.win = false;
-        this.isPressed = false;
-        this.sWinner = "";
-        this.nRedTiles = 0;
-        this.nBlueTiles = 0;
+        this.redTiles = 0;
+        this.blueTiles = 0;
+
+        this.players[this.turn].socket.emit("changeTurn", {
+            turn: true
+        });
+
         this.board = [];
         for (let i = 0; i < this.nHeight; i++) {
             this.board[i] = [];
@@ -73,8 +121,11 @@ class Grid {
 
     checkWin() {
         // console.log("CHECKWIN");
-        let winColor: TileState = (!this.redTurn) ? TileState.Red : TileState.Blue; //!redTurn means red just went, so check for red win
-        let nWinTiles = (!this.redTurn) ? this.nRedTiles : this.nBlueTiles, nTotal = nWinTiles, nConnected;
+        let winColor: TileState = this.turn;
+        let nWinTiles = (this.turn == TileState.Blue) ? this.blueTiles : this.redTiles;
+        let nTotal = nWinTiles;
+        let nConnected = 0;
+
         if (nWinTiles < 4) return false;
 
         for (let y = this.board.length - 1; y >= 0; y--) {  //HORIZONTAL
@@ -84,7 +135,6 @@ class Grid {
                 if (this.board[y][x] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -102,7 +152,6 @@ class Grid {
                 if (this.board[y][x] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -120,7 +169,6 @@ class Grid {
                 if (this.board[y][x2] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -136,7 +184,6 @@ class Grid {
                 if (this.board[y2][x] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -154,7 +201,6 @@ class Grid {
                 if (this.board[y][x2] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -170,7 +216,6 @@ class Grid {
                 if (this.board[y2][x] == winColor) {
                     nConnected++;
                     if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
                         return true;
                     }
                 } else {
@@ -179,7 +224,6 @@ class Grid {
                 }
             }
         }
-
         return false;
     }
 

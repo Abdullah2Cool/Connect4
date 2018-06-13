@@ -5,21 +5,29 @@ var TileState;
     TileState[TileState["Empty"] = 2] = "Empty";
 })(TileState || (TileState = {}));
 class Grid {
-    constructor(nWidth, nHeight) {
+    constructor(nWidth, nHeight, socket) {
         this.nRedTiles = 0;
         this.nBlueTiles = 0;
         this.nRedWins = 0;
         this.nBlueWins = 0;
-        this.redTurn = true;
+        this.isTurn = false;
+        this.isWinner = false;
         this.nWidth = nWidth;
         this.nHeight = nHeight;
+        this.socket = socket;
+        this.socket.on("changeTurn", this.onChangeTurn.bind(this));
+        this.socket.on("setColor", this.onSetColor.bind(this));
+        this.socket.on("WIN", this.onWin.bind(this));
+        this.socket.on("LOSE", this.onLose.bind(this));
+        this.socket.on("reset", this.onReset.bind(this));
         this.init();
     }
     init() {
         // console.log("INIT");
-        this.win = false;
+        this.isTurn = false;
+        this.isWinner = false;
+        this.gameOver = false;
         this.isPressed = false;
-        this.sWinner = "";
         this.nRedTiles = 0;
         this.nBlueTiles = 0;
         this.board = [];
@@ -30,162 +38,78 @@ class Grid {
             }
         }
     }
+    onChangeTurn(data) {
+        this.isTurn = data.turn;
+        if (data.turn) {
+            for (let i = this.board.length - 1; i >= 0; i--) {
+                if (this.board[i][data.move] == TileState.Empty) {
+                    this.board[i][data.move] = (this.myColor == TileState.Red) ? TileState.Blue : TileState.Red;
+                    break;
+                }
+            }
+        }
+        console.log(`My Turn: ${data.turn}`);
+    }
+    onLose(data) {
+        this.gameOver = true;
+        this.nBlueWins++;
+        this.isWinner = false;
+        console.log(`I lost`);
+    }
+    onWin(data) {
+        this.gameOver = true;
+        this.nRedWins++;
+        this.isWinner = true;
+        console.log(`I won`);
+    }
+    onReset(data) {
+        this.init();
+    }
+    onSetColor(data) {
+        if (data.color == 0)
+            this.myColor = TileState.Red;
+        else
+            this.myColor = TileState.Blue;
+    }
     run(p) {
         // console.log("RUN");
-        if (this.win) {
-            if (p.keyIsPressed && p.key == 'r' || p.key == 'R')
-                this.init();
+        this.draw(p);
+        if (this.gameOver) {
+            if (p.keyIsPressed && (p.key == 'r' || p.key == 'R'))
+                this.socket.emit("requestReset");
             return;
         }
         this.update(p);
-        this.win = this.checkWin();
-        this.draw(p);
     }
     update(p) {
         // console.log("UPDATE");
         if (p.mouseIsPressed && !this.isPressed) {
-            this.isPressed = true;
-            try {
-                if (p.mouseY < p.height - 100) {
-                    let nRow = Math.floor(p.mouseX / nTileSize);
-                    for (let i = this.board.length - 1; i >= 0; i--) {
-                        if (this.board[i][nRow] == TileState.Empty) {
-                            this.board[i][nRow] = (this.redTurn) ? TileState.Red : TileState.Blue;
-                            if (this.redTurn)
-                                this.nRedTiles++;
-                            else
-                                this.nBlueTiles++;
-                            this.redTurn = !this.redTurn;
-                            break;
+            if (this.isTurn) {
+                this.isPressed = true;
+                try {
+                    if (p.mouseY < p.height - 100) {
+                        let nColumn = Math.floor(p.mouseX / nTileSize);
+                        for (let i = this.board.length - 1; i >= 0; i--) {
+                            if (this.board[i][nColumn] == TileState.Empty) {
+                                this.board[i][nColumn] = this.myColor;
+                                this.socket.emit("sendMove", {
+                                    move: nColumn
+                                });
+                                break;
+                            }
                         }
                     }
                 }
+                catch (e) {
+                }
             }
-            catch (e) {
+            else {
+                console.log("Not my turn.");
             }
         }
         else if (!p.mouseIsPressed) {
             this.isPressed = false;
         }
-    }
-    checkWin() {
-        // console.log("CHECKWIN");
-        let winColor = (!this.redTurn) ? TileState.Red : TileState.Blue; //!redTurn means red just went, so check for red win
-        let nWinTiles = (!this.redTurn) ? this.nRedTiles : this.nBlueTiles, nTotal = nWinTiles, nConnected;
-        if (nWinTiles < 4)
-            return false;
-        for (let y = this.board.length - 1; y >= 0; y--) { //HORIZONTAL
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let x = 0; x < this.board[y].length; x++) {
-                if (this.board[y][x] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        nTotal = nWinTiles;
-        for (let x = 0; x < this.board[0].length; x++) { //VERTICAL
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let y = this.board.length - 1; y >= 0; y--) {
-                if (this.board[y][x] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        nTotal = nWinTiles;
-        for (let x = 0; x < this.board[0].length - 3; x++) { //NORTHEAST DIAGONAL
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let y = this.board.length - 1, x2 = x; y >= 0 && x2 < this.board[0].length; y--, x2++) {
-                if (this.board[y][x2] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        for (let y = this.board.length - 2; y >= 3; y--) {
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let y2 = y, x = 0; y2 >= 0 && x < this.board[0].length; y2--, x++) {
-                if (this.board[y2][x] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        nTotal = nWinTiles;
-        for (let x = this.board[0].length - 1; x >= 3; x--) { //NORTHWEST DIAGONAL
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let y = this.board.length - 1, x2 = x; y >= 0 && x2 >= 0; y--, x2--) {
-                if (this.board[y][x2] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        for (let y = this.board.length - 2; y >= 3; y--) {
-            if (nTotal < 4)
-                break;
-            nConnected = 0;
-            for (let y2 = y, x = this.board[0].length - 1; y2 >= 0 && x >= 0; y2--, x--) {
-                if (this.board[y2][x] == winColor) {
-                    nConnected++;
-                    if (nConnected == 4) {
-                        this.sWinner = (!this.redTurn) ? "RED" : "BLUE";
-                        return true;
-                    }
-                }
-                else {
-                    nTotal -= nConnected;
-                    nConnected = 0;
-                }
-            }
-        }
-        return false;
     }
     draw(p) {
         // console.log("DRAW");
@@ -208,24 +132,18 @@ class Grid {
                 p.ellipse(x * nTileSize + nTileSize / 2, y * nTileSize + nTileSize / 2, nTileSize * 7 / 8, nTileSize * 7 / 8);
             }
         }
-        if (this.sWinner == "RED") {
-            this.nRedWins++;
-        }
-        else if (this.sWinner == "BLUE") {
-            this.nBlueWins++;
-        }
         p.textSize(p.width / 8);
         p.fill("#FF0000");
         p.text("RED:" + this.nRedWins, p.width * 1 / 4, p.height - 100 / 2 - 10);
         p.fill("#0000FF");
         p.text("BLUE:" + this.nBlueWins, p.width * 3 / 4, p.height - 100 / 2 - 10);
-        if (this.win) {
+        if (this.gameOver) {
             p.textSize(p.width / 8);
-            if (this.sWinner == "RED") {
+            if (this.isWinner) {
                 p.fill("#FF0000");
                 p.text("RED WINS", p.width / 2, p.height / 2 - 100 / 2);
             }
-            else if (this.sWinner == "BLUE") {
+            else {
                 p.fill("#0000FF");
                 p.text("BLUE WINS", p.width / 2, p.height / 2 - 100 / 2);
             }

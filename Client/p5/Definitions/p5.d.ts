@@ -9215,17 +9215,17 @@ declare namespace p5 {
     play(startTime?: number, rate?: number, amp?: number, cueStart?: number, duration?: number): void
     
     /**
-     *   p5.SoundFile has two play modes: restart and 
+     *   p5.SoundFile has two play modes: reset and
      *   sustain. Play Mode determines what happens to a 
      *   p5.SoundFile if it is triggered while in the 
      *   middle of playback. In sustain mode, playback will 
      *   continue simultaneous to the new playback. In 
-     *   restart mode, play() will stop playback and start 
+     *   reset mode, play() will stop playback and start
      *   over. With untilDone, a sound will play only if 
      *   it's not already playing. Sustain is the default 
      *   mode.
      *
-     *   @param str 'restart' or 'sustain' or 'untilDone'
+     *   @param str 'reset' or 'sustain' or 'untilDone'
      */
     playMode(str: string): void
     

@@ -29713,7 +29713,7 @@ declare module Phaser {
         * @param position The starting position to play the sound from - this is ignored if you provide a marker.
         * @param volume Volume of the sound you want to play. If none is given it will use the volume given to the Sound when it was created (which defaults to 1 if none was specified). - Default: 1
         * @param loop Loop when finished playing? If not using a marker / audio sprite the looping will be done via the WebAudio loop property, otherwise it's time based.
-        * @param forceRestart If the sound is already playing you can set forceRestart to restart it from the beginning. - Default: true
+        * @param forceRestart If the sound is already playing you can set forceRestart to reset it from the beginning. - Default: true
         * @return This sound instance.
         */
         play(marker?: string, position?: number, volume?: number, loop?: boolean, forceRestart?: boolean): Phaser.Sound;
@@ -36175,7 +36175,7 @@ declare module Phaser {
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden.
         * @param autoStart Set to `true` to allow this tween to start automatically. Otherwise call Tween.start().
         * @param delay Delay before this tween will start in milliseconds. Defaults to 0, no delay.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */
@@ -36192,7 +36192,7 @@ declare module Phaser {
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden.
         * @param autoStart Set to `true` to allow this tween to start automatically. Otherwise call Tween.start().
         * @param delay Delay before this tween will start in milliseconds. Defaults to 0, no delay.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */
@@ -36336,7 +36336,7 @@ declare module Phaser {
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden.
         * @param autoStart Set to `true` to allow this tween to start automatically. Otherwise call Tween.start().
         * @param delay Delay before this tween will start in milliseconds. Defaults to 0, no delay.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */
@@ -36353,7 +36353,7 @@ declare module Phaser {
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden.
         * @param autoStart Set to `true` to allow this tween to start automatically. Otherwise call Tween.start().
         * @param delay Delay before this tween will start in milliseconds. Defaults to 0, no delay.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This only effects this individual tween, not any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */
@@ -36535,7 +36535,7 @@ declare module Phaser {
         * @param duration Duration of this tween in ms. - Default: 1000
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden at will.
         * @param delay Delay before this tween will start, defaults to 0 (no delay). Value given is in ms.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This ignores any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This ignores any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */
@@ -36571,7 +36571,7 @@ declare module Phaser {
         * @param duration Duration of this tween in ms. - Default: 1000
         * @param ease Easing function. If not set it will default to Phaser.Easing.Default, which is Phaser.Easing.Linear.None by default but can be over-ridden at will.
         * @param delay Delay before this tween will start, defaults to 0 (no delay). Value given is in ms.
-        * @param repeat Should the tween automatically restart once complete? If you want it to run forever set as -1. This ignores any chained tweens.
+        * @param repeat Should the tween automatically reset once complete? If you want it to run forever set as -1. This ignores any chained tweens.
         * @param yoyo A tween that yoyos will reverse itself and play backwards automatically. A yoyo'd tween doesn't fire the Tween.onComplete event, so listen for Tween.onLoop instead.
         * @return This Tween object.
         */

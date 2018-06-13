@@ -19310,18 +19310,18 @@ module.exports={
         {
             "file": "lib/addons/p5.sound.js",
             "line": 1109,
-            "description": "<p>p5.SoundFile has two play modes: <code>restart</code> and\n<code>sustain</code>. Play Mode determines what happens to a\np5.SoundFile if it is triggered while in the middle of playback.\nIn sustain mode, playback will continue simultaneous to the\nnew playback. In restart mode, play() will stop playback\nand start over. With untilDone, a sound will play only if it&#39;s\nnot already playing. Sustain is the default mode.</p>\n",
+            "description": "<p>p5.SoundFile has two play modes: <code>reset</code> and\n<code>sustain</code>. Play Mode determines what happens to a\np5.SoundFile if it is triggered while in the middle of playback.\nIn sustain mode, playback will continue simultaneous to the\nnew playback. In reset mode, play() will stop playback\nand start over. With untilDone, a sound will play only if it&#39;s\nnot already playing. Sustain is the default mode.</p>\n",
             "itemtype": "method",
             "name": "playMode",
             "params": [
                 {
                     "name": "str",
-                    "description": "<p>&#39;restart&#39; or &#39;sustain&#39; or &#39;untilDone&#39;</p>\n",
+                    "description": "<p>&#39;reset&#39; or &#39;sustain&#39; or &#39;untilDone&#39;</p>\n",
                     "type": "String"
                 }
             ],
             "example": [
-                "\n<div><code>\nfunction setup(){\n  mySound = loadSound('assets/Damscray_DancingTiger.mp3');\n}\nfunction mouseClicked() {\n  mySound.playMode('sustain');\n  mySound.play();\n}\nfunction keyPressed() {\n  mySound.playMode('restart');\n  mySound.play();\n}\n\n </code></div>"
+                "\n<div><code>\nfunction setup(){\n  mySound = loadSound('assets/Damscray_DancingTiger.mp3');\n}\nfunction mouseClicked() {\n  mySound.playMode('sustain');\n  mySound.play();\n}\nfunction keyPressed() {\n  mySound.playMode('reset');\n  mySound.play();\n}\n\n </code></div>"
             ],
             "class": "p5.SoundFile",
             "module": "p5.sound",
