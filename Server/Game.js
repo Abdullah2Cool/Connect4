@@ -48,9 +48,8 @@ class Game {
         }
         if (this.checkWin()) {
             let winner = this.players[this.turn];
-            let loser = this.players[(this.turn == Util_1.TileState.Blue) ? Util_1.TileState.Red : Util_1.TileState.Blue];
             winner.socket.emit("WIN");
-            loser.socket.emit("LOSE");
+            winner.partner.socket.emit("LOSE");
             winner.wins++;
             console.log("Somebody Won");
         }

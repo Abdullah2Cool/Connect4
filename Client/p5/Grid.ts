@@ -15,7 +15,8 @@ class Grid {
     socket: any;
     isTurn: boolean = false;
     isWinner = false;
-    myColor: TileState
+    myColor: TileState;
+    sWinner: String;
 
 
     constructor(nWidth, nHeight, socket: any) {
@@ -63,14 +64,22 @@ class Grid {
 
     onLose(data) {
         this.gameOver = true;
-        this.nBlueWins++;
+        if (this.myColor == TileState.Red) {
+            this.nBlueWins++;
+        } else {
+            this.nRedWins++;
+        }
         this.isWinner = false;
         console.log(`I lost`);
     }
 
     onWin(data) {
         this.gameOver = true;
-        this.nRedWins++;
+        if (this.myColor == TileState.Red) {
+            this.nRedWins++;
+        } else {
+            this.nBlueWins++;
+        }
         this.isWinner = true;
         console.log(`I won`);
     }
@@ -146,22 +155,25 @@ class Grid {
             }
         }
 
-        p.textSize(p.width / 8);
+        p.textSize(p.width / 12);
         p.fill("#FF0000");
-        p.text("RED:" + this.nRedWins, p.width * 1 / 4, p.height - 100 / 2 - 10);
+        p.text("RED:" + this.nRedWins, p.width * 1 / 4, p.height - 100 / 2 - 20);
         p.fill("#0000FF");
-        p.text("BLUE:" + this.nBlueWins, p.width * 3 / 4, p.height - 100 / 2 - 10);
-
+        p.text("BLUE:" + this.nBlueWins, p.width * 3 / 4, p.height - 100 / 2 - 20);
+        p.textSize(p.width / 16);
+        if(this.isTurn) {
+            p.fill(this.myColor == TileState.Red ? "#FF0000" : "#0000FF");
+            p.text("YOUR TURN", p.width / 2, p.height - 20);
+        } else {
+            p.fill(this.myColor == TileState.Red ? "#0000FF" : "#FF0000");
+            p.text("OPPONENTS TURN", p.width / 2, p.height - 20);
+        }
 
         if (this.gameOver) {
             p.textSize(p.width / 8);
-            if (this.isWinner) {
-                p.fill("#FF0000");
-                p.text("RED WINS", p.width / 2, p.height / 2 - 100 / 2);
-            } else {
-                p.fill("#0000FF");
-                p.text("BLUE WINS", p.width / 2, p.height / 2 - 100 / 2);
-            }
+            this.sWinner = ((this.isWinner && this.myColor == TileState.Red) || (!this.isWinner && this.myColor == TileState.Blue)) ? "RED" : "BLUE";
+            p.fill((this.sWinner == "RED") ? "#FF0000" : "#0000FF");
+            p.text(this.sWinner + " WINS", p.width / 2, p.height / 2 - 100 / 2);
             p.textSize(p.width / 16);
             p.text("Press 'R' to Restart", p.width / 2, p.height / 2 + p.height / 10 - 100 / 2);
         }
