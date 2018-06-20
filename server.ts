@@ -52,11 +52,9 @@ io.on("connect", function (socket) {
     });
 
     socket.on("sendMove", function (data) {
+        console.log(data.move);
         if (currentPlayer.game != null) {
             currentPlayer.game.update(data.move, currentPlayer);
-            currentPlayer.partner.socket.emit("partnerMove", {
-                move: data.move
-            });
         } else {
             console.log("Not in a game yet.");
         }

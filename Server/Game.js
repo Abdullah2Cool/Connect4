@@ -7,7 +7,7 @@ class Game {
         this.nHeight = 6;
         this.redTiles = 0;
         this.blueTiles = 0;
-        this.win = false;
+        this.gameOver = false;
         this.players = {};
         this.turn = Util_1.TileState.Red;
         p1.color = Util_1.TileState.Red;
@@ -21,24 +21,37 @@ class Game {
                 this.board[i][j] = Util_1.TileState.Empty;
             }
         }
-        p1.socket.emit("setColor", {
-            color: 0
+        p1.socket.emit("startGame", {
+            turn: true,
+            color: p1.color
         });
-        p2.socket.emit("setColor", {
-            color: 1
-        });
-        this.players[this.turn].socket.emit("changeTurn", {
-            turn: true
+        p2.socket.emit("startGame", {
+            turn: false,
+            color: p2.color
         });
         console.log(`${p1.id} is matched with ${p2.id}`);
     }
     update(tileColumn, player) {
-        if (this.turn != player.color)
+        if (this.turn != player.color || this.gameOver)
             return;
         console.log(`Turn: ${this.turn} , Player: ${player.color}`);
+        let bValid = false;
         for (let i = this.board.length - 1; i >= 0; i--) {
             if (this.board[i][tileColumn] == Util_1.TileState.Empty) {
+                bValid = true;
                 this.board[i][tileColumn] = this.turn;
+                player.socket.emit("applyMove", {
+                    row: i,
+                    col: tileColumn,
+                    color: player.color,
+                    turn: false
+                });
+                player.partner.socket.emit("applyMove", {
+                    row: i,
+                    col: tileColumn,
+                    color: player.color,
+                    turn: true
+                });
                 if (this.turn == Util_1.TileState.Red)
                     this.redTiles++;
                 else
@@ -46,48 +59,56 @@ class Game {
                 break;
             }
         }
-        if (this.checkWin()) {
-            let winner = this.players[this.turn];
-            winner.socket.emit("WIN");
-            winner.partner.socket.emit("LOSE");
-            winner.wins++;
-            console.log("Somebody Won");
-        }
-        this.players[this.turn].socket.emit("changeTurn", {
-            turn: false
-        });
-        this.players[(this.turn == Util_1.TileState.Blue) ? Util_1.TileState.Red : Util_1.TileState.Blue].socket.emit("changeTurn", {
-            turn: true,
-            move: tileColumn
-        });
-        this.turn = (this.turn == Util_1.TileState.Blue) ? Util_1.TileState.Red : Util_1.TileState.Blue;
-        for (let y = 0; y < this.nHeight; y++) {
-            for (let x = 0; x < this.nWidth; x++) {
-                switch (this.board[y][x]) {
-                    case Util_1.TileState.Blue:
-                        process.stdout.write("B ");
-                        break;
-                    case Util_1.TileState.Red:
-                        process.stdout.write("R ");
-                        break;
-                    default:
-                        process.stdout.write("- ");
-                        break;
-                }
+        if (bValid) {
+            if (this.checkWin()) {
+                let winner = this.players[this.turn];
+                let loser = winner.partner;
+                winner.wins++;
+                loser.losses++;
+                console.log("Somebody Won");
+                winner.socket.emit("gameOver", {
+                    wins: winner.wins,
+                    losses: winner.losses,
+                    isWinner: true
+                });
+                loser.socket.emit("gameOver", {
+                    wins: loser.wins,
+                    losses: loser.losses,
+                    isWinner: false
+                });
+                this.gameOver = true;
             }
-            console.log();
+            this.turn = (this.turn == Util_1.TileState.Blue) ? Util_1.TileState.Red : Util_1.TileState.Blue;
+            for (let y = 0; y < this.nHeight; y++) {
+                for (let x = 0; x < this.nWidth; x++) {
+                    switch (this.board[y][x]) {
+                        case Util_1.TileState.Blue:
+                            process.stdout.write("B ");
+                            break;
+                        case Util_1.TileState.Red:
+                            process.stdout.write("R ");
+                            break;
+                        default:
+                            process.stdout.write("- ");
+                            break;
+                    }
+                }
+                console.log();
+            }
         }
     }
     reset() {
-        for (let i in this.players) {
-            this.players[i].socket.emit("reset");
-        }
-        this.win = false;
+        this.players[this.turn].socket.emit("startGame", {
+            turn: true,
+            color: this.players[this.turn].color
+        });
+        this.players[this.turn].partner.socket.emit("startGame", {
+            turn: false,
+            color: this.players[this.turn].partner.color
+        });
+        this.gameOver = false;
         this.redTiles = 0;
         this.blueTiles = 0;
-        this.players[this.turn].socket.emit("changeTurn", {
-            turn: true
-        });
         this.board = [];
         for (let i = 0; i < this.nHeight; i++) {
             this.board[i] = [];

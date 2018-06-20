@@ -8,6 +8,7 @@ class Player {
         this.game = null;
         this.socket = socket;
         this.wins = 0;
+        this.losses = 0;
     }
     assignPartner(p) {
         this.partner = p;

@@ -4,32 +4,19 @@ var TileState;
     TileState[TileState["Red"] = 1] = "Red";
     TileState[TileState["Empty"] = 2] = "Empty";
 })(TileState || (TileState = {}));
-class Grid {
-    constructor(nWidth, nHeight, socket) {
-        this.nRedTiles = 0;
-        this.nBlueTiles = 0;
-        this.nRedWins = 0;
-        this.nBlueWins = 0;
-        this.isTurn = false;
-        this.isWinner = false;
+class testBoard {
+    constructor(nWidth, nHeight, color, turn) {
+        this.winner = false;
         this.nWidth = nWidth;
         this.nHeight = nHeight;
-        this.socket = socket;
-        this.socket.on("changeTurn", this.onChangeTurn.bind(this));
-        this.socket.on("setColor", this.onSetColor.bind(this));
-        this.socket.on("WIN", this.onWin.bind(this));
-        this.socket.on("LOSE", this.onLose.bind(this));
-        this.socket.on("reset", this.onReset.bind(this));
+        this.myColor = color == TileState.Red ? "#FF0000" : "#0000FF";
+        this.opponentColor = color == TileState.Blue ? "#FF0000" : "#0000FF";
+        this.myName = (color == TileState.Red ? "RED" : "BLUE");
+        this.opponentName = (color == TileState.Blue ? "RED" : "BLUE");
+        this.isTurn = turn;
         this.init();
     }
     init() {
-        // console.log("INIT");
-        this.isTurn = false;
-        this.isWinner = false;
-        this.gameOver = false;
-        this.isPressed = false;
-        this.nRedTiles = 0;
-        this.nBlueTiles = 0;
         this.board = [];
         for (let i = 0; i < this.nHeight; i++) {
             this.board[i] = [];
@@ -37,89 +24,12 @@ class Grid {
                 this.board[i][j] = TileState.Empty;
             }
         }
+        this.winner = false;
     }
-    onChangeTurn(data) {
-        this.isTurn = data.turn;
-        if (data.turn) {
-            for (let i = this.board.length - 1; i >= 0; i--) {
-                if (this.board[i][data.move] == TileState.Empty) {
-                    this.board[i][data.move] = (this.myColor == TileState.Red) ? TileState.Blue : TileState.Red;
-                    break;
-                }
-            }
-        }
-        console.log(`My Turn: ${data.turn}`);
-    }
-    onLose(data) {
-        this.gameOver = true;
-        if (this.myColor == TileState.Red) {
-            this.nBlueWins++;
-        }
-        else {
-            this.nRedWins++;
-        }
-        this.isWinner = false;
-        console.log(`I lost`);
-    }
-    onWin(data) {
-        this.gameOver = true;
-        if (this.myColor == TileState.Red) {
-            this.nRedWins++;
-        }
-        else {
-            this.nBlueWins++;
-        }
-        this.isWinner = true;
-        console.log(`I won`);
-    }
-    onReset(data) {
-        this.init();
-    }
-    onSetColor(data) {
-        if (data.color == 0)
-            this.myColor = TileState.Red;
-        else
-            this.myColor = TileState.Blue;
-    }
-    run(p) {
-        // console.log("RUN");
-        this.draw(p);
-        if (this.gameOver) {
-            if (p.keyIsPressed && (p.key == 'r' || p.key == 'R'))
-                this.socket.emit("requestReset");
-            return;
-        }
-        this.update(p);
-    }
-    update(p) {
-        // console.log("UPDATE");
-        if (p.mouseIsPressed && !this.isPressed) {
-            if (this.isTurn) {
-                this.isPressed = true;
-                try {
-                    if (p.mouseY < p.height - 100) {
-                        let nColumn = Math.floor(p.mouseX / nTileSize);
-                        for (let i = this.board.length - 1; i >= 0; i--) {
-                            if (this.board[i][nColumn] == TileState.Empty) {
-                                this.board[i][nColumn] = this.myColor;
-                                this.socket.emit("sendMove", {
-                                    move: nColumn
-                                });
-                                break;
-                            }
-                        }
-                    }
-                }
-                catch (e) {
-                }
-            }
-            else {
-                console.log("Not my turn.");
-            }
-        }
-        else if (!p.mouseIsPressed) {
-            this.isPressed = false;
-        }
+    applyMove(nRow, nColumn, color, turn) {
+        this.board[nRow][nColumn] = color;
+        this.isTurn = turn;
+        // console.log("After: " + this.isTurn);
     }
     draw(p) {
         // console.log("DRAW");
@@ -143,24 +53,25 @@ class Grid {
             }
         }
         p.textSize(p.width / 12);
-        p.fill("#FF0000");
-        p.text("RED:" + this.nRedWins, p.width * 1 / 4, p.height - 100 / 2 - 20);
-        p.fill("#0000FF");
-        p.text("BLUE:" + this.nBlueWins, p.width * 3 / 4, p.height - 100 / 2 - 20);
+        p.fill(this.myColor);
+        p.text(this.myName + " : " + wins, p.width * 1 / 4, p.height - 100 / 2 - 20);
+        p.fill(this.opponentColor);
+        p.text(this.opponentName + " : " + losses, p.width * 3 / 4, p.height - 100 / 2 - 20);
         p.textSize(p.width / 16);
+        // console.log(this.isTurn);
         if (this.isTurn) {
-            p.fill(this.myColor == TileState.Red ? "#FF0000" : "#0000FF");
+            p.fill(this.myColor);
             p.text("YOUR TURN", p.width / 2, p.height - 20);
         }
         else {
-            p.fill(this.myColor == TileState.Red ? "#0000FF" : "#FF0000");
+            p.fill(this.opponentColor);
             p.text("OPPONENTS TURN", p.width / 2, p.height - 20);
         }
-        if (this.gameOver) {
+        if (gameOver) {
             p.textSize(p.width / 8);
-            this.sWinner = ((this.isWinner && this.myColor == TileState.Red) || (!this.isWinner && this.myColor == TileState.Blue)) ? "RED" : "BLUE";
-            p.fill((this.sWinner == "RED") ? "#FF0000" : "#0000FF");
-            p.text(this.sWinner + " WINS", p.width / 2, p.height / 2 - 100 / 2);
+            let sWinner = this.winner ? this.myName : this.opponentName;
+            p.fill(this.winner ? this.myColor : this.opponentColor);
+            p.text(sWinner + " WINS", p.width / 2, p.height / 2 - 100 / 2);
             p.textSize(p.width / 16);
             p.text("Press 'R' to Restart", p.width / 2, p.height / 2 + p.height / 10 - 100 / 2);
         }

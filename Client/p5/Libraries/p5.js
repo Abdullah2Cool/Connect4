@@ -3566,7 +3566,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div>\n<code>\nvar c = color(255, 204, 0); // Define color 'c'\nfill(c); // Use color variable 'c' as fill color\nrect(15, 20, 35, 60); // Draw left rectangle\n\nvar redValue = red(c); // Get red in 'c'\nprint(redValue); // Print \"255.0\"\nfill(redValue, 0, 0); // Use 'redValue' in new fill\nrect(50, 20, 35, 60); // Draw right rectangle\n</code>\n</div>\n\n<div>\n<code>\ncolorMode(RGB, 255);\nvar c = color(127, 255, 0);\ncolorMode(RGB, 1);\nvar myColor = red(c);\nprint(myColor);\n</code>\n</div>"
+                "\n<div>\n<code>\nvar c = color(255, 204, 0); // Define color 'c'\nfill(c); // Use color variable 'c' as fill color\nrect(15, 20, 35, 60); // Draw left rectangle\n\nvar redValue = red(c); // Get red in 'c'\nprint(redValue); // Print \"255.0\"\nfill(redValue, 0, 0); // Use 'redValue' in new fill\nrect(50, 20, 35, 60); // Draw right rectangle\n</code>\n</div>\n\n<div>\n<code>\ncolorMode(RGB, 255);\nvar c = color(127, 255, 0);\ncolorMode(RGB, 1);\nvar lolColor = red(c);\nprint(lolColor);\n</code>\n</div>"
             ],
             "alt": "yellow rect on left and red rect on right, both with black outlines and 35x60.\ngrey canvas",
             "class": "p5",
@@ -3617,7 +3617,7 @@ module.exports={
                 "type": "String"
             },
             "example": [
-                "\n<div>\n<code>\nvar myColor;\nfunction setup() {\n  createCanvas(200, 200);\n  stroke(255);\n  myColor = color(100, 100, 250);\n  fill(myColor);\n}\n\nfunction draw() {\n  text(myColor.toString(), 10, 10);\n  text(myColor.toString('#rrggbb'), 10, 95);\n  text(myColor.toString('rgba%'), 10, 180);\n}\n</code>\n</div>"
+                "\n<div>\n<code>\nvar lolColor;\nfunction setup() {\n  createCanvas(200, 200);\n  stroke(255);\n  lolColor = color(100, 100, 250);\n  fill(lolColor);\n}\n\nfunction draw() {\n  text(lolColor.toString(), 10, 10);\n  text(lolColor.toString('#rrggbb'), 10, 95);\n  text(lolColor.toString('rgba%'), 10, 180);\n}\n</code>\n</div>"
             ],
             "alt": "canvas with text representation of color",
             "class": "p5.Color",
@@ -3892,7 +3892,7 @@ module.exports={
             "name": "colorMode",
             "chainable": 1,
             "example": [
-                "\n<div>\n<code>\nnoStroke();\ncolorMode(RGB, 100);\nfor (var i = 0; i < 100; i++) {\n  for (var j = 0; j < 100; j++) {\n    stroke(i, j, 0);\n    point(i, j);\n  }\n}\n</code>\n</div>\n\n<div>\n<code>\nnoStroke();\ncolorMode(HSB, 100);\nfor (var i = 0; i < 100; i++) {\n  for (var j = 0; j < 100; j++) {\n    stroke(i, j, 100);\n    point(i, j);\n  }\n}\n</code>\n</div>\n\n<div>\n<code>\ncolorMode(RGB, 255);\nvar c = color(127, 255, 0);\n\ncolorMode(RGB, 1);\nvar myColor = c._getRed();\ntext(myColor, 10, 10, 80, 80);\n</code>\n</div>\n\n<div>\n<code>\nnoFill();\ncolorMode(RGB, 255, 255, 255, 1);\nbackground(255);\n\nstrokeWeight(4);\nstroke(255, 0, 10, 0.3);\nellipse(40, 40, 50, 50);\nellipse(50, 50, 40, 40);\n</code>\n</div>"
+                "\n<div>\n<code>\nnoStroke();\ncolorMode(RGB, 100);\nfor (var i = 0; i < 100; i++) {\n  for (var j = 0; j < 100; j++) {\n    stroke(i, j, 0);\n    point(i, j);\n  }\n}\n</code>\n</div>\n\n<div>\n<code>\nnoStroke();\ncolorMode(HSB, 100);\nfor (var i = 0; i < 100; i++) {\n  for (var j = 0; j < 100; j++) {\n    stroke(i, j, 100);\n    point(i, j);\n  }\n}\n</code>\n</div>\n\n<div>\n<code>\ncolorMode(RGB, 255);\nvar c = color(127, 255, 0);\n\ncolorMode(RGB, 1);\nvar lolColor = c._getRed();\ntext(lolColor, 10, 10, 80, 80);\n</code>\n</div>\n\n<div>\n<code>\nnoFill();\ncolorMode(RGB, 255, 255, 255, 1);\nbackground(255);\n\nstrokeWeight(4);\nstroke(255, 0, 10, 0.3);\nellipse(40, 40, 50, 50);\nellipse(50, 50, 40, 40);\n</code>\n</div>"
             ],
             "alt": "Green to red gradient from bottom L to top R. shading originates from top left.\nRainbow gradient from left to right. Brightness increasing to white at top.\nunknown image.\n50x50 ellipse at middle L & 40x40 ellipse at center. Transluscent pink outlines.",
             "class": "p5",
@@ -13159,7 +13159,7 @@ module.exports={
                 "type": "String"
             },
             "example": [
-                "\n<div class = \"norender\">\n<code>\nfunction setup() {\n  var v = createVector(20, 30);\n  print(String(v)); // prints \"p5.Vector Object : [20, 30, 0]\"\n}\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text(v1.toString(), 10, 25, 90, 75);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class = \"norender\">\n<code>\nfunction setup() {\n  var v = createVector(20, 30);\n  print(String(v)); // prints \"p5.Vector Object : [20, 30, 0]\"\n}\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text(v1.toString(), 10, 25, 90, 75);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13173,7 +13173,7 @@ module.exports={
             "name": "set",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nfunction setup() {\n  var v = createVector(1, 2, 3);\n  v.set(4, 5, 6); // Sets vector to [4, 5, 6]\n\n  var v1 = createVector(0, 0, 0);\n  var arr = [1, 2, 3];\n  v1.set(arr); // Sets vector to [1, 2, 3]\n}\n</code>\n</div>\n\n<div>\n<code>\nvar v0, v1;\nfunction setup() {\n  createCanvas(100, 100);\n\n  v0 = createVector(0, 0);\n  v1 = createVector(50, 50);\n}\n\nfunction draw() {\n  background(240);\n\n  drawArrow(v0, v1, 'black');\n  v1.set(v1.x + random(-1, 1), v1.y + random(-1, 1));\n\n  noStroke();\n  text('x: ' + round(v1.x) + ' y: ' + round(v1.y), 20, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nfunction setup() {\n  var v = createVector(1, 2, 3);\n  v.set(4, 5, 6); // Sets vector to [4, 5, 6]\n\n  var v1 = createVector(0, 0, 0);\n  var arr = [1, 2, 3];\n  v1.set(arr); // Sets vector to [1, 2, 3]\n}\n</code>\n</div>\n\n<div>\n<code>\nvar v0, v1;\nfunction setup() {\n  createCanvas(100, 100);\n\n  v0 = createVector(0, 0);\n  v1 = createVector(50, 50);\n}\n\nfunction draw() {\n  background(240);\n\n  drawArrow(v0, v1, 'black');\n  v1.set(v1.x + random(-1, 1), v1.y + random(-1, 1));\n\n  noStroke();\n  text('x: ' + round(v1.x) + ' y: ' + round(v1.y), 20, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13241,7 +13241,7 @@ module.exports={
             "name": "add",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 2, 3);\nv.add(4, 5, 6);\n// v's components are set to [5, 7, 9]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 2, 3);\nvar v2 = createVector(2, 3, 4);\n\nvar v3 = p5.Vector.add(v1, v2);\n// v3 has components [3, 5, 7]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\n// red vector + blue vector = purple vector\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(-30, 20);\n  drawArrow(v1, v2, 'blue');\n\n  var v3 = p5.Vector.add(v1, v2);\n  drawArrow(v0, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 2, 3);\nv.add(4, 5, 6);\n// v's components are set to [5, 7, 9]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 2, 3);\nvar v2 = createVector(2, 3, 4);\n\nvar v3 = p5.Vector.add(v1, v2);\n// v3 has components [3, 5, 7]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\n// red vector + blue vector = purple vector\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(-30, 20);\n  drawArrow(v1, v2, 'blue');\n\n  var v3 = p5.Vector.add(v1, v2);\n  drawArrow(v0, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13332,7 +13332,7 @@ module.exports={
             "name": "sub",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(4, 5, 6);\nv.sub(1, 1, 1);\n// v's components are set to [3, 4, 5]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(2, 3, 4);\nvar v2 = createVector(1, 2, 3);\n\nvar v3 = p5.Vector.sub(v1, v2);\n// v3 has components [1, 1, 1]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\n// red vector - blue vector = purple vector\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(70, 50);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX, mouseY);\n  drawArrow(v0, v2, 'blue');\n\n  var v3 = p5.Vector.sub(v1, v2);\n  drawArrow(v2, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(4, 5, 6);\nv.sub(1, 1, 1);\n// v's components are set to [3, 4, 5]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(2, 3, 4);\nvar v2 = createVector(1, 2, 3);\n\nvar v3 = p5.Vector.sub(v1, v2);\n// v3 has components [1, 1, 1]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\n// red vector - blue vector = purple vector\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(70, 50);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX, mouseY);\n  drawArrow(v0, v2, 'blue');\n\n  var v3 = p5.Vector.sub(v1, v2);\n  drawArrow(v2, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13423,7 +13423,7 @@ module.exports={
             "name": "mult",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 2, 3);\nv.mult(2);\n// v's components are set to [2, 4, 6]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 2, 3);\nvar v2 = p5.Vector.mult(v1, 2);\n// v2 has components [2, 4, 6]\nprint(v2);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(25, -25);\n  drawArrow(v0, v1, 'red');\n\n  var num = map(mouseX, 0, width, -2, 2, true);\n  var v2 = p5.Vector.mult(v1, num);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('multiplied by ' + num.toFixed(2), 5, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 2, 3);\nv.mult(2);\n// v's components are set to [2, 4, 6]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 2, 3);\nvar v2 = p5.Vector.mult(v1, 2);\n// v2 has components [2, 4, 6]\nprint(v2);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(25, -25);\n  drawArrow(v0, v1, 'red');\n\n  var num = map(mouseX, 0, width, -2, 2, true);\n  var v2 = p5.Vector.mult(v1, num);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('multiplied by ' + num.toFixed(2), 5, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13491,7 +13491,7 @@ module.exports={
             "name": "div",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(6, 4, 2);\nv.div(2); //v's components are set to [3, 2, 1]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(6, 4, 2);\nvar v2 = p5.Vector.div(v1, 2);\n// v2 has components [3, 2, 1]\nprint(v2);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 100);\n  var v1 = createVector(50, -50);\n  drawArrow(v0, v1, 'red');\n\n  var num = map(mouseX, 0, width, 10, 0.5, true);\n  var v2 = p5.Vector.div(v1, num);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('divided by ' + num.toFixed(2), 10, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(6, 4, 2);\nv.div(2); //v's components are set to [3, 2, 1]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(6, 4, 2);\nvar v2 = p5.Vector.div(v1, 2);\n// v2 has components [3, 2, 1]\nprint(v2);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 100);\n  var v1 = createVector(50, -50);\n  drawArrow(v0, v1, 'red');\n\n  var num = map(mouseX, 0, width, 10, 0.5, true);\n  var v2 = p5.Vector.div(v1, num);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('divided by ' + num.toFixed(2), 10, 90);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13562,7 +13562,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text('vector length: ' + v1.mag().toFixed(2), 10, 70, 90, 30);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>\n<div class=\"norender\">\n<code>\nvar v = createVector(20.0, 30.0, 40.0);\nvar m = v.mag();\nprint(m); // Prints \"53.85164807134504\"\n</code>\n</div>"
+                "\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text('vector length: ' + v1.mag().toFixed(2), 10, 70, 90, 30);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>\n<div class=\"norender\">\n<code>\nvar v = createVector(20.0, 30.0, 40.0);\nvar m = v.mag();\nprint(m); // Prints \"53.85164807134504\"\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13604,7 +13604,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(6, 4, 2);\nprint(v1.magSq()); // Prints \"56\"\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text('vector length squared: ' + v1.magSq().toFixed(2), 10, 45, 90, 55);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(6, 4, 2);\nprint(v1.magSq()); // Prints \"56\"\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'black');\n\n  noStroke();\n  text('vector length squared: ' + v1.magSq().toFixed(2), 10, 45, 90, 55);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13753,7 +13753,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar distance = v1.dist(v2); // distance is 1.4142...\nprint(distance);\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar distance = p5.Vector.dist(v1, v2);\n// distance is 1.4142...\nprint(distance);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n\n  var v1 = createVector(70, 50);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX, mouseY);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('distance between vectors: ' + v2.dist(v1).toFixed(2), 5, 50, 95, 50);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar distance = v1.dist(v2); // distance is 1.4142...\nprint(distance);\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\n// Static method\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar distance = p5.Vector.dist(v1, v2);\n// distance is 1.4142...\nprint(distance);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n\n  var v1 = createVector(70, 50);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX, mouseY);\n  drawArrow(v0, v2, 'blue');\n\n  noStroke();\n  text('distance between vectors: ' + v2.dist(v1).toFixed(2), 5, 50, 95, 50);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13806,7 +13806,7 @@ module.exports={
                 "type": "p5.Vector"
             },
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.normalize();\n// v's components are set to\n// [0.4454354, 0.8908708, 0.089087084]\n</code>\n</div>\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'red');\n  v1.normalize();\n  drawArrow(v0, v1.mult(35), 'blue');\n\n  noFill();\n  ellipse(50, 50, 35 * 2);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.normalize();\n// v's components are set to\n// [0.4454354, 0.8908708, 0.089087084]\n</code>\n</div>\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'red');\n  v1.normalize();\n  drawArrow(v0, v1.mult(35), 'blue');\n\n  noFill();\n  ellipse(50, 50, 35 * 2);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13827,7 +13827,7 @@ module.exports={
             ],
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.limit(5);\n// v's components are set to\n// [2.2271771, 4.4543543, 0.4454354]\n</code>\n</div>\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'red');\n  drawArrow(v0, v1.limit(35), 'blue');\n\n  noFill();\n  ellipse(50, 50, 35 * 2);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.limit(5);\n// v's components are set to\n// [2.2271771, 4.4543543, 0.4454354]\n</code>\n</div>\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'red');\n  drawArrow(v0, v1.limit(35), 'blue');\n\n  noFill();\n  ellipse(50, 50, 35 * 2);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13848,7 +13848,7 @@ module.exports={
             ],
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.setMag(10);\n// v's components are set to [6.0, 8.0, 0.0]\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(50, 50);\n\n  drawArrow(v0, v1, 'red');\n\n  var length = map(mouseX, 0, width, 0, 141, true);\n  v1.setMag(length);\n  drawArrow(v0, v1, 'blue');\n\n  noStroke();\n  text('magnitude set to: ' + length.toFixed(2), 10, 70, 90, 30);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10, 20, 2);\n// v has components [10.0, 20.0, 2.0]\nv.setMag(10);\n// v's components are set to [6.0, 8.0, 0.0]\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(0, 0);\n  var v1 = createVector(50, 50);\n\n  drawArrow(v0, v1, 'red');\n\n  var length = map(mouseX, 0, width, 0, 141, true);\n  v1.setMag(length);\n  drawArrow(v0, v1, 'blue');\n\n  noStroke();\n  text('magnitude set to: ' + length.toFixed(2), 10, 70, 90, 30);\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13865,7 +13865,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div class = \"norender\">\n<code>\nfunction setup() {\n  var v1 = createVector(30, 50);\n  print(v1.heading()); // 1.0303768265243125\n\n  v1 = createVector(40, 50);\n  print(v1.heading()); // 0.8960553845713439\n\n  v1 = createVector(30, 70);\n  print(v1.heading()); // 1.1659045405098132\n}\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'black');\n\n  var myHeading = v1.heading();\n  noStroke();\n  text(\n    'vector heading: ' +\n      myHeading.toFixed(2) +\n      ' radians or ' +\n      degrees(myHeading).toFixed(2) +\n      ' degrees',\n    10,\n    50,\n    90,\n    50\n  );\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class = \"norender\">\n<code>\nfunction setup() {\n  var v1 = createVector(30, 50);\n  print(v1.heading()); // 1.0303768265243125\n\n  v1 = createVector(40, 50);\n  print(v1.heading()); // 0.8960553845713439\n\n  v1 = createVector(30, 70);\n  print(v1.heading()); // 1.1659045405098132\n}\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(mouseX - 50, mouseY - 50);\n\n  drawArrow(v0, v1, 'black');\n\n  var myHeading = v1.heading();\n  noStroke();\n  text(\n    'vector heading: ' +\n      myHeading.toFixed(2) +\n      ' radians or ' +\n      degrees(myHeading).toFixed(2) +\n      ' degrees',\n    10,\n    50,\n    90,\n    50\n  );\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13886,7 +13886,7 @@ module.exports={
             ],
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10.0, 20.0);\n// v has components [10.0, 20.0, 0.0]\nv.rotate(HALF_PI);\n// v's components are set to [-20.0, 9.999999, 0.0]\n</code>\n</div>\n\n<div>\n<code>\nvar angle = 0;\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(50, 0);\n\n  drawArrow(v0, v1.rotate(angle), 'black');\n  angle += 0.01;\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(10.0, 20.0);\n// v has components [10.0, 20.0, 0.0]\nv.rotate(HALF_PI);\n// v's components are set to [-20.0, 9.999999, 0.0]\n</code>\n</div>\n\n<div>\n<code>\nvar angle = 0;\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = createVector(50, 0);\n\n  drawArrow(v0, v1.rotate(angle), 'black');\n  angle += 0.01;\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13910,7 +13910,7 @@ module.exports={
                 "type": "Number"
             },
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar angle = v1.angleBetween(v2);\n// angle is PI/2\nprint(angle);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n  var v0 = createVector(50, 50);\n\n  var v1 = createVector(50, 0);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX - 50, mouseY - 50);\n  drawArrow(v0, v2, 'blue');\n\n  var angleBetween = v1.angleBetween(v2);\n  noStroke();\n  text(\n    'angle between: ' +\n      angleBetween.toFixed(2) +\n      ' radians or ' +\n      degrees(angleBetween).toFixed(2) +\n      ' degrees',\n    10,\n    50,\n    90,\n    50\n  );\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v1 = createVector(1, 0, 0);\nvar v2 = createVector(0, 1, 0);\n\nvar angle = v1.angleBetween(v2);\n// angle is PI/2\nprint(angle);\n</code>\n</div>\n\n<div>\n<code>\nfunction draw() {\n  background(240);\n  var v0 = createVector(50, 50);\n\n  var v1 = createVector(50, 0);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(mouseX - 50, mouseY - 50);\n  drawArrow(v0, v2, 'blue');\n\n  var angleBetween = v1.angleBetween(v2);\n  noStroke();\n  text(\n    'angle between: ' +\n      angleBetween.toFixed(2) +\n      ' radians or ' +\n      degrees(angleBetween).toFixed(2) +\n      ' degrees',\n    10,\n    50,\n    90,\n    50\n  );\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -13924,7 +13924,7 @@ module.exports={
             "name": "lerp",
             "chainable": 1,
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 1, 0);\n\nv.lerp(3, 3, 0, 0.5); // v now has components [2,2,0]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\nvar v1 = createVector(0, 0, 0);\nvar v2 = createVector(100, 100, 0);\n\nvar v3 = p5.Vector.lerp(v1, v2, 0.5);\n// v3 has components [50,50,0]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\nvar step = 0.01;\nvar amount = 0;\n\nfunction draw() {\n  background(240);\n  var v0 = createVector(0, 0);\n\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(90, 90);\n  drawArrow(v0, v2, 'blue');\n\n  if (amount > 1 || amount < 0) {\n    step *= -1;\n  }\n  amount += step;\n  var v3 = p5.Vector.lerp(v1, v2, amount);\n\n  drawArrow(v0, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = createVector(1, 1, 0);\n\nv.lerp(3, 3, 0, 0.5); // v now has components [2,2,0]\n</code>\n</div>\n\n<div class=\"norender\">\n<code>\nvar v1 = createVector(0, 0, 0);\nvar v2 = createVector(100, 100, 0);\n\nvar v3 = p5.Vector.lerp(v1, v2, 0.5);\n// v3 has components [50,50,0]\nprint(v3);\n</code>\n</div>\n\n<div>\n<code>\nvar step = 0.01;\nvar amount = 0;\n\nfunction draw() {\n  background(240);\n  var v0 = createVector(0, 0);\n\n  var v1 = createVector(mouseX, mouseY);\n  drawArrow(v0, v1, 'red');\n\n  var v2 = createVector(90, 90);\n  drawArrow(v0, v2, 'blue');\n\n  if (amount > 1 || amount < 0) {\n    step *= -1;\n  }\n  amount += step;\n  var v3 = p5.Vector.lerp(v1, v2, amount);\n\n  drawArrow(v0, v3, 'purple');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -14181,7 +14181,7 @@ module.exports={
                 "type": "p5.Vector"
             },
             "example": [
-                "\n<div class=\"norender\">\n<code>\nvar v = p5.Vector.random2D();\n// May make v's attributes something like:\n// [0.61554617, -0.51195765, 0.0] or\n// [-0.4695841, -0.14366731, 0.0] or\n// [0.6091097, -0.22805278, 0.0]\nprint(v);\n</code>\n</div>\n\n<div>\n<code>\nfunction setup() {\n  frameRate(1);\n}\n\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = p5.Vector.random2D();\n  drawArrow(v0, v1.mult(50), 'black');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, myColor) {\n  push();\n  stroke(myColor);\n  strokeWeight(3);\n  fill(myColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
+                "\n<div class=\"norender\">\n<code>\nvar v = p5.Vector.random2D();\n// May make v's attributes something like:\n// [0.61554617, -0.51195765, 0.0] or\n// [-0.4695841, -0.14366731, 0.0] or\n// [0.6091097, -0.22805278, 0.0]\nprint(v);\n</code>\n</div>\n\n<div>\n<code>\nfunction setup() {\n  frameRate(1);\n}\n\nfunction draw() {\n  background(240);\n\n  var v0 = createVector(50, 50);\n  var v1 = p5.Vector.random2D();\n  drawArrow(v0, v1.mult(50), 'black');\n}\n\n// draw an arrow for a vector at a given base position\nfunction drawArrow(base, vec, lolColor) {\n  push();\n  stroke(lolColor);\n  strokeWeight(3);\n  fill(lolColor);\n  translate(base.x, base.y);\n  line(0, 0, vec.x, vec.y);\n  rotate(vec.heading());\n  var arrowSize = 7;\n  translate(vec.mag() - arrowSize, 0);\n  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);\n  pop();\n}\n</code>\n</div>"
             ],
             "class": "p5.Vector",
             "module": "Math",
@@ -43048,8 +43048,8 @@ p5.prototype.lightness = function(c) {
  * colorMode(RGB, 255);
  * var c = color(127, 255, 0);
  * colorMode(RGB, 1);
- * var myColor = red(c);
- * print(myColor);
+ * var lolColor = red(c);
+ * print(lolColor);
  * </code>
  * </div>
  *
@@ -43166,18 +43166,18 @@ p5.Color = function(pInst, vals) {
  * @example
  * <div>
  * <code>
- * var myColor;
+ * var lolColor;
  * function setup() {
  *   createCanvas(200, 200);
  *   stroke(255);
- *   myColor = color(100, 100, 250);
- *   fill(myColor);
+ *   lolColor = color(100, 100, 250);
+ *   fill(lolColor);
  * }
  *
  * function draw() {
- *   text(myColor.toString(), 10, 10);
- *   text(myColor.toString('#rrggbb'), 10, 95);
- *   text(myColor.toString('rgba%'), 10, 180);
+ *   text(lolColor.toString(), 10, 10);
+ *   text(lolColor.toString('#rrggbb'), 10, 95);
+ *   text(lolColor.toString('rgba%'), 10, 180);
  * }
  * </code>
  * </div>
@@ -44380,8 +44380,8 @@ p5.prototype.clear = function() {
  * var c = color(127, 255, 0);
  *
  * colorMode(RGB, 1);
- * var myColor = c._getRed();
- * text(myColor, 10, 10, 80, 80);
+ * var lolColor = c._getRed();
+ * text(lolColor, 10, 10, 80, 80);
  * </code>
  * </div>
  *
@@ -65101,11 +65101,11 @@ p5.Vector = function Vector() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65164,11 +65164,11 @@ p5.Vector.prototype.toString = function p5VectorToString() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65277,11 +65277,11 @@ p5.Vector.prototype.copy = function copy() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65367,11 +65367,11 @@ p5.Vector.prototype.add = function add(x, y, z) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65452,11 +65452,11 @@ p5.Vector.prototype.sub = function sub(x, y, z) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65526,11 +65526,11 @@ p5.Vector.prototype.mult = function mult(n) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65581,11 +65581,11 @@ p5.Vector.prototype.div = function div(n) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65639,11 +65639,11 @@ p5.Vector.prototype.mag = function mag() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65794,11 +65794,11 @@ p5.Vector.prototype.cross = function cross(v) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65849,11 +65849,11 @@ p5.Vector.prototype.dist = function dist(v) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65906,11 +65906,11 @@ p5.Vector.prototype.normalize = function normalize() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -65967,11 +65967,11 @@ p5.Vector.prototype.limit = function limit(max) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -66034,11 +66034,11 @@ p5.Vector.prototype.setMag = function setMag(n) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -66087,11 +66087,11 @@ p5.Vector.prototype.heading = function heading() {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -66157,11 +66157,11 @@ p5.Vector.prototype.rotate = function rotate(a) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -66242,11 +66242,11 @@ p5.Vector.prototype.angleBetween = function angleBetween(v) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
@@ -66495,11 +66495,11 @@ p5.Vector.fromAngles = function(theta, phi, length) {
  * }
  *
  * // draw an arrow for a vector at a given base position
- * function drawArrow(base, vec, myColor) {
+ * function drawArrow(base, vec, lolColor) {
  *   push();
- *   stroke(myColor);
+ *   stroke(lolColor);
  *   strokeWeight(3);
- *   fill(myColor);
+ *   fill(lolColor);
  *   translate(base.x, base.y);
  *   line(0, 0, vec.x, vec.y);
  *   rotate(vec.heading());
